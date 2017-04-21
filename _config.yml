@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://xlingyun.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
-simple_search: https://www.google.com/search
-description:
+title: My Octopress Blog  # blog名称，会出现在左上角
+subtitle: A blogging framework # title下面的副标题，可以用来放你的喜欢的名人名言，或者简单介绍下自己
+author: Your Name # 会出现在每篇文章下面的Posted by 
+simple_search: http://google.com/search  # 右边搜索框使用的搜索引擎
+description: # head.html中meta name="description"的默认content，但一般都被会截断的文章内容替换掉
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
