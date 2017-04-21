@@ -1,9 +1,10 @@
 ---
 layout: page
-title: "title"
+title: ""
 date: 2017-04-09 15:40:39 +0800
 comments: true
 categories: 
 ---
 
 this my first commit 
+![王丽坤](http://imgbdb2.bendibao.com/xiuxian/20138/27/2013827145348748.jpg)
