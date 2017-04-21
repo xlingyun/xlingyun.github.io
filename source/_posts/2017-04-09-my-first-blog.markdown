@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "my first blog"
-date: 2017-04-09 16:09:10 +0800
+date: yyyy-mm-dd hh:mm:ss
 comments: true
-categories: 
+categories: ""
 ---
 this is my first blog
