@@ -9,8 +9,27 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="标题一 这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字 Col1
+Col2
+Col3
+Col4
+Col5 aaa
+111
+222
+333
+444 bbb
+cccc
+wwww
+ww
+ooo 这是一行代码&lt;script&gt;哈哈 1
+2
+3
+4
+5
+6
+7
+8
+9 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,7 +114,118 @@
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><h1>标题一</h1>
+
+<p>这是一段文字<em>这是一段文字</em>这是一段文字<strong><em>这是一段文字</em></strong>这是一段文字这是一段文字</p>
+
+<table>
+<thead>
+<tr>
+<th>Col1</th>
+<th style="text-align:left;">Col2</th>
+<th style="text-align:right;">Col3</th>
+<th style="text-align:center;">Col4</th>
+<th>Col5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aaa</td>
+<td style="text-align:left;">111</td>
+<td style="text-align:right;">222</td>
+<td style="text-align:center;">333</td>
+<td>444</td>
+</tr>
+<tr>
+<td>bbb</td>
+<td style="text-align:left;">cccc</td>
+<td style="text-align:right;">wwww</td>
+<td style="text-align:center;">ww</td>
+<td>ooo</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>这是一行代码<code>&lt;script&gt;</code>哈哈</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">auto</span><span class="p">){</span>
+</span><span class='line'>    <span class="c1">// 定义一个全局的定时器</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">timer</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+</span><span class='line'>    <span class="c1">//计数器</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">loop</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">autoPlay</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#js-tab&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">clearInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timer</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">},</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class='line'>        <span class="nx">_this_</span><span class="p">.</span><span class="nx">autoPlay</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">})</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab&quot;</span> <span class="na">id=</span><span class="s">&quot;js-tab&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;tab-nav&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;javascript:void(0);&quot;</span><span class="nt">&gt;</span>新闻<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;javascript:void(0);&quot;</span><span class="nt">&gt;</span>娱乐<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;javascript:void(0);&quot;</span><span class="nt">&gt;</span>电影<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;javascript:void(0);&quot;</span><span class="nt">&gt;</span>科技<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-wrap&quot;</span> <span class="na">id=</span><span class="s">&quot;js-content&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-item current&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;WechatIMG423.jpeg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-item&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;WechatIMG424.jpeg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-item&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;WechatIMG425.jpeg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-item&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;WechatIMG426.jpeg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
