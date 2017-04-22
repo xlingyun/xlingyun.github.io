@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://xlingyun.github.io/atom.xml" rel="self"/>
   <link href="http://xlingyun.github.io/"/>
-  <updated>2017-04-23T01:48:10+08:00</updated>
+  <updated>2017-04-23T02:03:23+08:00</updated>
   <id>http://xlingyun.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -138,7 +138,16 @@
     <link href="http://xlingyun.github.io/blog/2017/04/22/first-blog/"/>
     <updated>2017-04-22T02:37:11+08:00</updated>
     <id>http://xlingyun.github.io/blog/2017/04/22/first-blog</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<blockquote><p>这里就是一个引用</p></blockquote>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'> <span class="kd">function</span> <span class="nx">goTop</span><span class="p">(){</span>
+</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ok&#39;</span><span class="p">)</span>
+</span><span class='line'> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 ]]></content>
   </entry>
   
@@ -149,7 +158,7 @@
     <id>http://xlingyun.github.io/blog/2017/04/21/post-tabqie-huan</id>
     <content type="html"><![CDATA[<p>tab切换</p>
 
-<h1>标题一</h1>
+<h2>标题一</h2>
 
 <h2>标题二</h2>
 
