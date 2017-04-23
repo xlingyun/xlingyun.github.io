@@ -5,31 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
+  <title>Css3的结构域布局 - My Octopress Blog</title>
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="标题一 这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字 Col1
-Col2
-Col3
-Col4
-Col5 aaa
-111
-222
-333
-444 bbb
-cccc
-wwww
-ww
-ooo 这是一行代码&lt;script&gt;哈哈 1
+  <meta name="description" content="1.自适应内部元素 在css中，不给元素一个height值时，元素会自适应其内部的元素高度，有时我们想让元素的宽度也达到此效果，应用场景如下。 如下当前的这种布局，想要改成最外层的div的宽度由当前的图片撑开的效果，这时就要用到min-content这个属性值。 css代码如下： 1
 2
 3
-4
-5
-6
-7
-8
-9 &hellip;">
+4 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -38,7 +21,7 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://xlingyun.github.io/">
+  <link rel="canonical" href="http://xlingyun.github.io/blog/20170409/title/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
@@ -83,298 +66,12 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/20170422/javascript/">Javascript</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-04-22T03:06:52+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2017</span></span> <span class='time'>3:06 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h5>标题一</h5>
-
-<p>这是一段文字<em>这是一段文字</em>这是一段文字<strong><em>这是一段文字</em></strong>这是一段文字这是一段文字</p>
-
-<table>
-<thead>
-<tr>
-<th>Col1</th>
-<th style="text-align:left;">Col2</th>
-<th style="text-align:right;">Col3</th>
-<th style="text-align:center;">Col4</th>
-<th>Col5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>aaa</td>
-<td style="text-align:left;">111</td>
-<td style="text-align:right;">222</td>
-<td style="text-align:center;">333</td>
-<td>444</td>
-</tr>
-<tr>
-<td>bbb</td>
-<td style="text-align:left;">cccc</td>
-<td style="text-align:right;">wwww</td>
-<td style="text-align:center;">ww</td>
-<td>ooo</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>这是一行代码<code>&lt;script&gt;</code>哈哈</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="k">if</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">auto</span><span class="p">){</span>
-</span><span class='line'>    <span class="c1">// 定义一个全局的定时器</span>
-</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">timer</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-</span><span class='line'>    <span class="c1">//计数器</span>
-</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">loop</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">autoPlay</span><span class="p">();</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#js-tab&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nb">window</span><span class="p">.</span><span class="nx">clearInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">timer</span><span class="p">);</span>
-</span><span class='line'>    <span class="p">},</span><span class="kd">function</span><span class="p">(){</span>
-</span><span class='line'>        <span class="nx">_this_</span><span class="p">.</span><span class="nx">autoPlay</span><span class="p">();</span>
-</span><span class='line'>    <span class="p">})</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;tab&quot;</span> <span class="na">id=</span><span class="s">&quot;js-tab&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;tab-nav&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;active&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;javascript:void(0);&quot;</span><span class="nt">&gt;</span>新闻<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;javascript:void(0);&quot;</span><span class="nt">&gt;</span>娱乐<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;javascript:void(0);&quot;</span><span class="nt">&gt;</span>电影<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;javascript:void(0);&quot;</span><span class="nt">&gt;</span>科技<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/ul&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-wrap&quot;</span> <span class="na">id=</span><span class="s">&quot;js-content&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-item current&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;WechatIMG423.jpeg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-item&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;WechatIMG424.jpeg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-item&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;WechatIMG425.jpeg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;content-item&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>            <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;WechatIMG426.jpeg&quot;</span> <span class="na">alt=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
-</span><span class='line'>        <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'>    <span class="nt">&lt;/div&gt;</span>
-</span><span class='line'><span class="nt">&lt;/div&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/20170422/first-blog/">First Blog</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-04-22T02:37:11+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2017</span></span> <span class='time'>2:37 am</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/20170421/post-tabqie-huan/">安装Octopress步骤</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2017-04-21T19:23:53+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>7:23 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h4>安装Octopress步骤</h4>
-
-<h5>Ruby等依赖安装</h5>
-
-<blockquote><p>由于Jekyll和octopress都是ruby写的，会有诸多ruby依赖，建议切换ruby源唯国内源。对于git版本没有太大要求。
-查看ruby版本<code>ruby -v</code>
-安装bundler bundler可以自动解决依赖，安装方法：<code>gem install bundler</code>,建议国内用户切换gem源为国内源，方法如下：</p></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>gem source -r https://rubygems.org/ # 删除官方源
-</span><span class='line'>gem source -a https://ruby.taobao.org/ #添加淘宝源</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p> 查看当前源：<code>gem source -l</code></p></blockquote>
-
-<h5>clone网站repo</h5>
-
-<blockquote><p>设置git</p></blockquote>
-
-<pre><code class="`"> git config --global user.name "name"
- git config --global user.email "emailaddress"
-</code></pre>
-
-<blockquote><p>生成ssh key：</p></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-keygen -t rsa -C "emailaddress"</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>按3个回车，密码为空，复制~/.ssh/id_rsa.pub的内容，添加到GitHub账户中，然后clone网站repo</p></blockquote>
-
-<h5>octopress安装</h5>
-
-<blockquote><p>octopress的安装也比较简单，下载源码后会有Gemfile文件来指示所有依赖，使用<code>bundle</code>即可，下载源码:</p></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress</span></code></pre></td></tr></table></div></figure>
-
-
-<blockquote><p>进入octopress文件夹，使用bundle自动安装octopress，<code>bundle install</code>会自动安装所有octopress及其所有依赖。</p>
-
-<p>执行如下命令安装默认主题</p></blockquote>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake install </span></code></pre></td></tr></table></div></figure>
-
-
-<p>
-所谓rake就是ruby make的缩写。
-- 执行</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
-
-
-<p>在浏览器内输入<code>http://localhost:4000</code>，即可看到我们搭建完成的博客</p>
-
-<h5>部署到GitHub</h5>
-
-<p>tab切换</p>
-
-<h2>标题一</h2>
-
-<h2>标题二</h2>
-
-<h6>标题六</h6>
-
-<ul>
-<li>列表项1</li>
-<li>列表项2</li>
-<li>列表项3</li>
-<li>列表项4</li>
-<li><p>无序列表5</p></li>
-<li><p>无序列表</p></li>
-<li><p>无序列表</p></li>
-<li><p>有序列表</p></li>
-<li>有序列表</li>
-</ul>
-
-
-<blockquote><p>引用的一段名言</p></blockquote>
-
-<p><a href="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.pn">百度</a></p>
-
-<p><img src="http://imgbdb2.bendibao.com/xiuxian/20138/27/2013827145348748.jpg" alt="王丽坤" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/20170409/title/">Css3的结构域布局</a></h1>
+      <h1 class="entry-title">Css3的结构域布局</h1>
     
     
       <p class="meta">
@@ -390,7 +87,7 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
   </header>
 
 
-  <div class="entry-content"><p>1.自适应内部元素</p>
+<div class="entry-content"><p>1.自适应内部元素</p>
 
 <p>在css中，不给元素一个height值时，元素会自适应其内部的元素高度，有时我们想让元素的宽度也达到此效果，应用场景如下。</p>
 
@@ -832,18 +529,46 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
 </span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 
 
-    </article>
+  <footer>
+    <p class="meta">
+      
   
-  <div class="pagination">
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-04-09T15:40:39+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:40 pm</span></time>
+      
+
+
+    </p>
     
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://xlingyun.github.io/blog/20170409/title/" data-via="" data-counturl="http://xlingyun.github.io/blog/20170409/title/" >Tweet</a>
+  
+  
+  
 </div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/20170421/post-tabqie-huan/" title="Next Post: 安装Octopress步骤">安装Octopress步骤 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -875,6 +600,7 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
 
   
 </aside>
+
 
     </div>
   </div>

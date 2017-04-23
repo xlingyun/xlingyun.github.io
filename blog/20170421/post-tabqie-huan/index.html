@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>安装Octopress步骤 - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="安装Octopress步骤 Ruby等依赖安装 由于Jekyll和octopress都是ruby写的，会有诸多ruby依赖，建议切换ruby源唯国内源。对于git版本没有太大要求。
+查看ruby版本ruby -v
+安装bundler bundler可以自动解决依赖，安装方法：gem install &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://xlingyun.github.io/blog/20170421/post-tabqie-huan/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="xlingyun.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">安装Octopress步骤</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-04-21T19:23:53+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>7:23 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h4>安装Octopress步骤</h4>
+
+<h5>Ruby等依赖安装</h5>
+
+<blockquote><p>由于Jekyll和octopress都是ruby写的，会有诸多ruby依赖，建议切换ruby源唯国内源。对于git版本没有太大要求。
+查看ruby版本<code>ruby -v</code>
+安装bundler bundler可以自动解决依赖，安装方法：<code>gem install bundler</code>,建议国内用户切换gem源为国内源，方法如下：</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem source -r https://rubygems.org/ # 删除官方源
+</span><span class='line'>gem source -a https://ruby.taobao.org/ #添加淘宝源</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p> 查看当前源：<code>gem source -l</code></p></blockquote>
+
+<h5>clone网站repo</h5>
+
+<blockquote><p>设置git</p></blockquote>
+
+<pre><code class="`"> git config --global user.name "name"
+ git config --global user.email "emailaddress"
+</code></pre>
+
+<blockquote><p>生成ssh key：</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-keygen -t rsa -C "emailaddress"</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>按3个回车，密码为空，复制~/.ssh/id_rsa.pub的内容，添加到GitHub账户中，然后clone网站repo</p></blockquote>
+
+<h5>octopress安装</h5>
+
+<blockquote><p>octopress的安装也比较简单，下载源码后会有Gemfile文件来指示所有依赖，使用<code>bundle</code>即可，下载源码:</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>进入octopress文件夹，使用bundle自动安装octopress，<code>bundle install</code>会自动安装所有octopress及其所有依赖。</p>
+
+<p>执行如下命令安装默认主题</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake install </span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+所谓rake就是ruby make的缩写。
+- 执行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在浏览器内输入<code>http://localhost:4000</code>，即可看到我们搭建完成的博客</p>
+
+<h5>部署到GitHub</h5>
+
+<p>tab切换</p>
+
+<h2>标题一</h2>
+
+<h2>标题二</h2>
+
+<h6>标题六</h6>
+
+<ul>
+<li>列表项1</li>
+<li>列表项2</li>
+<li>列表项3</li>
+<li>列表项4</li>
+<li><p>无序列表5</p></li>
+<li><p>无序列表</p></li>
+<li><p>无序列表</p></li>
+<li><p>有序列表</p></li>
+<li>有序列表</li>
+</ul>
+
+
+<blockquote><p>引用的一段名言</p></blockquote>
+
+<p><a href="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.pn">百度</a></p>
+
+<p><img src="http://imgbdb2.bendibao.com/xiuxian/20138/27/2013827145348748.jpg" alt="王丽坤" /></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-04-21T19:23:53+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>7:23 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://xlingyun.github.io/blog/20170421/post-tabqie-huan/" data-via="" data-counturl="http://xlingyun.github.io/blog/20170421/post-tabqie-huan/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/20170409/title/" title="Previous Post: css3的结构域布局">&laquo; css3的结构域布局</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/20170422/first-blog/" title="Next Post: first blog">first blog &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>最新文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/20170422/javascript/">Javascript</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/20170422/first-blog/">First Blog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/20170421/post-tabqie-huan/">安装Octopress步骤</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/20170409/title/">Css3的结构域布局</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2017 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
