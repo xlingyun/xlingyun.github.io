@@ -12,6 +12,7 @@ categories:
 
 如下当前的这种布局，想要改成最外层的div的宽度由当前的图片撑开的效果，这时就要用到min-content这个属性值。
 
+![http://oot79f1a9.bkt.clouddn.com/QQ20170423-165711.png](http://oot79f1a9.bkt.clouddn.com/QQ20170423-165711.png)
  
 
 css代码如下：
@@ -24,6 +25,7 @@ div {
 ```
 最终效果：
 
+![http://oot79f1a9.bkt.clouddn.com/QQ20170423-165634.png](http://oot79f1a9.bkt.clouddn.com/QQ20170423-165634.png)
  
 
 min-content将解析这个容器内部最大的不可断行元素的宽度（即最宽的单词，图片或具有固定宽度的盒元素）
@@ -38,7 +40,7 @@ min-content将解析这个容器内部最大的不可断行元素的宽度（即
 
 平时生成的表格如下：
 
- 
+ ![http://oot79f1a9.bkt.clouddn.com/QQ20170423-171957.png](http://oot79f1a9.bkt.clouddn.com/QQ20170423-171957.png)
 
 为了让设置的宽度生效，并且能让过多的文字省略号显示，解决办法就是使用table-layout: fixed这个样式
 

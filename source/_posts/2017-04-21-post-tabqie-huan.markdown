@@ -79,7 +79,3 @@ tab切换
 1. 有序列表
 
 > 引用的一段名言
-
-[百度](https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.pn)
-
-![王丽坤](http://imgbdb2.bendibao.com/xiuxian/20138/27/2013827145348748.jpg)
