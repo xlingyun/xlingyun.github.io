@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://xlingyun.github.io/atom.xml" rel="self"/>
   <link href="http://xlingyun.github.io/"/>
-  <updated>2017-04-23T16:54:15+08:00</updated>
+  <updated>2017-04-23T17:27:37+08:00</updated>
   <id>http://xlingyun.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -229,10 +229,6 @@
 
 
 <blockquote><p>引用的一段名言</p></blockquote>
-
-<p><a href="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.pn">百度</a></p>
-
-<p><img src="http://imgbdb2.bendibao.com/xiuxian/20138/27/2013827145348748.jpg" alt="王丽坤" /></p>
 ]]></content>
   </entry>
   
@@ -246,6 +242,8 @@
 <p>在css中，不给元素一个height值时，元素会自适应其内部的元素高度，有时我们想让元素的宽度也达到此效果，应用场景如下。</p>
 
 <p>如下当前的这种布局，想要改成最外层的div的宽度由当前的图片撑开的效果，这时就要用到min-content这个属性值。</p>
+
+<p><img src="http://oot79f1a9.bkt.clouddn.com/QQ20170423-165711.png" alt="http://oot79f1a9.bkt.clouddn.com/QQ20170423-165711.png" /></p>
 
 <p>css代码如下：</p>
 
@@ -261,6 +259,8 @@
 
 <p>最终效果：</p>
 
+<p><img src="http://oot79f1a9.bkt.clouddn.com/QQ20170423-165634.png" alt="http://oot79f1a9.bkt.clouddn.com/QQ20170423-165634.png" /></p>
+
 <p>min-content将解析这个容器内部最大的不可断行元素的宽度（即最宽的单词，图片或具有固定宽度的盒元素）</p>
 
 <p>张鑫旭有一篇文章对这个属性做了详细的讲解，地址如下：</p>
@@ -272,6 +272,8 @@
 <p>在使用表格布局时，当表格的内容不确定时，布局很难预测，因为表格的列宽是根据它的内容进行计算的，即使显示的设置了width，也不会生效，还是会根据它的内容生成宽度。会根据加载的内容不停的重绘，直到加载完。</p>
 
 <p>平时生成的表格如下：</p>
+
+<p> <img src="http://oot79f1a9.bkt.clouddn.com/QQ20170423-171957.png" alt="http://oot79f1a9.bkt.clouddn.com/QQ20170423-171957.png" /></p>
 
 <p>为了让设置的宽度生效，并且能让过多的文字省略号显示，解决办法就是使用table-layout: fixed这个样式</p>
 
