@@ -1,0 +1,19 @@
+<div class="highlight"><pre><span class="c">/*定义mixin*/</span>
+<span class="k">@mixin</span> <span class="nt">n-items</span><span class="o">($</span><span class="nt">n</span><span class="o">)</span> <span class="p">{</span>
+  <span class="c">/*当列表的总数是4或者更多时，选中所有列表项*/</span>
+  <span class="o">&amp;</span><span class="nd">:first-child:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span><span class="n">n</span> <span class="o">+</span> <span class="m">4</span><span class="p">}</span><span class="o">),</span>
+  <span class="o">&amp;</span><span class="nd">:first-child:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span><span class="n">n</span> <span class="o">+</span> <span class="m">4</span><span class="p">}</span><span class="o">)</span> <span class="o">~</span> <span class="o">&amp;</span> <span class="p">{</span>
+    <span class="o">@</span><span class="k">content</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="o">//</span> <span class="err">改写成</span> <span class="nt">-n</span> <span class="o">+</span> <span class="nt">4</span> <span class="err">表示列表中有</span><span class="nt">4</span><span class="err">个或者小于</span><span class="nt">4</span><span class="err">时，选中所有</span>
+
+<span class="o">//</span> <span class="err">同理，如</span><span class="nt">2</span> <span class="err">～</span> <span class="nt">6</span><span class="err">时，设置</span> <span class="nt">n</span> <span class="o">+</span> <span class="nt">2</span> <span class="o">~</span> <span class="nt">-n</span> <span class="o">+</span> <span class="nt">6</span>
+<span class="k">@mixin</span> <span class="nt">n-items</span><span class="o">($</span><span class="nt">n</span><span class="o">)</span> <span class="p">{</span>
+  <span class="o">&amp;</span><span class="nd">:first-child:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span><span class="n">n</span> <span class="o">+</span> <span class="m">2</span><span class="p">}</span><span class="o">)</span><span class="nd">:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span> <span class="o">-</span><span class="n">n</span> <span class="o">+</span> <span class="m">6</span><span class="p">}</span><span class="o">),</span>
+  <span class="o">&amp;</span><span class="nd">:first-child:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span><span class="n">n</span> <span class="o">+</span> <span class="m">2</span><span class="p">}</span><span class="o">)</span><span class="nd">:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span> <span class="o">-</span><span class="n">n</span> <span class="o">+</span> <span class="m">6</span><span class="p">}</span><span class="o">)</span> <span class="o">~</span> <span class="o">&amp;</span> <span class="p">{</span>
+    <span class="o">@</span><span class="k">content</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>

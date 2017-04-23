@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://xlingyun.github.io/atom.xml" rel="self"/>
   <link href="http://xlingyun.github.io/"/>
-  <updated>2017-04-23T17:24:27+08:00</updated>
+  <updated>2017-04-23T17:53:03+08:00</updated>
   <id>http://xlingyun.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -234,10 +234,10 @@
   
   <entry>
     <title type="html"><![CDATA[Css3的结构域布局]]></title>
-    <link href="http://xlingyun.github.io/blog/20170409/title/"/>
+    <link href="http://xlingyun.github.io/blog/20170409/cssde-jie-gou-yu-bu-ju/"/>
     <updated>2017-04-09T15:40:39+08:00</updated>
-    <id>http://xlingyun.github.io/blog/20170409/title</id>
-    <content type="html"><![CDATA[<p>1.自适应内部元素</p>
+    <id>http://xlingyun.github.io/blog/20170409/cssde-jie-gou-yu-bu-ju</id>
+    <content type="html"><![CDATA[<h4>1.自适应内部元素</h4>
 
 <p>在css中，不给元素一个height值时，元素会自适应其内部的元素高度，有时我们想让元素的宽度也达到此效果，应用场景如下。</p>
 
@@ -247,14 +247,15 @@
 
 <p>css代码如下：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>div {
-</span><span class='line'>    /*只需要给最层的div的宽度值设置成min-content即可 */
-</span><span class='line'>    width: min-content;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">div</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c">/*只需要给最层的div的宽度值设置成min-content即可 */</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="n">min</span><span class="o">-</span><span class="k">content</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>最终效果：</p>
@@ -267,7 +268,7 @@
 
 <p><a href="[http://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/">http://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/</a></p>
 
-<p>2.精确的控制表格的列宽</p>
+<h4>2.精确的控制表格的列宽</h4>
 
 <p>在使用表格布局时，当表格的内容不确定时，布局很难预测，因为表格的列宽是根据它的内容进行计算的，即使显示的设置了width，也不会生效，还是会根据它的内容生成宽度。会根据加载的内容不停的重绘，直到加载完。</p>
 
@@ -279,19 +280,22 @@
 
 <p>代码如下：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>table {
-</span><span class='line'>    table-layout: fixed;
-</span><span class='line'>    width: 100%; /*必须指定一个width，否则不生效*/
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">table</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">table-layout</span><span class="o">:</span> <span class="k">fixed</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">100%</span><span class="p">;</span> <span class="c">/*必须指定一个width，否则不生效*/</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>最终的效果如下：</p>
 
-<p>3.根据兄弟元素的数量设置样式</p>
+<p><img src="http://oot79f1a9.bkt.clouddn.com/QQ20170423-174632.png" alt="http://oot79f1a9.bkt.clouddn.com/QQ20170423-174632.png" /></p>
+
+<h4>3.根据兄弟元素的数量设置样式</h4>
 
 <p>在一些应用场景中，我们可能需要根据元素的数量来设置样式，比如说列表越来越长的时候，我们可能需要调整间隔或者大小，来减少长度，提升用户的体验</p>
 
@@ -299,7 +303,7 @@
 
 <p>代码如下：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -319,39 +323,40 @@
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/*定义mixin*/
-</span><span class='line'>@mixin n-items($n) {
-</span><span class='line'>  &:first-child:nth-last-child(#{$n}),
-</span><span class='line'>  &:first-child:nth-last-child(#{$n}) ~ & {
-</span><span class='line'>    @content;
-</span><span class='line'>  }
-</span><span class='line'>}
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="c">/*定义mixin*/</span>
+</span><span class='line'><span class="k">@mixin</span> <span class="nt">n-items</span><span class="o">($</span><span class="nt">n</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nd">:first-child:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span><span class="n">n</span><span class="p">}</span><span class="o">),</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nd">:first-child:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span><span class="n">n</span><span class="p">}</span><span class="o">)</span> <span class="o">~</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">@</span><span class="k">content</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>/*调用方法*/
-</span><span class='line'>li {
-</span><span class='line'>/*当列表正好包含四项时 命中所有列表项*/
-</span><span class='line'>/*定义样式*/
-</span><span class='line'>  @include n-items(4) {
-</span><span class='line'>    width: 40px;
-</span><span class='line'>    height: 100px;
-</span><span class='line'>    background: red;
-</span><span class='line'>    float: left;
-</span><span class='line'>    margin: 10px;
-</span><span class='line'>  }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c">/*调用方法*/</span>
+</span><span class='line'><span class="nt">li</span> <span class="p">{</span>
+</span><span class='line'><span class="c">/*当列表正好包含四项时 命中所有列表项*/</span>
+</span><span class='line'><span class="c">/*定义样式*/</span>
+</span><span class='line'>  <span class="o">@</span><span class="n">include</span> <span class="n">n</span><span class="o">-</span><span class="n">items</span><span class="p">(</span><span class="m">4</span><span class="p">)</span> <span class="err">{</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">40px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">height</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">background</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">margin</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="err">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>效果如下：</p>
 
-<p>4.根据兄弟元素的数量范围匹配元素</p>
+<p> <img src="http://oot79f1a9.bkt.clouddn.com/QQ20170423-173150.png" alt="http://oot79f1a9.bkt.clouddn.com/QQ20170423-173150.png" /></p>
 
-<p>应该场景同上，解决办法也是编写mixin</p>
+<h4>4.根据兄弟元素的数量范围匹配元素</h4>
 
-<p>例如，当列表的总数是4或者更多时，选中所有列表项</p>
+<p>应该场景同上，解决办法也是编写mixin
+例如，当列表的总数是4或者更多时，选中所有列表项
+代码如下：</p>
 
-<p>代码如下：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -369,33 +374,36 @@
 <span class='line-number'>16</span>
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>/*定义mixin*/
-</span><span class='line'>@mixin n-items($n) {
-</span><span class='line'>  /*当列表的总数是4或者更多时，选中所有列表项*/
-</span><span class='line'>  &:first-child:nth-last-child(#{$n + 4}),
-</span><span class='line'>  &:first-child:nth-last-child(#{$n + 4}) ~ & {
-</span><span class='line'>    @content;
-</span><span class='line'>  }
-</span><span class='line'>}
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="c">/*定义mixin*/</span>
+</span><span class='line'><span class="k">@mixin</span> <span class="nt">n-items</span><span class="o">($</span><span class="nt">n</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c">/*当列表的总数是4或者更多时，选中所有列表项*/</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nd">:first-child:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span><span class="n">n</span> <span class="o">+</span> <span class="m">4</span><span class="p">}</span><span class="o">),</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nd">:first-child:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span><span class="n">n</span> <span class="o">+</span> <span class="m">4</span><span class="p">}</span><span class="o">)</span> <span class="o">~</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">@</span><span class="k">content</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>// 改写成 -n + 4 表示列表中有4个或者小于4时，选中所有
+</span><span class='line'><span class="o">//</span> <span class="err">改写成</span> <span class="nt">-n</span> <span class="o">+</span> <span class="nt">4</span> <span class="err">表示列表中有</span><span class="nt">4</span><span class="err">个或者小于</span><span class="nt">4</span><span class="err">时，选中所有</span>
 </span><span class='line'>
-</span><span class='line'>// 同理，如2 ～ 6时，设置 n + 2 ~ -n + 6
-</span><span class='line'>@mixin n-items($n) {
-</span><span class='line'>  &:first-child:nth-last-child(#{$n + 2}):nth-last-child(#{$ -n + 6}),
-</span><span class='line'>  &:first-child:nth-last-child(#{$n + 2}):nth-last-child(#{$ -n + 6}) ~ & {
-</span><span class='line'>    @content;
-</span><span class='line'>  }
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="o">//</span> <span class="err">同理，如</span><span class="nt">2</span> <span class="err">～</span> <span class="nt">6</span><span class="err">时，设置</span> <span class="nt">n</span> <span class="o">+</span> <span class="nt">2</span> <span class="o">~</span> <span class="nt">-n</span> <span class="o">+</span> <span class="nt">6</span>
+</span><span class='line'><span class="k">@mixin</span> <span class="nt">n-items</span><span class="o">($</span><span class="nt">n</span><span class="o">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nd">:first-child:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span><span class="n">n</span> <span class="o">+</span> <span class="m">2</span><span class="p">}</span><span class="o">)</span><span class="nd">:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span> <span class="o">-</span><span class="n">n</span> <span class="o">+</span> <span class="m">6</span><span class="p">}</span><span class="o">),</span>
+</span><span class='line'>  <span class="o">&amp;</span><span class="nd">:first-child:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span><span class="n">n</span> <span class="o">+</span> <span class="m">2</span><span class="p">}</span><span class="o">)</span><span class="nd">:nth-last-child</span><span class="o">(</span><span class="err">#</span><span class="p">{</span><span class="err">$</span> <span class="o">-</span><span class="n">n</span> <span class="o">+</span> <span class="m">6</span><span class="p">}</span><span class="o">)</span> <span class="o">~</span> <span class="o">&amp;</span> <span class="p">{</span>
+</span><span class='line'>    <span class="o">@</span><span class="k">content</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>5.满幅的背景，定宽的内容</p>
 
 <p>页面上有很多布局是那种内容是固定宽的，背景是占满整个视口的宽的，比如下面这种布局：</p>
 
+<p><img src="http://oot79f1a9.bkt.clouddn.com/QQ20170423-173203.png" alt="http://oot79f1a9.bkt.clouddn.com/QQ20170423-173203.png" /></p>
+
 <p>实现方式有很多种，一般我们实现的代码结构都是这种的：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -408,26 +416,27 @@
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;footer&gt;
-</span><span class='line'>    &lt;div class="wrapper"&gt;
-</span><span class='line'>    &lt;/div&gt;
-</span><span class='line'>&lt;/footer&gt;
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">footer</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;wrapper&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">footer</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>/* css样式*/
-</span><span class='line'>footer {
-</span><span class='line'>    background: "#333";
-</span><span class='line'>}
-</span><span class='line'>.wrapper {
-</span><span class='line'>    max-width: 900px;
-</span><span class='line'>    margin: 1em auto;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c">/* css样式*/</span>
+</span><span class='line'><span class="nt">footer</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">background</span><span class="o">:</span> <span class="s2">&quot;#333&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nc">.wrapper</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">max-width</span><span class="o">:</span> <span class="m">900px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">margin</span><span class="o">:</span> <span class="m">1em</span> <span class="k">auto</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>其中margin: 1em auto;就是为了让内容div居中，我们有一种更好的方式，只用一层DOM结构实现上面的布局，就是使用calc这个属性。</p>
 
 <p>实现代码如下：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -438,30 +447,31 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;footer&gt;
-</span><span class='line'>  /* 内容 */
-</span><span class='line'>&lt;/footer&gt;
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">footer</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="c">/* 内容 */</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">footer</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>/* css样式*/
-</span><span class='line'>footer {
-</span><span class='line'>    background: "#333";
-</span><span class='line'>    /* 当浏览器不支持calc的时候回退一下*/
-</span><span class='line'>    padding: 1em;
-</span><span class='line'>    padding: 1em calc(50% - 450px);
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="c">/* css样式*/</span>
+</span><span class='line'><span class="nt">footer</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">background</span><span class="o">:</span> <span class="s2">&quot;#333&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="c">/* 当浏览器不支持calc的时候回退一下*/</span>
+</span><span class='line'>    <span class="k">padding</span><span class="o">:</span> <span class="m">1em</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">padding</span><span class="o">:</span> <span class="m">1em</span> <span class="n">calc</span><span class="p">(</span><span class="m">50%</span> <span class="o">-</span> <span class="m">450px</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>原理：百分比是按照视口的宽度来解析的，所以即使里面的内容不设置宽，也会给里面的内容留出 450*2的空间，达到了之前设置 max-width: 900px;的效果。</p>
 
-<p>6.垂直居中</p>
+<h4>6.垂直居中</h4>
 
 <p>在css中水平居中比较简单，对于行级元素，对它的父元素使用text-align: center;对于块级元素，就对它自身使用margin: auto;对于垂直居中比较难处理，目前的解决方法有：</p>
 
-<p>1.基于绝对定位的方法</p>
+<h5>1.基于绝对定位的方法</h5>
 
 <p>(1) 当元素是定宽高的时候：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -470,114 +480,112 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>div {
-</span><span class='line'>    width: 200px;
-</span><span class='line'>    height: 100px;
-</span><span class='line'>    position: absolute;
-</span><span class='line'>    top: 50%;
-</span><span class='line'>    left: 50%;
-</span><span class='line'>    margin-top: -50px;
-</span><span class='line'>    margin-left: -100px;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">div</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">200px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">height</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">top</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">left</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">margin-top</span><span class="o">:</span> <span class="m">-50px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">margin-left</span><span class="o">:</span> <span class="m">-100px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>通过calc代码可以简化成下面这样：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>div {
-</span><span class='line'>    width: 200px;
-</span><span class='line'>    height: 100px;
-</span><span class='line'>    position: absolute;
-</span><span class='line'>    top: calc(50% - 50px);
-</span><span class='line'>    left: calc(50% - 100px);
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">div</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">200px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">height</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">top</span><span class="o">:</span> <span class="n">calc</span><span class="p">(</span><span class="m">50%</span> <span class="o">-</span> <span class="m">50px</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">left</span><span class="o">:</span> <span class="n">calc</span><span class="p">(</span><span class="m">50%</span> <span class="o">-</span> <span class="m">100px</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>(2) 对于那些宽高不定的元素，实现方法如下：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>div {
-</span><span class='line'>    position: absolute;
-</span><span class='line'>    top: 50%;
-</span><span class='line'>    left: 50%;
-</span><span class='line'>    transfrom: translate(-50%, -50%);
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">div</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">top</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">left</span><span class="o">:</span> <span class="m">50%</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">transfrom</span><span class="o">:</span> <span class="n">translate</span><span class="p">(</span><span class="m">-50%</span><span class="o">,</span> <span class="m">-50%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>以上方案也有一个弊端就是必须是绝对定位的元素。</p>
 
-<p>2.基于视口单位的方法</p>
+<h5>2.基于视口单位的方法</h5>
 
-<p>css3中定义了一些视口相关的单位：</p>
+<p>css3中定义了一些视口相关的单位：
+vw 是与视口宽度相关的。1vw 实际上表示视口宽度的1%，而不是100%。</p>
 
-<p>vw 是与视口宽度相关的。1vw 实际上表示视口宽度的1%，而不是100%。</p>
+<p>同样，1vh表示视口高度的 1%
+当视口宽度小于高度时，1vmin等于 1vw，否则等于 1vh。
+当视口宽度大于高度时，1vmax等于 1vw，否则等于 1vh。
+所以我们的垂直居中可以这样实现：</p>
 
-<p></p>
-
-<p>同样，1vh表示视口高度的 1%</p>
-
-<p>当视口宽度小于高度时，1vmin等于 1vw，否则等于 1vh。</p>
-
-<p>当视口宽度大于高度时，1vmax等于 1vw，否则等于 1vh。</p>
-
-<p>所以我们的垂直居中可以这样实现：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>div {
-</span><span class='line'>    width: 200px;
-</span><span class='line'>    padding: 2px 4px;
-</span><span class='line'>    margin: 50vh auto 0;
-</span><span class='line'>    transform: translateY(-50%);
-</span><span class='line'>}
-</span><span class='line'>**注：这里不使用50%，而是视口单位的原因是，margin的百分比是以父元素的宽度作为解析基准的，不论是margin-top or margin-left**</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">div</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">200px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">padding</span><span class="o">:</span> <span class="m">2px</span> <span class="m">4px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">margin</span><span class="o">:</span> <span class="m">50</span><span class="n">vh</span> <span class="k">auto</span> <span class="m">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">transform</span><span class="o">:</span> <span class="n">translateY</span><span class="p">(</span><span class="m">-50%</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="o">**</span><span class="err">注：这里不使用</span><span class="nt">50</span><span class="o">%</span><span class="err">，而是视口单位的原因是，</span><span class="nt">margin</span><span class="err">的百分比是以父元素的宽度作为解析基准的，不论是</span><span class="nt">margin-top</span> <span class="nt">or</span> <span class="nt">margin-left</span><span class="o">**</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>这种的方法是有局限性的，只能用在视口中居中的场景。</p>
 
-<p>3.基于flex的方法</p>
+<h5>3.基于flex的方法</h5>
 
-<p>这种应该算是最佳的解决办法：</p>
+<p>这种应该算是最佳的解决办法：
+实现方法：</p>
 
-<p>实现方法：</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>body {
-</span><span class='line'>    display: flex;
-</span><span class='line'>}
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">display</span><span class="o">:</span> <span class="n">flex</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>div {
-</span><span class='line'>    margin: auto;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nt">div</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">margin</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>当使用flex布局时，使用margin: auto; 在水平和垂直方向都会居中。在不指定width的情况下，width: max-content;</p>
 
 <p>flexbox还有一个公共就是可以将匿名的容器（就是那些没有被标签包住的文本节点）垂直居中：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -586,15 +594,16 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div&gt;text&lt;/div&gt;
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">div</span><span class="o">&gt;</span><span class="nt">text</span><span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>div {
-</span><span class='line'>    width: 100px;
-</span><span class='line'>    height: 50px;
-</span><span class='line'>    display: flex;
-</span><span class='line'>    align-items: center;
-</span><span class='line'>    justify-content: center; 
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nt">div</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">width</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">height</span><span class="o">:</span> <span class="m">50px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">display</span><span class="o">:</span> <span class="n">flex</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">align</span><span class="o">-</span><span class="n">items</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">justify</span><span class="o">-</span><span class="k">content</span><span class="o">:</span> <span class="k">center</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>7.紧贴底部的页脚</p>
@@ -605,7 +614,7 @@
 
 <p>html结构如下：</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -624,39 +633,41 @@
 <span class='line-number'>17</span>
 <span class='line-number'>18</span>
 <span class='line-number'>19</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;header&gt;
-</span><span class='line'>    &lt;h1&gt;hello&lt;/h1&gt;
-</span><span class='line'>&lt;/header&gt;
-</span><span class='line'>&lt;main&gt;
-</span><span class='line'>    &lt;p&gt;this is ...&lt;/p&gt;
-</span><span class='line'>&lt;/main&gt;
-</span><span class='line'>&lt;footer&gt;
-</span><span class='line'>    &lt;p&gt;Made in ...&lt;/p&gt;
-</span><span class='line'>    &lt;p&gt;Made in ...&lt;/p&gt;
-</span><span class='line'>&lt;/footer&gt;
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">header</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nt">h1</span><span class="o">&gt;</span><span class="nt">hello</span><span class="o">&lt;/</span><span class="nt">h1</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">header</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">main</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">this</span> <span class="nt">is</span> <span class="o">...&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">main</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">footer</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">Made</span> <span class="nt">in</span> <span class="o">...&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'>    <span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="nt">Made</span> <span class="nt">in</span> <span class="o">...&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">footer</span><span class="o">&gt;</span>
 </span><span class='line'>
-</span><span class='line'>header {
-</span><span class='line'>    height: 10px
-</span><span class='line'>}
-</span><span class='line'>footer p {
-</span><span class='line'>    line-height: 1.5px;
-</span><span class='line'>    padding: 1px;
-</span><span class='line'>    margin: 1px;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nt">header</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">height</span><span class="o">:</span> <span class="m">10px</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="nt">footer</span> <span class="nt">p</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">line-height</span><span class="o">:</span> <span class="m">1.5px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">padding</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">margin</span><span class="o">:</span> <span class="m">1px</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>假设当前的页脚文字永远不会折行，可以计算当前的页脚的高度是：2 ＊ 行高 + 3 ＊ 段落垂直外边距 + 页脚垂直内边距 = 2 ＊ 1.5px + 3 ＊ 1px + 1px = 7px;</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>main {
-</span><span class='line'>    min-height: calc(100vh - 7px - 10px);
-</span><span class='line'>    /* 避免内边距或外边距对高度记得算影响 */
-</span><span class='line'>    border-sizing: border-box;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">main</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">min-height</span><span class="o">:</span> <span class="n">calc</span><span class="p">(</span><span class="m">100</span><span class="n">vh</span> <span class="o">-</span> <span class="m">7px</span> <span class="o">-</span> <span class="m">10px</span><span class="p">);</span>
+</span><span class='line'>    <span class="c">/* 避免内边距或外边距对高度记得算影响 */</span>
+</span><span class='line'>    <span class="k">border</span><span class="o">-</span><span class="n">sizing</span><span class="o">:</span> <span class="k">border</span><span class="o">-</span><span class="n">box</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>当header和main放在一个div里时，css样式可以直接写成 div{min-height: calc(100vh - 7px)};</p>
@@ -665,7 +676,7 @@
 
 <p>（2）基于flex的解决方案</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -674,15 +685,18 @@
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
 <span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>body {
-</span><span class='line'>    display: flex;
-</span><span class='line'>    flex-flow: columm;
-</span><span class='line'>    min-height: 100vh; /* 至少会占据整个视口的高度 */
-</span><span class='line'>}
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">body</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">display</span><span class="o">:</span> <span class="n">flex</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">flex</span><span class="o">-</span><span class="n">flow</span><span class="o">:</span> <span class="n">columm</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">min-height</span><span class="o">:</span> <span class="m">100</span><span class="n">vh</span><span class="p">;</span> <span class="c">/* 至少会占据整个视口的高度 */</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>main {
-</span><span class='line'>    flex: 1;
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nt">main</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">flex</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
 
 ]]></content>
   </entry>

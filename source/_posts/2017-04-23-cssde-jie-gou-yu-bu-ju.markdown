@@ -6,7 +6,7 @@ comments: true
 categories: 
 ---
 
-1.自适应内部元素
+#### 1.自适应内部元素
 
 在css中，不给元素一个height值时，元素会自适应其内部的元素高度，有时我们想让元素的宽度也达到此效果，应用场景如下。
 
@@ -17,7 +17,7 @@ categories:
 
 css代码如下：
 
-```
+```css
 div {
     /*只需要给最层的div的宽度值设置成min-content即可 */
     width: min-content;
@@ -34,7 +34,7 @@ min-content将解析这个容器内部最大的不可断行元素的宽度（即
 
 [http://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/]([http://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/)
 
-2.精确的控制表格的列宽
+#### 2.精确的控制表格的列宽
 
 在使用表格布局时，当表格的内容不确定时，布局很难预测，因为表格的列宽是根据它的内容进行计算的，即使显示的设置了width，也不会生效，还是会根据它的内容生成宽度。会根据加载的内容不停的重绘，直到加载完。
 
@@ -46,7 +46,7 @@ min-content将解析这个容器内部最大的不可断行元素的宽度（即
 
 代码如下：
 
-```
+```css
 table {
     table-layout: fixed;
     width: 100%; /*必须指定一个width，否则不生效*/
@@ -54,9 +54,9 @@ table {
 ```
 最终的效果如下：
 
- 
+![http://oot79f1a9.bkt.clouddn.com/QQ20170423-174632.png](http://oot79f1a9.bkt.clouddn.com/QQ20170423-174632.png) 
 
-3.根据兄弟元素的数量设置样式
+#### 3.根据兄弟元素的数量设置样式
 
 在一些应用场景中，我们可能需要根据元素的数量来设置样式，比如说列表越来越长的时候，我们可能需要调整间隔或者大小，来减少长度，提升用户的体验
 
@@ -64,7 +64,7 @@ table {
 
 代码如下：
 
-```
+```css
 /*定义mixin*/
 @mixin n-items($n) {
   &:first-child:nth-last-child(#{$n}),
@@ -88,17 +88,15 @@ li {
 ```
 效果如下：
 
- 
+ ![http://oot79f1a9.bkt.clouddn.com/QQ20170423-173150.png](http://oot79f1a9.bkt.clouddn.com/QQ20170423-173150.png)
 
-4.根据兄弟元素的数量范围匹配元素
+#### 4.根据兄弟元素的数量范围匹配元素
 
 应该场景同上，解决办法也是编写mixin
-
 例如，当列表的总数是4或者更多时，选中所有列表项
-
 代码如下：
 
-```
+```css
 /*定义mixin*/
 @mixin n-items($n) {
   /*当列表的总数是4或者更多时，选中所有列表项*/
@@ -122,10 +120,11 @@ li {
 
 页面上有很多布局是那种内容是固定宽的，背景是占满整个视口的宽的，比如下面这种布局：
 
+![http://oot79f1a9.bkt.clouddn.com/QQ20170423-173203.png](http://oot79f1a9.bkt.clouddn.com/QQ20170423-173203.png)
 
 实现方式有很多种，一般我们实现的代码结构都是这种的：
 
-```
+```css
 <footer>
     <div class="wrapper">
     </div>
@@ -144,7 +143,7 @@ footer {
 
 实现代码如下：
 
-```
+```css
 <footer>
   /* 内容 */
 </footer>
@@ -159,15 +158,15 @@ footer {
 ```
 原理：百分比是按照视口的宽度来解析的，所以即使里面的内容不设置宽，也会给里面的内容留出 450*2的空间，达到了之前设置 max-width: 900px;的效果。
 
-6.垂直居中
+#### 6.垂直居中
 
 在css中水平居中比较简单，对于行级元素，对它的父元素使用text-align: center;对于块级元素，就对它自身使用margin: auto;对于垂直居中比较难处理，目前的解决方法有：
 
-1.基于绝对定位的方法
+##### 1.基于绝对定位的方法
 
 (1) 当元素是定宽高的时候：
 
-```
+```css
 div {
     width: 200px;
     height: 100px;
@@ -180,7 +179,7 @@ div {
 ```
 通过calc代码可以简化成下面这样：
 
-```
+```css
 div {
     width: 200px;
     height: 100px;
@@ -191,7 +190,7 @@ div {
 ```
 (2) 对于那些宽高不定的元素，实现方法如下：
 
-```
+```css
 div {
     position: absolute;
     top: 50%;
@@ -201,23 +200,17 @@ div {
 ```
 以上方案也有一个弊端就是必须是绝对定位的元素。
 
-2.基于视口单位的方法
+##### 2.基于视口单位的方法
 
 css3中定义了一些视口相关的单位：
-
 vw 是与视口宽度相关的。1vw 实际上表示视口宽度的1%，而不是100%。
 
-
-
 同样，1vh表示视口高度的 1%
-
 当视口宽度小于高度时，1vmin等于 1vw，否则等于 1vh。
-
 当视口宽度大于高度时，1vmax等于 1vw，否则等于 1vh。
-
 所以我们的垂直居中可以这样实现：
 
-```
+```css
 div {
     width: 200px;
     padding: 2px 4px;
@@ -228,13 +221,12 @@ div {
 ```
 这种的方法是有局限性的，只能用在视口中居中的场景。
 
-3.基于flex的方法
+##### 3.基于flex的方法
 
 这种应该算是最佳的解决办法：
-
 实现方法：
 
-```
+```css
 body {
     display: flex;
 }
@@ -247,7 +239,7 @@ div {
 
 flexbox还有一个公共就是可以将匿名的容器（就是那些没有被标签包住的文本节点）垂直居中：
 
-```
+```css
 <div>text</div>
 
 div {
@@ -266,7 +258,7 @@ div {
 
 html结构如下：
 
-```
+```css
 <header>
     <h1>hello</h1>
 </header>
@@ -289,7 +281,7 @@ footer p {
 ```
 假设当前的页脚文字永远不会折行，可以计算当前的页脚的高度是：2 ＊ 行高 + 3 ＊ 段落垂直外边距 + 页脚垂直内边距 = 2 ＊ 1.5px + 3 ＊ 1px + 1px = 7px;
 
-```
+```css
 main {
     min-height: calc(100vh - 7px - 10px);
     /* 避免内边距或外边距对高度记得算影响 */
@@ -302,7 +294,7 @@ main {
 
 （2）基于flex的解决方案
 
-```
+```css
 body {
     display: flex;
     flex-flow: columm;
@@ -313,3 +305,4 @@ main {
     flex: 1;
 }
 ```
+
