@@ -47,8 +47,8 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
   <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
 
   
 
@@ -91,7 +91,7 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/04/22/javascript/">Javascript</a></h1>
+      <h1 class="entry-title"><a href="/blog/20170422/javascript/">Javascript</a></h1>
     
     
       <p class="meta">
@@ -231,7 +231,7 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/04/22/first-blog/">First Blog</a></h1>
+      <h1 class="entry-title"><a href="/blog/20170422/first-blog/">First Blog</a></h1>
     
     
       <p class="meta">
@@ -247,16 +247,7 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
   </header>
 
 
-  <div class="entry-content"><blockquote><p>这里就是一个引用</p></blockquote>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='javascript'><span class='line'> <span class="kd">function</span> <span class="nx">goTop</span><span class="p">(){</span>
-</span><span class='line'>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;ok&#39;</span><span class="p">)</span>
-</span><span class='line'> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
+  <div class="entry-content">
 </div>
   
   
@@ -269,7 +260,7 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/04/21/post-tabqie-huan/">Post Tab切换</a></h1>
+      <h1 class="entry-title"><a href="/blog/20170421/post-tabqie-huan/">安装Octopress步骤</a></h1>
     
     
       <p class="meta">
@@ -285,7 +276,67 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
   </header>
 
 
-  <div class="entry-content"><p>tab切换</p>
+  <div class="entry-content"><h4>安装Octopress步骤</h4>
+
+<h5>Ruby等依赖安装</h5>
+
+<blockquote><p>由于Jekyll和octopress都是ruby写的，会有诸多ruby依赖，建议切换ruby源唯国内源。对于git版本没有太大要求。
+查看ruby版本<code>ruby -v</code>
+安装bundler bundler可以自动解决依赖，安装方法：<code>gem install bundler</code>,建议国内用户切换gem源为国内源，方法如下：</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem source -r https://rubygems.org/ # 删除官方源
+</span><span class='line'>gem source -a https://ruby.taobao.org/ #添加淘宝源</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p> 查看当前源：<code>gem source -l</code></p></blockquote>
+
+<h5>clone网站repo</h5>
+
+<blockquote><p>设置git</p></blockquote>
+
+<pre><code class="`"> git config --global user.name "name"
+ git config --global user.email "emailaddress"
+</code></pre>
+
+<blockquote><p>生成ssh key：</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-keygen -t rsa -C "emailaddress"</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>按3个回车，密码为空，复制~/.ssh/id_rsa.pub的内容，添加到GitHub账户中，然后clone网站repo</p></blockquote>
+
+<h5>octopress安装</h5>
+
+<blockquote><p>octopress的安装也比较简单，下载源码后会有Gemfile文件来指示所有依赖，使用<code>bundle</code>即可，下载源码:</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>进入octopress文件夹，使用bundle自动安装octopress，<code>bundle install</code>会自动安装所有octopress及其所有依赖。</p>
+
+<p>执行如下命令安装默认主题</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake install </span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+所谓rake就是ruby make的缩写。
+- 执行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在浏览器内输入<code>http://localhost:4000</code>，即可看到我们搭建完成的博客</p>
+
+<h5>部署到GitHub</h5>
+
+<p>tab切换</p>
 
 <h2>标题一</h2>
 
@@ -323,7 +374,7 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2017/04/09/title/">Test</a></h1>
+      <h1 class="entry-title"><a href="/blog/20170409/title/">Css3的结构域布局</a></h1>
     
     
       <p class="meta">
@@ -339,8 +390,447 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
   </header>
 
 
-  <div class="entry-content"><p><a href="http://www.baidu.com">百度</a>
-<img src="http://imgbdb2.bendibao.com/xiuxian/20138/27/2013827145348748.jpg" alt="王丽坤" /></p>
+  <div class="entry-content"><p>1.自适应内部元素</p>
+
+<p>在css中，不给元素一个height值时，元素会自适应其内部的元素高度，有时我们想让元素的宽度也达到此效果，应用场景如下。</p>
+
+<p>如下当前的这种布局，想要改成最外层的div的宽度由当前的图片撑开的效果，这时就要用到min-content这个属性值。</p>
+
+<p>css代码如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>div {
+</span><span class='line'>    /*只需要给最层的div的宽度值设置成min-content即可 */
+</span><span class='line'>    width: min-content;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最终效果：</p>
+
+<p>min-content将解析这个容器内部最大的不可断行元素的宽度（即最宽的单词，图片或具有固定宽度的盒元素）</p>
+
+<p>张鑫旭有一篇文章对这个属性做了详细的讲解，地址如下：</p>
+
+<p><a href="[http://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/">http://www.zhangxinxu.com/wordpress/2016/05/css3-width-max-contnet-min-content-fit-content/</a></p>
+
+<p>2.精确的控制表格的列宽</p>
+
+<p>在使用表格布局时，当表格的内容不确定时，布局很难预测，因为表格的列宽是根据它的内容进行计算的，即使显示的设置了width，也不会生效，还是会根据它的内容生成宽度。会根据加载的内容不停的重绘，直到加载完。</p>
+
+<p>平时生成的表格如下：</p>
+
+<p>为了让设置的宽度生效，并且能让过多的文字省略号显示，解决办法就是使用table-layout: fixed这个样式</p>
+
+<p>代码如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>table {
+</span><span class='line'>    table-layout: fixed;
+</span><span class='line'>    width: 100%; /*必须指定一个width，否则不生效*/
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>最终的效果如下：</p>
+
+<p>3.根据兄弟元素的数量设置样式</p>
+
+<p>在一些应用场景中，我们可能需要根据元素的数量来设置样式，比如说列表越来越长的时候，我们可能需要调整间隔或者大小，来减少长度，提升用户的体验</p>
+
+<p>例如当列表项中共有4项的时候，选中所有列表，可以通过使用scss这种预处理器，编写mixin</p>
+
+<p>代码如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/*定义mixin*/
+</span><span class='line'>@mixin n-items($n) {
+</span><span class='line'>  &:first-child:nth-last-child(#{$n}),
+</span><span class='line'>  &:first-child:nth-last-child(#{$n}) ~ & {
+</span><span class='line'>    @content;
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>/*调用方法*/
+</span><span class='line'>li {
+</span><span class='line'>/*当列表正好包含四项时 命中所有列表项*/
+</span><span class='line'>/*定义样式*/
+</span><span class='line'>  @include n-items(4) {
+</span><span class='line'>    width: 40px;
+</span><span class='line'>    height: 100px;
+</span><span class='line'>    background: red;
+</span><span class='line'>    float: left;
+</span><span class='line'>    margin: 10px;
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>效果如下：</p>
+
+<p>4.根据兄弟元素的数量范围匹配元素</p>
+
+<p>应该场景同上，解决办法也是编写mixin</p>
+
+<p>例如，当列表的总数是4或者更多时，选中所有列表项</p>
+
+<p>代码如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>/*定义mixin*/
+</span><span class='line'>@mixin n-items($n) {
+</span><span class='line'>  /*当列表的总数是4或者更多时，选中所有列表项*/
+</span><span class='line'>  &:first-child:nth-last-child(#{$n + 4}),
+</span><span class='line'>  &:first-child:nth-last-child(#{$n + 4}) ~ & {
+</span><span class='line'>    @content;
+</span><span class='line'>  }
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>// 改写成 -n + 4 表示列表中有4个或者小于4时，选中所有
+</span><span class='line'>
+</span><span class='line'>// 同理，如2 ～ 6时，设置 n + 2 ~ -n + 6
+</span><span class='line'>@mixin n-items($n) {
+</span><span class='line'>  &:first-child:nth-last-child(#{$n + 2}):nth-last-child(#{$ -n + 6}),
+</span><span class='line'>  &:first-child:nth-last-child(#{$n + 2}):nth-last-child(#{$ -n + 6}) ~ & {
+</span><span class='line'>    @content;
+</span><span class='line'>  }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>5.满幅的背景，定宽的内容</p>
+
+<p>页面上有很多布局是那种内容是固定宽的，背景是占满整个视口的宽的，比如下面这种布局：</p>
+
+<p>实现方式有很多种，一般我们实现的代码结构都是这种的：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;footer&gt;
+</span><span class='line'>    &lt;div class="wrapper"&gt;
+</span><span class='line'>    &lt;/div&gt;
+</span><span class='line'>&lt;/footer&gt;
+</span><span class='line'>
+</span><span class='line'>/* css样式*/
+</span><span class='line'>footer {
+</span><span class='line'>    background: "#333";
+</span><span class='line'>}
+</span><span class='line'>.wrapper {
+</span><span class='line'>    max-width: 900px;
+</span><span class='line'>    margin: 1em auto;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>其中margin: 1em auto;就是为了让内容div居中，我们有一种更好的方式，只用一层DOM结构实现上面的布局，就是使用calc这个属性。</p>
+
+<p>实现代码如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;footer&gt;
+</span><span class='line'>  /* 内容 */
+</span><span class='line'>&lt;/footer&gt;
+</span><span class='line'>
+</span><span class='line'>/* css样式*/
+</span><span class='line'>footer {
+</span><span class='line'>    background: "#333";
+</span><span class='line'>    /* 当浏览器不支持calc的时候回退一下*/
+</span><span class='line'>    padding: 1em;
+</span><span class='line'>    padding: 1em calc(50% - 450px);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>原理：百分比是按照视口的宽度来解析的，所以即使里面的内容不设置宽，也会给里面的内容留出 450*2的空间，达到了之前设置 max-width: 900px;的效果。</p>
+
+<p>6.垂直居中</p>
+
+<p>在css中水平居中比较简单，对于行级元素，对它的父元素使用text-align: center;对于块级元素，就对它自身使用margin: auto;对于垂直居中比较难处理，目前的解决方法有：</p>
+
+<p>1.基于绝对定位的方法</p>
+
+<p>(1) 当元素是定宽高的时候：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>div {
+</span><span class='line'>    width: 200px;
+</span><span class='line'>    height: 100px;
+</span><span class='line'>    position: absolute;
+</span><span class='line'>    top: 50%;
+</span><span class='line'>    left: 50%;
+</span><span class='line'>    margin-top: -50px;
+</span><span class='line'>    margin-left: -100px;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>通过calc代码可以简化成下面这样：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>div {
+</span><span class='line'>    width: 200px;
+</span><span class='line'>    height: 100px;
+</span><span class='line'>    position: absolute;
+</span><span class='line'>    top: calc(50% - 50px);
+</span><span class='line'>    left: calc(50% - 100px);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>(2) 对于那些宽高不定的元素，实现方法如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>div {
+</span><span class='line'>    position: absolute;
+</span><span class='line'>    top: 50%;
+</span><span class='line'>    left: 50%;
+</span><span class='line'>    transfrom: translate(-50%, -50%);
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以上方案也有一个弊端就是必须是绝对定位的元素。</p>
+
+<p>2.基于视口单位的方法</p>
+
+<p>css3中定义了一些视口相关的单位：</p>
+
+<p>vw 是与视口宽度相关的。1vw 实际上表示视口宽度的1%，而不是100%。</p>
+
+<p></p>
+
+<p>同样，1vh表示视口高度的 1%</p>
+
+<p>当视口宽度小于高度时，1vmin等于 1vw，否则等于 1vh。</p>
+
+<p>当视口宽度大于高度时，1vmax等于 1vw，否则等于 1vh。</p>
+
+<p>所以我们的垂直居中可以这样实现：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>div {
+</span><span class='line'>    width: 200px;
+</span><span class='line'>    padding: 2px 4px;
+</span><span class='line'>    margin: 50vh auto 0;
+</span><span class='line'>    transform: translateY(-50%);
+</span><span class='line'>}
+</span><span class='line'>**注：这里不使用50%，而是视口单位的原因是，margin的百分比是以父元素的宽度作为解析基准的，不论是margin-top or margin-left**</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这种的方法是有局限性的，只能用在视口中居中的场景。</p>
+
+<p>3.基于flex的方法</p>
+
+<p>这种应该算是最佳的解决办法：</p>
+
+<p>实现方法：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>body {
+</span><span class='line'>    display: flex;
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>div {
+</span><span class='line'>    margin: auto;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>当使用flex布局时，使用margin: auto; 在水平和垂直方向都会居中。在不指定width的情况下，width: max-content;</p>
+
+<p>flexbox还有一个公共就是可以将匿名的容器（就是那些没有被标签包住的文本节点）垂直居中：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;div&gt;text&lt;/div&gt;
+</span><span class='line'>
+</span><span class='line'>div {
+</span><span class='line'>    width: 100px;
+</span><span class='line'>    height: 50px;
+</span><span class='line'>    display: flex;
+</span><span class='line'>    align-items: center;
+</span><span class='line'>    justify-content: center; 
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>7.紧贴底部的页脚</p>
+
+<p>具有块级样式的页脚，当页面内容足够长的时候，页脚会紧贴视口的底部；但是当页面内容的长度 &lt; 视口height - 页脚height的时候，页脚就会紧贴在内容的下面。一般的设计是给页脚一个固定的height，这种显然不健壮，在css3中有更好的解决方案。</p>
+
+<p>（1） 最原始的固定高度的解决方案</p>
+
+<p>html结构如下：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;header&gt;
+</span><span class='line'>    &lt;h1&gt;hello&lt;/h1&gt;
+</span><span class='line'>&lt;/header&gt;
+</span><span class='line'>&lt;main&gt;
+</span><span class='line'>    &lt;p&gt;this is ...&lt;/p&gt;
+</span><span class='line'>&lt;/main&gt;
+</span><span class='line'>&lt;footer&gt;
+</span><span class='line'>    &lt;p&gt;Made in ...&lt;/p&gt;
+</span><span class='line'>    &lt;p&gt;Made in ...&lt;/p&gt;
+</span><span class='line'>&lt;/footer&gt;
+</span><span class='line'>
+</span><span class='line'>header {
+</span><span class='line'>    height: 10px
+</span><span class='line'>}
+</span><span class='line'>footer p {
+</span><span class='line'>    line-height: 1.5px;
+</span><span class='line'>    padding: 1px;
+</span><span class='line'>    margin: 1px;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>假设当前的页脚文字永远不会折行，可以计算当前的页脚的高度是：2 ＊ 行高 + 3 ＊ 段落垂直外边距 + 页脚垂直内边距 = 2 ＊ 1.5px + 3 ＊ 1px + 1px = 7px;</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>main {
+</span><span class='line'>    min-height: calc(100vh - 7px - 10px);
+</span><span class='line'>    /* 避免内边距或外边距对高度记得算影响 */
+</span><span class='line'>    border-sizing: border-box;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>当header和main放在一个div里时，css样式可以直接写成 div{min-height: calc(100vh - 7px)};</p>
+
+<p>这种方法的局限性是不允许文字折行，并且布局是这种简单的布局，并且每当页脚的尺寸变化时，都需要跟着调整min-height的值。</p>
+
+<p>（2）基于flex的解决方案</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>body {
+</span><span class='line'>    display: flex;
+</span><span class='line'>    flex-flow: columm;
+</span><span class='line'>    min-height: 100vh; /* 至少会占据整个视口的高度 */
+</span><span class='line'>}
+</span><span class='line'>
+</span><span class='line'>main {
+</span><span class='line'>    flex: 1;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
 </div>
   
   
@@ -357,23 +847,23 @@ ooo 这是一行代码&lt;script&gt;哈哈 1
 <aside class="sidebar">
   
     <section>
-  <h1>Recent Posts</h1>
+  <h1>最新文章</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2017/04/22/javascript/">Javascript</a>
+        <a href="/blog/20170422/javascript/">Javascript</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2017/04/22/first-blog/">First Blog</a>
+        <a href="/blog/20170422/first-blog/">First Blog</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2017/04/21/post-tabqie-huan/">Post Tab切换</a>
+        <a href="/blog/20170421/post-tabqie-huan/">安装Octopress步骤</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2017/04/09/title/">Test</a>
+        <a href="/blog/20170409/title/">Css3的结构域布局</a>
       </li>
     
   </ul>
