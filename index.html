@@ -101,9 +101,11 @@
 
 <p>前面提到 DOM 中事件委托的实现是利用事件冒泡的机制，那么事件冒泡是什么呢？</p>
 
-<p>在 document.addEventListener 的时候我们可以设置事件模型：事件冒泡、事件捕获，一般来说都是用事件冒泡的模型；
-<img src="http://oot79f1a9.bkt.clouddn.com/QQ20170424-192929.png" alt="http://oot79f1a9.bkt.clouddn.com/QQ20170424-192929.png" />  <br/>
-如上图所示，事件模型是指分为三个阶段：</p>
+<p>在 document.addEventListener 的时候我们可以设置事件模型：事件冒泡、事件捕获，一般来说都是用事件冒泡的模型；</p>
+
+<p><img src="http://oot79f1a9.bkt.clouddn.com/QQ20170424-192929.png" alt="http://oot79f1a9.bkt.clouddn.com/QQ20170424-192929.png" /></p>
+
+<p>如上图所示，事件模型是指分为三个阶段：</p>
 
 <ul>
 <li>捕获阶段：在事件冒泡的模型中，捕获阶段不会响应任何事件；</li>
