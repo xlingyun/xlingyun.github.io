@@ -22,7 +22,7 @@ categories:
 
 在 document.addEventListener 的时候我们可以设置事件模型：事件冒泡、事件捕获，一般来说都是用事件冒泡的模型；  
 
-![http://oot79f1a9.bkt.clouddn.com/QQ20170424-192929.png](http://oot79f1a9.bkt.clouddn.com/QQ20170424-192929.png)    
+![事件冒泡模型]    
 
 如上图所示，事件模型是指分为三个阶段： 
 
@@ -223,3 +223,5 @@ function eventDelegate (parentSelector, targetSelector, events, foo) {
   });
 }
 ```
+
+[事件冒泡模型]:http://oot79f1a9.bkt.clouddn.com/QQ20170424-192929.png
