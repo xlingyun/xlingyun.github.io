@@ -121,7 +121,7 @@
 
 <p>试想一下，若果我们有一个列表，列表之中有大量的列表项，我们需要在点击列表项的时候响应一个事件；</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -129,14 +129,15 @@
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
 <span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;ul id="list"&gt;
-</span><span class='line'>  &lt;li&gt;item 1&lt;/li&gt;
-</span><span class='line'>  &lt;li&gt;item 2&lt;/li&gt;
-</span><span class='line'>  &lt;li&gt;item 3&lt;/li&gt;
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;list&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>item 1<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>item 2<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>item 3<span class="nt">&lt;/li&gt;</span>
 </span><span class='line'>  ......
-</span><span class='line'>  &lt;li&gt;item n&lt;/li&gt;
-</span><span class='line'>&lt;/ul&gt;
-</span><span class='line'>// ...... 代表中间还有未知数个 li</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>item n<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span><span class='line'>// ...... 代表中间还有未知数个 li
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>如果给每个列表项一一都绑定一个函数，那对于内存消耗是非常大的，效率上需要消耗很多性能；</p>

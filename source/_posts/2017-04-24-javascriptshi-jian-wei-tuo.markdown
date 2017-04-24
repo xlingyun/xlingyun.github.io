@@ -34,7 +34,7 @@ categories:
 
 试想一下，若果我们有一个列表，列表之中有大量的列表项，我们需要在点击列表项的时候响应一个事件；
 
-```
+```html
 <ul id="list">
   <li>item 1</li>
   <li>item 2</li>
