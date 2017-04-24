@@ -1,0 +1,25 @@
+<div class="highlight"><pre><span class="c">/* 所有具有&quot;lang&quot;属性的 span 元素的字体加粗 */</span>
+<span class="nt">span</span><span class="o">[</span><span class="nt">lang</span><span class="o">]</span> <span class="p">{</span><span class="k">font-weight</span><span class="o">:</span><span class="k">bold</span><span class="p">;}</span>
+ 
+<span class="c">/* 所有具有&quot;lang&quot;属性,且值为&quot;pt&quot;的 span 元素的字体为绿色 */</span>
+<span class="nt">span</span><span class="o">[</span><span class="nt">lang</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">green</span><span class="p">;}</span>
+
+<span class="c">/* 所有具有&quot;lang&quot;属性,且值为&quot;en-us&quot;的 span 元素的字体为蓝色*/</span>
+<span class="nt">span</span><span class="o">[</span><span class="nt">lang</span><span class="o">~=</span><span class="s2">&quot;en-us&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;}</span>
+
+<span class="c">/* 任意具有&quot;lang&quot;属性,且值带有&quot;zh&quot;字符串的 span 元素的字体为红色, 它会匹配简体中文(zh-CN)以及繁体中文(zh-TW) */</span>
+<span class="nt">span</span><span class="o">[</span><span class="nt">lang</span><span class="o">|=</span><span class="s2">&quot;zh&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;}</span>
+
+<span class="c">/* 所有内部链接背景都为金色 */</span>
+<span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">^=</span><span class="s2">&quot;#&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">background-color</span><span class="o">:</span><span class="nb">gold</span><span class="p">}</span>
+
+<span class="c">/* 所有以&quot;.cn&quot;结尾的链接字体都为红色 */</span>
+<span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">$=</span><span class="s2">&quot;.cn&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;}</span>
+
+<span class="c">/* 所有带有&quot;example&quot;的链接背景都为灰色 */</span>
+<span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">*=</span><span class="s2">&quot;example&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">background-color</span><span class="o">:</span> <span class="m">#CCCCCC</span><span class="p">;}</span>
+
+<span class="c">/*所有email输入框的边框都为蓝色*/</span>
+<span class="c">/*这里匹配的输入框类型&quot;emeil&quot;可以忽略其大小写，比如 &quot;email&quot;，&quot;EMAIL&quot;，&quot;eMaiL&quot;等等都能匹配*/</span>
+<span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nt">i</span><span class="o">]</span> <span class="p">{</span><span class="k">border-color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;}</span>
+</pre></div>
