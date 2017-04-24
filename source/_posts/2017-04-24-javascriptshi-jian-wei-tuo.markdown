@@ -20,8 +20,10 @@ categories:
 
 前面提到 DOM 中事件委托的实现是利用事件冒泡的机制，那么事件冒泡是什么呢？
 
-在 document.addEventListener 的时候我们可以设置事件模型：事件冒泡、事件捕获，一般来说都是用事件冒泡的模型；
+在 document.addEventListener 的时候我们可以设置事件模型：事件冒泡、事件捕获，一般来说都是用事件冒泡的模型；  
+
 ![http://oot79f1a9.bkt.clouddn.com/QQ20170424-192929.png](http://oot79f1a9.bkt.clouddn.com/QQ20170424-192929.png)    
+
 如上图所示，事件模型是指分为三个阶段： 
 
 - 捕获阶段：在事件冒泡的模型中，捕获阶段不会响应任何事件；
@@ -142,7 +144,7 @@ if (!Element.prototype.matches) {
 ```
 加上 Element.matches 之后就可以来实现我们的需求了：
 
-```
+```javascript
 if (!Element.prototype.matches) {
   Element.prototype.matches =
     Element.prototype.matchesSelector ||
