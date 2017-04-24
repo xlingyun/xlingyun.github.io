@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://xlingyun.github.io/atom.xml" rel="self"/>
   <link href="http://xlingyun.github.io/"/>
-  <updated>2017-04-24T16:33:42+08:00</updated>
+  <updated>2017-04-24T19:21:50+08:00</updated>
   <id>http://xlingyun.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -14,11 +14,650 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Javascript事件委托]]></title>
+    <link href="http://xlingyun.github.io/blog/20170424/javascriptshi-jian-wei-tuo/"/>
+    <updated>2017-04-24T17:48:40+08:00</updated>
+    <id>http://xlingyun.github.io/blog/20170424/javascriptshi-jian-wei-tuo</id>
+    <content type="html"><![CDATA[<p>基本概念</p>
+
+<p>事件委托，通俗地来讲，就是把一个元素响应事件（click、focus&hellip;&hellip;）的函数委托到另一个元素；</p>
+
+<p>一般来讲，会把一个或者一组元素的事件委托到它的父层或者更外层元素上，真正绑定事件的是外层元素，当事件响应到需要绑定的元素上时，会通过事件冒泡机制从而触发它的外层元素的绑定事件上，然后在外层元素上去执行函数。</p>
+
+<p>举个例子，比如一个宿舍的同学同时快递到了，一种方法就是他们都傻傻地一个个去领取，还有一种方法就是把这件事情委托给宿舍长，让一个人出去拿好所有快递，然后再根据收件人一一分发给每个宿舍同学；</p>
+
+<p>在这里，取快递就是一个事件，每个同学指的是需要响应事件的 DOM 元素，而出去统一领取快递的宿舍长就是代理的元素，所以真正绑定事件的是这个元素，按照收件人分发快递的过程就是在事件执行中，需要判断当前响应的事件应该匹配到被代理元素中的哪一个或者哪几个。</p>
+
+<p>事件冒泡</p>
+
+<p>前面提到 DOM 中事件委托的实现是利用事件冒泡的机制，那么事件冒泡是什么呢？</p>
+
+<p>在 document.addEventListener 的时候我们可以设置事件模型：事件冒泡、事件捕获，一般来说都是用事件冒泡的模型；</p>
+
+<p>如上图所示，事件模型是指分为三个阶段：
+如上图所示，事件模型是指分为三个阶段：</p>
+
+<p>捕获阶段：在事件冒泡的模型中，捕获阶段不会响应任何事件；
+目标阶段：目标阶段就是指事件响应到触发事件的最底层元素上；
+冒泡阶段：冒泡阶段就是事件的触发响应会从最底层目标一层层地向外到最外层（根节点），事件代理即是利用事件冒泡的机制把里层所需要响应的事件绑定到外层；### 事件
+委托的优点</p>
+
+<ol>
+<li>减少内存消耗</li>
+</ol>
+
+
+<p>试想一下，若果我们有一个列表，列表之中有大量的列表项，我们需要在点击列表项的时候响应一个事件；</p>
+
+<ul id="list">
+  <li>item 1</li>
+  <li>item 2</li>
+  <li>item 3</li>
+  ......
+  <li>item n</li>
+</ul>
+
+
+<p>// &hellip;&hellip; 代表中间还有未知数个 li
+如果给每个列表项一一都绑定一个函数，那对于内存消耗是非常大的，效率上需要消耗很多性能；</p>
+
+<p>因此，比较好的方法就是把这个点击事件绑定到他的父层，也就是 <code>ul</code> 上，然后在执行事件的时候再去匹配判断目标元素；</p>
+
+<p>所以事件委托可以减少大量的内存消耗，节约效率。</p>
+
+<ol>
+<li>动态绑定事件</li>
+</ol>
+
+
+<p>比如上述的例子中列表项就几个，我们给每个列表项都绑定了事件；</p>
+
+<p>在很多时候，我们需要通过 AJAX 或者用户操作动态的增加或者去除列表项元素，那么在每一次改变的时候都需要重新给新增的元素绑定事件，给即将删去的元素解绑事件；</p>
+
+<p>如果用了事件委托就没有这种麻烦了，因为事件是绑定在父层的，和目标元素的增减是没有关系的，执行到目标元素是在真正响应执行事件函数的过程中去匹配的；</p>
+
+<p>所以使用事件在动态绑定事件的情况下是可以减少很多重复工作的。</p>
+
+<p>jQuery 中的事件委托</p>
+
+<p>jQuery 中的事件委托相信很多人都用过，它主要这几种方法来实现：</p>
+
+<p>$.on : 基本用法: $(&lsquo;.parent&rsquo;).on(&lsquo;click&rsquo;, &lsquo;a&rsquo;, function () { console.log(&lsquo;click event on tag a&rsquo;); })，它是 .parent 元素之下的 a 元素的事件代理到 $(&lsquo;.parent&rsquo;) 之上，只要在这个元素上有点击事件，就会自动寻找到 .parent 元素下的 a 元素，然后响应事件；
+$.delegate : 基本用法: $(&lsquo;.parent&rsquo;).delegate(&lsquo;a&rsquo;, &lsquo;click&rsquo;, function () { console.log(&lsquo;click event on tag a&rsquo;); })，同上，并且还有相对应的 $.delegate 来删除代理的事件；
+$.live : 基本使用方法: $(&lsquo;a&rsquo;, $(&lsquo;.parent&rsquo;)).live(&lsquo;click&rsquo;, function () { console.log(&lsquo;click event on tag a&rsquo;); })，同上，然而如果没有传入父层元素 $(.parent)，那事件会默认委托到 $(document) 上；(已废除)
+实现功能</p>
+
+<p>基本实现</p>
+
+<p>比如我们有这样的一个 HTML 片段：</p>
+
+<ul id="list">
+  <li>item 1</li>
+  <li>item 2</li>
+  <li>item 3</li>
+  ......
+  <li>item n</li>
+</ul>
+
+
+<p>// &hellip;&hellip; 代表中间还有未知数个 li
+我们来实现把 #list 下的 li 元素的事件代理委托到它的父层元素也就是 #list 上：</p>
+
+<p>// 给父层元素绑定事件
+document.getElementById(&lsquo;list&rsquo;).addEventListener(&lsquo;click&rsquo;, function (e) {
+  // 兼容性处理
+  var event = e || window.event;
+  var target = event.target || event.srcElement;
+  // 判断是否匹配目标元素
+  if (target.nodeName.toLocaleLowerCase === &lsquo;LI&rsquo;) {
+    console.log(&lsquo;the content is: &rsquo;, target.innerHTML);
+  }
+});
+在上述代码中， target 元素则是在 #list 元素之下具体被点击的元素，然后通过判断 target 的一些属性（比如：nodeName，id 等等）可以更精确地匹配到某一类 #list li 元素之上；</p>
+
+<p>使用 Element.matches 精确匹配</p>
+
+<p>如果改变下 HTML 成：</p>
+
+<ul id="list">
+  <li className="class-1">item 1</li>
+  <li>item 2</li>
+  <li className="class-1">item 3</li>
+  ......
+  <li>item n</li>
+</ul>
+
+
+<p>// &hellip;&hellip; 代表中间还有未知数个 li
+这里，我们想把 #list 元素下的 li 元素（并且它的 class 为 class-1）的点击事件委托代理到 #list 之上；</p>
+
+<p>如果通过上述的方法我们还需要在 <code>if (target.nodeName.toLocaleLowerCase === 'LI')</code> 判断之中在加入一个判断 <code>target.nodeName.className === 'class-1'</code>；</p>
+
+<p>但是如果想像 CSS 选择其般做更加灵活的匹配的话，上面的判断未免就太多了，并且很难做到灵活性，这里可以使用 Element.matches API 来匹配；</p>
+
+<p>Element.matches API 的基本使用方法: Element.matches(selectorString)，selectorString 既是 CSS 那样的选择器规则，比如本例中可以使用 target.matches(&lsquo;li.class-1&rsquo;)，他会返回一个布尔值，如果 target 元素是标签 li 并且它的类是 class-1 ，那么就会返回 true，否则返回 false；</p>
+
+<p>当然它的兼容性还有一些问题，需要 IE9 及以上的现代化浏览器版本；</p>
+
+<p>我们可以使用 Polyfill 来解决兼容性上的问题：</p>
+
+<p>if (!Element.prototype.matches) {
+  Element.prototype.matches =
+    Element.prototype.matchesSelector ||
+    Element.prototype.mozMatchesSelector ||
+    Element.prototype.msMatchesSelector ||
+    Element.prototype.oMatchesSelector ||
+    Element.prototype.webkitMatchesSelector ||
+    function(s) {
+      var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+        i = matches.length;
+      while (&ndash;i >= 0 &amp;&amp; matches.item(i) !== this) {}
+      return i > -1;          <br/>
+    };
+}
+加上 Element.matches 之后就可以来实现我们的需求了：</p>
+
+<p>if (!Element.prototype.matches) {
+  Element.prototype.matches =
+    Element.prototype.matchesSelector ||
+    Element.prototype.mozMatchesSelector ||
+    Element.prototype.msMatchesSelector ||
+    Element.prototype.oMatchesSelector ||
+    Element.prototype.webkitMatchesSelector ||
+    function(s) {
+      var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+        i = matches.length;
+      while (&ndash;i >= 0 &amp;&amp; matches.item(i) !== this) {}
+      return i > -1;          <br/>
+    };
+}
+document.getElementById(&lsquo;list&rsquo;).addEventListener(&lsquo;click&rsquo;, function (e) {
+  // 兼容性处理
+  var event = e || window.event;
+  var target = event.target || event.srcElement;
+  if (target.matches(&lsquo;li.class-1&rsquo;)) {
+    console.log(&lsquo;the content is: &rsquo;, target.innerHTML);
+  }
+});
+函数封装</p>
+
+<p>在应对更多场景上我们可以把事件代理的功能封装成一个公用函数，这样就可以重复利用了。</p>
+
+<p>结合上面的例子来实现一个函数 eventDelegate，它接受四个参数：</p>
+
+<p>[String] 一个选择器字符串用于过滤需要实现代理的父层元素，既事件需要被真正绑定之上；
+[String] 一个选择器字符串用于过滤触发事件的选择器元素的后代，既我们需要被代理事件的元素；
+[String] 一个或多个用空格分隔的事件类型和可选的命名空间，如 click 或 keydown.click ;
+[Function] 需要代理事件响应的函数；
+这里就有几个关键点：</p>
+
+<p>对于父层代理的元素可能有多个，需要一一绑定事件；
+对于绑定的事件类型可能有多个，需要一一绑定事件；
+在处理匹配被代理的元素之中需要考虑到兼容性问题；
+在执行所绑定的函数的时候需要传入正确的参数以及考虑到 this 的问题；
+function eventDelegate (parentSelector, targetSelector, events, foo) {
+  // 触发执行的函数
+  function triFunction (e) {
+    // 兼容性处理
+    var event = e || window.event;
+    var target = event.target || event.srcElement;
+    // 处理 matches 的兼容性
+    if (!Element.prototype.matches) {
+      Element.prototype.matches =
+        Element.prototype.matchesSelector ||
+        Element.prototype.mozMatchesSelector ||
+        Element.prototype.msMatchesSelector ||
+        Element.prototype.oMatchesSelector ||
+        Element.prototype.webkitMatchesSelector ||
+        function(s) {
+          var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+            i = matches.length;
+          while (&ndash;i >= 0 &amp;&amp; matches.item(i) !== this) {}
+          return i > -1;          <br/>
+        };
+    }
+    // 判断是否匹配到我们所需要的元素上
+    if (target.matches(targetSelector)) {
+      // 执行绑定的函数，注意 this
+      foo.call(target, Array.prototype.slice.call(arguments));
+    }
+  }
+  // 如果有多个事件的话需要全部一一绑定事件
+  events.split(&lsquo;.&rsquo;).forEach(function (evt) {
+    // 多个父层元素的话也需要一一绑定
+    Array.prototype.slice.call(document.querySelectorAll(parentSelector)).forEach(function ($p) {
+      $p.addEventListener(evt, triFunction);
+    });
+  });
+}</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Css选择器]]></title>
     <link href="http://xlingyun.github.io/blog/20170424/cssxuan-ze-qi/"/>
     <updated>2017-04-24T16:33:05+08:00</updated>
     <id>http://xlingyun.github.io/blog/20170424/cssxuan-ze-qi</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<blockquote><h3>Guides</h3></blockquote>
+
+<hr />
+
+<h3>在选择器中使用：target伪类</h3>
+
+<p>为了辅助标识那些指向文档特定部分链接的目标, <a href="https://www.w3.org/TR/css3-selectors/#target-pseudo">CSS3 选择器</a> 引入了 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target">:target</a> [伪类]:(<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes.">https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes.</a> Netscape 7.1 已经在 Netscape 系列中加入了这个伪类的支持, 这一新的举措让页面作者能够辅助用户在较大的页面中定位。</p>
+
+<h3>选择一个目标</h3>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/:target">:target</a> 伪类用来指定那些包含片段标识符的 URI 的目标元素样式。 例如, <a href="http://developer.mozilla.org/en/docs/Using_the_:target_selector#Example">http://developer.mozilla.org/en/docs/Using_the_:target_selector#Example</a> 这个 URI 包含了 #Example 片段标识符。 在HTML中, 标识符是元素的id或者name属性,。由于这两者位于相同的命名空间， 因此， 这个示例 URI 指向的是文档顶层的 &ldquo;Example&rdquo; 。</p>
+
+<p>假设你想修改 URI 指向的任何 h2 元素，但是又不想把样式应用到任何其它同类型的元素，那么以下示例足够简单有用：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>h2:target {font-weight: bold;}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>同样的，将样式应用于特定的文档片段也是可行的。这是通过使用 URI 中相同的标识符实现的。例如，要在 #Example 文档片段中加入边框，我们可以通过如下代码实现：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#Example:target {border: 1px solid black;}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>定位所有元素</h3>
+
+<p>如果想要创建应用于所有目标元素的样式，那么可以使用通用选择器：</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>:target {color: red;}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>示例</h3>
+
+<p>在以下示例中，5个链接指向了同一文档中的元素。例如，选择"First"链接会导致<code>&lt;h1 id="one"&gt;</code>成为目标元素。注意，由于目标元素有可能会被放置到浏览器窗口的顶层，因此文档可能会跳到新的滚动位置。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;h4</span> <span class="na">id=</span><span class="s">&quot;one&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/h4&gt;</span> <span class="nt">&lt;p</span> <span class="na">id=</span><span class="s">&quot;two&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;three&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span> <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&quot;four&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/a&gt;</span> <span class="nt">&lt;em</span> <span class="na">id=</span><span class="s">&quot;five&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/em&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#one&quot;</span><span class="nt">&gt;</span>First<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#two&quot;</span><span class="nt">&gt;</span>Second<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#three&quot;</span><span class="nt">&gt;</span>Third<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#four&quot;</span><span class="nt">&gt;</span>Fourth<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#five&quot;</span><span class="nt">&gt;</span>Fifth<span class="nt">&lt;/a&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>结论</h3>
+
+<p>在片段标识符指向部分文档的情况下，读者可能会对到底应该阅读文档的哪一部分感到疑惑。通过对不同的目标元素的样式进行修饰, 读者的相关疑惑会减少或者消除。</p>
+
+<blockquote><h3>Basic Selectors</h3></blockquote>
+
+<hr />
+
+<h3>元素选择器</h3>
+
+<h4>概述</h4>
+
+<p>CSS元素选择器(也称为类型选择器)通过node节点名称匹配元素. 因此,在单独使用时,寻找特定类型的元素时,元素选择器都会匹配该文档中所有此类型的元素.</p>
+
+<h4>语法</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>元素 { 样式声明 }
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>示例</h4>
+
+<p>css</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">span</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">background-color</span><span class="o">:</span> <span class="n">DodgerBlue</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="m">#ffffff</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>HTML</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">span</span><span class="o">&gt;</span><span class="err">这里是由</span> <span class="nt">span</span> <span class="err">包裹的一些文字</span><span class="o">.&lt;/</span><span class="nt">span</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">p</span><span class="o">&gt;</span><span class="err">这里是由</span> <span class="nt">p</span> <span class="err">包裹的一些文字</span><span class="o">.&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>效果
+![]
+这里是由 span 包裹的一些文字.
+这里是由 p 包裹的一些文字.</p>
+
+<h3>类选择器</h3>
+
+<h4>概述</h4>
+
+<h4>语法</h4>
+
+<h4>示例</h4>
+
+<h3>ID选择器</h3>
+
+<h4>概述</h4>
+
+<h4>语法</h4>
+
+<h4>示例</h4>
+
+<h3>通配选择器</h3>
+
+<h4>示例</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">*[</span><span class="nt">lang</span><span class="o">^=</span><span class="nt">en</span><span class="o">]</span><span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">green</span><span class="p">;}</span>
+</span><span class='line'><span class="o">*</span><span class="nc">.warning</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">red</span><span class="p">;}</span>
+</span><span class='line'><span class="o">*</span><span class="nf">#maincontent</span> <span class="p">{</span><span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="nb">blue</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面的CSS作用于下面的HTML:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">&lt;</span><span class="nt">p</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">span</span> <span class="nt">lang</span><span class="o">=</span><span class="s2">&quot;en-us&quot;</span><span class="o">&gt;</span><span class="nt">A</span> <span class="nt">green</span> <span class="nt">span</span><span class="o">&lt;/</span><span class="nt">span</span><span class="o">&gt;</span> <span class="nt">in</span> <span class="nt">a</span> <span class="nt">red</span> <span class="nt">paragraph</span><span class="o">.</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span><span class='line'><span class="o">&lt;</span><span class="nt">p</span> <span class="nt">id</span><span class="o">=</span><span class="s2">&quot;maincontent&quot;</span> <span class="nt">lang</span><span class="o">=</span><span class="s2">&quot;en-gb&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>  <span class="o">&lt;</span><span class="nt">span</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span><span class="o">&gt;</span><span class="nt">A</span> <span class="nt">red</span> <span class="nt">span</span><span class="o">&lt;/</span><span class="nt">span</span><span class="o">&gt;</span> <span class="nt">in</span> <span class="nt">a</span> <span class="nt">green</span> <span class="nt">paragraph</span><span class="o">.</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="nt">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>则会产生这样的效果:</p>
+
+<p style="color:red;"><span style="color: green;">A green span</span> in a red paragraph.</p>
+
+
+
+
+<p style="color:green;border:1px solid blue"><span style="color:red;">A red span</span> in a green paragraph (with a border.)</p>
+
+
+<p>   不推荐使用通配符选择器，因为它是<a href="http://www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/">性能最低的一个css选择器</a></p>
+
+<h3>属性选择器</h3>
+
+<h5>概述</h5>
+
+<p>属性选择器通过已经存在的属性名或属性值匹配元素。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="o">[</span><span class="nt">attr</span><span class="o">]</span>
+</span><span class='line'><span class="err">表示带有以</span> <span class="nt">attr</span> <span class="err">命名的属性的元素。</span>
+</span><span class='line'><span class="o">[</span><span class="nt">attr</span><span class="o">=</span><span class="nt">value</span><span class="o">]</span>
+</span><span class='line'><span class="err">表示带有以</span> <span class="nt">attr</span> <span class="err">命名的，且值为</span><span class="s2">&quot;value&quot;</span><span class="err">的属性的元素。</span>
+</span><span class='line'><span class="o">[</span><span class="nt">attr</span><span class="o">~=</span><span class="nt">value</span><span class="o">]</span>
+</span><span class='line'><span class="err">表示带有以</span> <span class="nt">att</span><span class="err">命名的属性的元素，并且该属性是一个以空格作为分隔的值列表，其中至少一个值为</span><span class="s2">&quot;value&quot;</span><span class="err">。</span>
+</span><span class='line'><span class="o">[</span><span class="nt">attr</span><span class="o">|=</span><span class="nt">value</span><span class="o">]</span>
+</span><span class='line'><span class="err">表示带有以</span> <span class="nt">attr</span> <span class="err">命名的属性的元素，属性值为“</span><span class="nt">value</span><span class="err">”或是以“</span><span class="nt">value-</span><span class="err">”为前缀（</span><span class="s2">&quot;-&quot;</span><span class="err">为连，</span><span class="nt">Unicode</span><span class="err">编码为</span><span class="nt">U</span><span class="o">+</span><span class="nt">002D</span><span class="err">）开头。典型的应用场景是用来来匹配语言简写代码（如</span><span class="nt">zh-CN</span><span class="err">，</span><span class="nt">zh-</span><span class="err">可以用</span><span class="nt">zh</span><span class="err">作为</span><span class="nt">value</span><span class="err">）。</span>
+</span><span class='line'><span class="o">[</span><span class="nt">attr</span><span class="o">^=</span><span class="nt">value</span><span class="o">]</span>
+</span><span class='line'><span class="err">表示带有以</span> <span class="nt">attr</span> <span class="err">命名的，且值是以</span><span class="s2">&quot;value&quot;</span><span class="err">开头的属性的元素。</span>
+</span><span class='line'><span class="o">[</span><span class="nt">attr</span><span class="o">$=</span><span class="nt">value</span><span class="o">]</span>
+</span><span class='line'><span class="err">表示带有以</span> <span class="nt">attr</span> <span class="err">命名的，且值是以</span><span class="s2">&quot;value&quot;</span><span class="err">结尾的属性的元素。</span>
+</span><span class='line'><span class="o">[</span><span class="nt">attr</span><span class="o">*=</span><span class="nt">value</span><span class="o">]</span>
+</span><span class='line'><span class="err">表示带有以</span> <span class="nt">attr</span> <span class="err">命名的，且值包含有</span><span class="s2">&quot;value&quot;</span><span class="err">的属性的元素。</span>
+</span><span class='line'><span class="o">[</span><span class="nt">attr</span> <span class="nt">operator</span> <span class="nt">value</span> <span class="nt">i</span><span class="o">]</span>
+</span><span class='line'><span class="err">在带有属性值的属性选型选择器表达式的右括号括号）前添加用空格间隔开的字母</span><span class="nt">i</span><span class="err">（或</span><span class="nt">I</span><span class="err">）可以忽略属性值的大小写（</span><span class="nt">ASCII</span><span class="err">字符范围内的字母）</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>示例</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="c">/* 所有具有&quot;lang&quot;属性的 span 元素的字体加粗 */</span>
+</span><span class='line'><span class="nt">span</span><span class="o">[</span><span class="nt">lang</span><span class="o">]</span> <span class="p">{</span><span class="k">font-weight</span><span class="o">:</span><span class="k">bold</span><span class="p">;}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">/* 所有具有&quot;lang&quot;属性,且值为&quot;pt&quot;的 span 元素的字体为绿色 */</span>
+</span><span class='line'><span class="nt">span</span><span class="o">[</span><span class="nt">lang</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span><span class="nb">green</span><span class="p">;}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">/* 所有具有&quot;lang&quot;属性,且值为&quot;en-us&quot;的 span 元素的字体为蓝色*/</span>
+</span><span class='line'><span class="nt">span</span><span class="o">[</span><span class="nt">lang</span><span class="o">~=</span><span class="s2">&quot;en-us&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">/* 任意具有&quot;lang&quot;属性,且值带有&quot;zh&quot;字符串的 span 元素的字体为红色, 它会匹配简体中文(zh-CN)以及繁体中文(zh-TW) */</span>
+</span><span class='line'><span class="nt">span</span><span class="o">[</span><span class="nt">lang</span><span class="o">|=</span><span class="s2">&quot;zh&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">/* 所有内部链接背景都为金色 */</span>
+</span><span class='line'><span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">^=</span><span class="s2">&quot;#&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">background-color</span><span class="o">:</span><span class="nb">gold</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">/* 所有以&quot;.cn&quot;结尾的链接字体都为红色 */</span>
+</span><span class='line'><span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">$=</span><span class="s2">&quot;.cn&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">/* 所有带有&quot;example&quot;的链接背景都为灰色 */</span>
+</span><span class='line'><span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">*=</span><span class="s2">&quot;example&quot;</span><span class="o">]</span> <span class="p">{</span><span class="k">background-color</span><span class="o">:</span> <span class="m">#CCCCCC</span><span class="p">;}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">/*所有email输入框的边框都为蓝色*/</span>
+</span><span class='line'><span class="c">/*这里匹配的输入框类型&quot;emeil&quot;可以忽略其大小写，比如 &quot;email&quot;，&quot;EMAIL&quot;，&quot;eMaiL&quot;等等都能匹配*/</span>
+</span><span class='line'><span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nt">i</span><span class="o">]</span> <span class="p">{</span><span class="k">border-color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面的CSS作用于下面的HTML时:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;hello-example&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://example.com&quot;</span><span class="nt">&gt;</span>English:<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;span</span> <span class="na">lang=</span><span class="s">&quot;en-us en-gb en-au en-nz&quot;</span><span class="nt">&gt;</span>Hello World!<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;hello-example&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;#portuguese&quot;</span><span class="nt">&gt;</span>Portuguese:<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;span</span> <span class="na">lang=</span><span class="s">&quot;pt&quot;</span><span class="nt">&gt;</span>Olá Mundo!<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;hello-example&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://example.cn&quot;</span><span class="nt">&gt;</span>Chinese (Simplified):<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;span</span> <span class="na">lang=</span><span class="s">&quot;zh-CN&quot;</span><span class="nt">&gt;</span>世界您好！<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;hello-example&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;http://example.cn&quot;</span><span class="nt">&gt;</span>Chinese (Traditional):<span class="nt">&lt;/a&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;span</span> <span class="na">lang=</span><span class="s">&quot;zh-TW&quot;</span><span class="nt">&gt;</span>世界您好！<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Combinators</h3>
+
+<hr />
+
+<h4>相邻兄弟选择器</h4>
+
+<h5>概述</h5>
+
+<p>  这被称为一个相邻选择器. 它只会匹配紧跟其前方元素的同胞元素.</p>
+
+<h5>语法</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>前方元素 + 目标元素 {样式声明 }
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>示例</h5>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>li + li {
+</span><span class='line'>  color: red;
+</span><span class='line'>}
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面的CSS作用于下面的HTML</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;ul&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>One<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Two<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;li&gt;</span>Three<span class="nt">&lt;/li&gt;</span>
+</span><span class='line'><span class="nt">&lt;/ul&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>则会产生下面的效果:</p>
+
+<ul>
+<li>One</li>
+<li style="color:red">Two</li>
+<li style="color:red">Three</li>
+</ul>
+
+
+<p>另一个示例就是紧跟 <code>&lt;img&gt;</code> 元素后的"captioin span"的样式 :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">img</span> <span class="o">+</span> <span class="nt">span</span><span class="nc">.caption</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">font-style</span><span class="o">:</span> <span class="k">italic</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>当上面的CSS作用于下面的HTML后,它会匹配下面的 <code>&lt;span&gt;</code> 元素:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;photo1.jpg&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>The first photo<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">&quot;photo2.jpg&quot;</span><span class="nt">&gt;&lt;span</span> <span class="na">class=</span><span class="s">&quot;caption&quot;</span><span class="nt">&gt;</span>The second photo<span class="nt">&lt;/span&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>通用兄弟选择器</h2>
+
+<h4>概述</h4>
+
+<p>在使用<code>~</code>连接两个元素时,它会匹配第二个元素,条件是它必须跟(不一定是紧跟)在第一个元素之后,且他们都有一个共同的父元素 .</p>
+
+<h4>语法</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>元素 ~ 元素 {样式声明 }
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>示例</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='css'><span class='line'><span class="nt">p</span> <span class="o">~</span> <span class="nt">span</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面的CSS作用于下面的HTML中:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;span&gt;</span>This is not red.<span class="nt">&lt;/span&gt;</span>
+</span><span class='line'><span class="nt">&lt;p&gt;</span>Here is a paragraph.<span class="nt">&lt;/p&gt;</span>
+</span><span class='line'><span class="nt">&lt;code&gt;</span>Here is some code.<span class="nt">&lt;/code&gt;</span>
+</span><span class='line'><span class="nt">&lt;span&gt;</span>And here is a span.<span class="nt">&lt;/span&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>则会产生下面的效果:</p>
+
+<p>This is not red.</p>
+
+<p>Here is a paragraph.</p>
+
+<p>Here is some code.<span style="color:red">And here is a span.</span></p>
+
+<h3>子选择器</h3>
+
+<h3>后代选择器</h3>
+
+<h4>概述</h4>
+
+<h4>语法</h4>
+
+<h4>示例</h4>
 ]]></content>
   </entry>
   
