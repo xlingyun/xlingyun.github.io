@@ -1,0 +1,13 @@
+<div class="highlight"><pre><span class="c1"># testController.class.php控制器文件</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+    <span class="k">class</span> <span class="nc">testController</span><span class="p">{</span>
+        <span class="c1"># 控制器的作用是调用模型，并调用视图，将模型产生的数据传递给视图，并让相关视图去显示</span>
+        <span class="k">function</span> <span class="nf">show</span><span class="p">(){</span>
+            <span class="nv">$testModel</span> <span class="o">=</span> <span class="nx">M</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+            <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$testModel</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+            <span class="nv">$testView</span> <span class="o">=</span> <span class="nx">V</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+            <span class="nv">$testView</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>

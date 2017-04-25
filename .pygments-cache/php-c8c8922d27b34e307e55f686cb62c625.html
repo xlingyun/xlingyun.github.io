@@ -1,0 +1,6 @@
+<div class="highlight"><pre><span class="c1"># index.php 入口文件</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;function.php&#39;</span><span class="p">);</span>
+<span class="nv">$controller</span> <span class="o">=</span> <span class="nx">daddslashes</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="p">]);</span>
+<span class="nv">$method</span> <span class="o">=</span> <span class="nx">daddslashes</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;method&#39;</span><span class="p">]);</span>
+<span class="nx">C</span><span class="p">(</span><span class="nv">$controller</span><span class="p">,</span> <span class="nv">$method</span><span class="p">);</span>
+</pre></div>

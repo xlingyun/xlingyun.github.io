@@ -1,0 +1,18 @@
+<div class="highlight"><pre><span class="x">1 可以使用PHP内置函数</span>
+<span class="x">  </span><span class="cp">{</span><span class="c">* ‘|’前是函数的第一个参数‘：’后是第二个参数 *</span><span class="cp">}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{</span><span class="s2">&quot;Y-m-d&quot;</span><span class="o">|</span><span class="na">date</span><span class="o">:</span><span class="nv">$time</span><span class="cp">}</span><span class="x"></span>
+<span class="x">2 可以自定义函数，并用registerPlugin注册到smarty模版里使用。  </span>
+<span class="x">  registerPlugin的第一个参数除了function，还有modifier block等</span>
+
+<span class="x">  </span><span class="cp">{</span><span class="c">* 传入的参数1值为abc，传入的参数2值为edf *</span><span class="cp">}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{</span><span class="nf">f_test</span> <span class="na">p1</span><span class="o">=</span><span class="s2">&quot;abc&quot;</span> <span class="na">p2</span><span class="o">=</span><span class="s2">&quot;edf&quot;</span><span class="cp">}</span><span class="x"></span>
+
+<span class="x">  function test($params)</span><span class="cp">{</span>
+    <span class="o">{*</span> <span class="na">print_r</span><span class="o">(</span><span class="nv">$params</span><span class="o">)</span>  <span class="o">//</span><span class="na">Array</span><span class="o">([</span><span class="na">p1</span><span class="o">]=&gt;</span><span class="na">abc</span> <span class="o">[</span><span class="na">p2</span><span class="o">]=&gt;</span><span class="na">edf</span><span class="o">)</span> <span class="o">*</span><span class="cp">}</span><span class="x"></span>
+<span class="x">    $p1 = $params[&#39;p1&#39;];</span>
+<span class="x">    $p2 = $params[&#39;p2&#39;];</span>
+<span class="x">    return &#39;传入的参数1值为&#39;.$p1.&#39;,传入的参数2值为&#39;.$p2;</span>
+<span class="x">  }</span>
+
+<span class="x">  $smarty-&gt;registerPlugin(&#39;function&#39;,&#39;f_test&#39;, &#39;test&#39;);</span>
+</pre></div>

@@ -1,0 +1,17 @@
+<div class="highlight"><pre><span class="sd">/********************************************************</span>
+<span class="sd"> test.php</span>
+<span class="sd"> require引入有误会报错，include引入有误报警告</span>
+<span class="sd"> 推荐使用require_once</span>
+<span class="sd">   - 第一步 浏览者 --&gt; 调用控制器，对他发出指令</span>
+<span class="sd">   - 第二步 控制器 --&gt; 按指令选取一个合适的模型</span>
+<span class="sd">   - 第三步 模型 --&gt; 按控制器指令取相应数据</span>
+<span class="sd">   - 第四步 控制器 --&gt; 按指令选取相应视图</span>
+<span class="sd">   - 第五步 视图 --&gt; 把第三步取到的数据按用户想要的样式显示出来</span>
+<span class="sd">*********************************************************/</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;testController.class.php&#39;</span><span class="p">);</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;testModel.class.php&#39;</span><span class="p">);</span>
+<span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;testView.class.php&#39;</span><span class="p">);</span>
+
+<span class="nv">$testController</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">testController</span><span class="p">();</span>
+<span class="nv">$testController</span><span class="o">-&gt;</span><span class="na">show</span><span class="p">();</span> 
+</pre></div>

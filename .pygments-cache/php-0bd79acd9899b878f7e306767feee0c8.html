@@ -1,0 +1,15 @@
+<div class="highlight"><pre><span class="k">require</span><span class="p">(</span><span class="s1">&#39;../Smarty.class.php&#39;</span><span class="p">);</span> <span class="c1">//引入smarty</span>
+
+<span class="nv">$smarty</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Smarty</span><span class="p">();</span>
+
+<span class="c1">//Smarty的 五个配置两个方法</span>
+<span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">left_delimiter</span> <span class="o">=</span> <span class="s2">&quot;{&quot;</span><span class="p">;</span><span class="c1">//左定界符</span>
+<span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">right</span><span class="o">-</span><span class="nx">delimiter</span> <span class="o">=</span> <span class="s2">&quot;}&quot;</span><span class="p">;</span><span class="c1">//右定界符</span>
+<span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">template_dir</span> <span class="o">=</span> <span class="s2">&quot;tpl&quot;</span><span class="p">;</span><span class="c1">//html模版的地址</span>
+<span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">compile_dir</span> <span class="o">=</span> <span class="s2">&quot;template_c&quot;</span><span class="p">;</span><span class="c1">//模版编译生成的文件</span>
+<span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">cache_dir</span> <span class="o">=</span> <span class="s2">&quot;cache&quot;</span><span class="c1">//缓存</span>
+
+<span class="c1">//以下是开启缓存的另外两个配置。因为通常不用smarty的缓存机制，所以此项为了了解  </span>
+<span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">caching</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">//开启缓存</span>
+<span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">cache_lifetime</span> <span class="o">=</span> <span class="mi">120</span><span class="p">;</span> <span class="c1">//缓存时间</span>
+</pre></div>

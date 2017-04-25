@@ -1,0 +1,11 @@
+<div class="highlight"><pre><span class="c1"># index.php</span>
+<span class="c1">#$smarty-&gt;arrign(&#39;articletitle&#39;, &#39;文章标题&#39;);</span>
+<span class="nv">$arr1</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;smarty的学习&#39;</span><span class="p">,</span><span class="s1">&#39;author&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;小明&#39;</span><span class="p">);</span>
+<span class="c1">#$arr2 = array(&#39;articlecontent&#39;=&gt;array(&#39;title&#39;=&gt;&#39;smarty的学习&#39;,&#39;author&#39;=&gt;&#39;小明&#39;));</span>
+
+<span class="nv">$smarty</span> <span class="o">=</span> <span class="nx">assign</span><span class="p">(</span><span class="s1">&#39;arr&#39;</span><span class="p">,</span> <span class="nv">$arr1</span><span class="p">);</span>
+<span class="c1"># test.tpl</span>
+<span class="p">{</span><span class="o">*</span> <span class="p">{</span><span class="nx">articletitle</span><span class="p">}</span> <span class="o">*</span><span class="p">}</span>
+<span class="p">{</span><span class="nv">$arr1</span><span class="o">.</span><span class="nx">title</span><span class="p">}</span><span class="o">---</span><span class="p">{</span><span class="nv">$arr1</span><span class="o">.</span><span class="nx">author</span><span class="p">}</span>
+<span class="p">{</span><span class="o">*</span> <span class="p">{</span><span class="nv">$arr2</span><span class="p">[</span><span class="s1">&#39;articlecontent&#39;</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]}</span> <span class="o">--</span> <span class="p">{</span><span class="nv">$arr2</span><span class="p">[</span><span class="s1">&#39;articlecontent&#39;</span><span class="p">][</span><span class="s1">&#39;author&#39;</span><span class="p">]}</span> <span class="o">*</span><span class="p">}</span>
+</pre></div>

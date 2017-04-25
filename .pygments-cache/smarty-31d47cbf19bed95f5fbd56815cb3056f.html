@@ -1,0 +1,28 @@
+<div class="highlight"><pre><span class="x">1 什么是Smarty的插件：</span>
+<span class="x">  Smarty的插件本质上是function函数</span>
+
+<span class="x">2 Smarty插件常用类型：</span>
+<span class="x">  functions 函数插件</span>
+<span class="x">  文件名格式：function.函数名称.php</span>
+<span class="x">  文件格式：smarty_function_插件名</span>
+<span class="x">  function smarty_function_test($params)</span><span class="cp">{</span>
+    <span class="nv">$width</span> <span class="o">=</span> <span class="nv">$params</span><span class="o">[</span><span class="s1">&#39;width&#39;</span><span class="o">];</span>
+    <span class="nv">$height</span> <span class="o">=</span> <span class="nv">$params</span><span class="o">[</span><span class="s1">&#39;height&#39;</span><span class="o">];</span>
+    <span class="nv">$area</span> <span class="o">=</span> <span class="nv">$width</span> <span class="o">*</span> <span class="nv">$height</span><span class="o">;</span>
+    <span class="na">return</span> <span class="nv">$area</span><span class="o">;</span>
+  <span class="cp">}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{</span><span class="c">* {test width=10 height=20} *</span><span class="cp">}</span><span class="x"></span>
+<span class="x">  modifiers 修饰插件</span>
+<span class="x">  文件名格式：function.函数名称.php</span>
+<span class="x">  文件格式：smarty_modifier_插件名</span>
+<span class="x">  function smarty_modifier_test($uteim, $format)</span><span class="cp">{</span>
+    <span class="na">return</span> <span class="na">date</span><span class="o">(</span><span class="nv">$format</span><span class="o">,</span> <span class="nv">$utime</span><span class="o">);</span>
+  <span class="cp">}</span><span class="x"></span>
+<span class="x">  </span><span class="cp">{</span><span class="c">* {$time | test:&#39;Y-m-d H:i:s&#39;} *</span><span class="cp">}</span><span class="x"></span>
+<span class="x">  block functions 区块函数插件</span>
+
+<span class="x">3 如何来制作 使用插件：</span>
+<span class="x">  （1）使用registerPlugin方法注册写好的自定义函数</span>
+<span class="x">  （2）将写好的插件放入Smarty解压目录中的lib目录下的plugins目录里</span>
+<span class="x">  （3）php的内置函数，可以自动以修饰插件(变量调节器)的形式在模版里使用</span>
+</pre></div>

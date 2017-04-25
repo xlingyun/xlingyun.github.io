@@ -1,0 +1,36 @@
+<div class="highlight"><pre><span class="c1">#####################################################################</span>
+<span class="c1"># eval()函数调用简单但是不安全</span>
+<span class="c1"># eval(&#39;$obj = new &#39;.$name.&#39;Controller();$obj-&gt;&#39;.$method.&#39;();&#39;);</span>
+<span class="c1"># 可用下面代码代替</span>
+<span class="c1"># $controller = $name.&#39;controller&#39;;</span>
+<span class="c1"># $obj = new $controller();</span>
+<span class="c1"># $obj -&gt; $method();</span>
+<span class="c1">#####################################################################</span>
+
+<span class="k">function</span> <span class="nf">C</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$method</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;libs/Controller/&#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;Controller.class.php&#39;</span><span class="p">);</span>
+    <span class="c1"># eval 内置函数 把字符串转换为可执行的PHP语句</span>
+    <span class="k">eval</span><span class="p">(</span><span class="s1">&#39;$obj = new &#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;Controller();$obj-&gt;&#39;</span><span class="o">.</span><span class="nv">$method</span><span class="o">.</span><span class="s1">&#39;();&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1"># 调用</span>
+<span class="nx">C</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">);</span>
+
+<span class="c1">#### 建立一个模型调用函数M</span>
+<span class="k">function</span> <span class="nf">M</span><span class="p">(</span><span class="nv">$name</span><span class="p">){</span>
+    <span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;libs/Model/&#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;Model.class.php&#39;</span><span class="p">);</span>
+    <span class="k">eval</span><span class="p">(</span><span class="s1">&#39;$obj = new &#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;Model();&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$obj</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">#### 建立一个视图调用函数V</span>
+<span class="k">function</span> <span class="nf">V</span><span class="p">(</span><span class="nv">$name</span><span class="p">){</span>
+    <span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;libs/View/&#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;View.class.php&#39;</span><span class="p">);</span>
+    <span class="k">eval</span><span class="p">(</span><span class="s1">&#39;$obj = new &#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;View();&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$obj</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1"># 默认地，PHP 对所有的 GET、POST 和 COOKIE 数据自动运行 addslashes()。所以您不应对已转义过的字符串使用 addslashes()，因为这样会导致双层转义。遇到这种情况时可以使用函数 get_magic_quotes_gpc() 进行检测</span>
+<span class="k">function</span> <span class="nf">daddslashes</span><span class="p">(</span><span class="nv">$str</span><span class="p">){</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">!</span><span class="nb">get_magic_quotes_gpc</span><span class="p">())</span> <span class="o">?</span> <span class="nb">addslashes</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span> <span class="o">:</span> <span class="nv">$str</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>

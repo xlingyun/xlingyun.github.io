@@ -1,0 +1,6 @@
+<div class="highlight"><pre><span class="k">function</span> <span class="nf">V</span><span class="p">(</span><span class="nv">$name</span><span class="p">){</span>
+    <span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;libs/View/&#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;View.class.php&#39;</span><span class="p">);</span>
+    <span class="k">eval</span><span class="p">(</span><span class="s1">&#39;$obj = new &#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;View();&#39;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$obj</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>

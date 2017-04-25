@@ -1,0 +1,20 @@
+<div class="highlight"><pre><span class="mi">1</span> <span class="nx">首字母大写capitalize</span>  
+<span class="nx">示例：</span><span class="p">{</span><span class="nv">$articleTitle</span> <span class="o">|</span> <span class="nx">capitalize</span><span class="p">}</span>  
+<span class="mi">2</span> <span class="nx">字符串连接</span> <span class="nx">cat</span>  
+<span class="nx">示例：</span><span class="p">{</span><span class="nv">$articleTitle</span> <span class="o">|</span> <span class="nx">cat</span><span class="o">:</span><span class="s2">&quot; yesterday.&quot;</span><span class="p">}</span>  
+<span class="mi">3</span> <span class="nx">日期格式化</span> <span class="nb">date_format</span>  
+<span class="nx">示例：</span><span class="p">{</span><span class="nv">$yesterday</span> <span class="o">|</span> <span class="nb">date_format</span><span class="p">}</span>  
+     <span class="p">{</span><span class="nv">$yesterday</span> <span class="o">|</span> <span class="nb">date_format</span><span class="o">:</span><span class="s2">&quot;:&quot;</span><span class="o">%</span><span class="nx">A</span><span class="p">,</span><span class="o">%</span><span class="nx">B</span> <span class="o">%</span><span class="nx">e</span><span class="p">,</span><span class="o">%</span><span class="nx">Y</span> <span class="o">%</span><span class="nx">H</span><span class="o">:%</span><span class="nx">M</span><span class="o">:%</span><span class="nx">S</span><span class="p">}</span>  
+<span class="mi">4</span> <span class="nx">为未赋值或为空的变量指定默认值default</span>  
+<span class="nx">示例：</span><span class="p">{</span><span class="nv">$articleTitle</span><span class="o">|</span><span class="k">default</span><span class="o">:</span><span class="s2">&quot;no title&quot;</span><span class="p">}</span>  
+<span class="mi">5</span> <span class="nx">转码</span> <span class="nx">escape</span>  
+  <span class="nx">用于html转码，URL转码，在没有转码的变量上转换单引号，十六进制转码，十六进制美化，或者javascript转码，默认是html转码。</span>  
+<span class="mi">6</span> <span class="nx">小写</span> <span class="nx">lower</span> <span class="nx">大写</span> <span class="nx">upper</span>  
+  <span class="nx">示例：</span><span class="p">{</span><span class="nv">$articleTitle</span><span class="o">|</span><span class="nx">lower</span><span class="p">}</span>  <span class="p">{</span><span class="nv">$article</span><span class="o">|</span><span class="nx">upper</span><span class="p">}</span>  
+<span class="mi">7</span> <span class="nx">所有的换行符将被替换成</span> <span class="sb">`&lt;br /&gt;`</span> <span class="nx">nl2br功能同PHP中的nl2br</span><span class="p">()</span><span class="nx">函数一样</span>     
+  <span class="nx">示例：</span><span class="p">{</span><span class="nv">$articleTitle</span><span class="o">|</span><span class="nb">nl2br</span><span class="p">}</span>  
+<span class="mi">8</span> <span class="nx">其他的函数</span>  
+ <span class="nx">可以参见手册，原则上应该通过PHP直接处理完再赋值到smarty变量里，少用smarty函数</span>   
+ <span class="nx">例如：Wordwrap</span> <span class="nx">行宽</span> <span class="o">-&gt;</span> <span class="na">使用css样式来解决俄</span> <span class="nx">truncate</span>  
+ <span class="nx">截取</span> <span class="o">-&gt;</span> <span class="na">使用PHP来截取，或使用css样式来解决</span>  
+</pre></div>
