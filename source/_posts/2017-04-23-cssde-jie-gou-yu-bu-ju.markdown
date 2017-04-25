@@ -1,6 +1,6 @@
 ---
 layout: post
-title: css3的结构域布局
+title: css3的结构与布局
 date: 2017-04-09 15:40:39 +0800
 comments: true
 categories: 
@@ -284,7 +284,7 @@ footer p {
 ```css
 main {
     min-height: calc(100vh - 7px - 10px);
-    /* 避免内边距或外边距对高度记得算影响 */
+    /* 避免内边距或外边距对高度计算的影响 */
     border-sizing: border-box;
 }
 ```

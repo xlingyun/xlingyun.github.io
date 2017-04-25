@@ -1,0 +1,76 @@
+<div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * 在标准浏览器下，XMLHttpRequest对象已经是升级版本，支持了更多的特性，可以跨域</span>
+<span class="cm"> * 了，但是，如果想实现跨域请求，还需要后端的相关配合才可以（服务端设置请求头head</span>
+<span class="cm"> * er(&#39;Access-Control-Allow-Origin:http://www.a.om&#39;);//</span>
+<span class="cm"> * 允许访问该域的资源） </span>
+<span class="cm"> * XMLHttpRequest: 增加了很多功能，他也不推荐使用onreadystatechange这个事件</span>
+<span class="cm"> * 来监听，推荐使用onload</span>
+<span class="cm"> * XDomainRequest:IE如果想实现跨域请求，则需要使用另外一个对象去实现</span>
+<span class="cm"> */</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+
+    <span class="c1">// var oBtn = document.getElementById(&#39;btn&#39;);</span>
+
+    <span class="c1">// oBtn.onclick = function(){</span>
+    <span class="c1">//  var xhr = new XMLHttpRequest();</span>
+    <span class="c1">//  xhr.onreadystatechange = function(){</span>
+    <span class="c1">//      if(xhr.readyState == 4 &amp;&amp; xhr.status == 200){</span>
+    <span class="c1">//          alert(xhr.responseText);</span>
+    <span class="c1">//      }</span>
+    <span class="c1">//  }</span>
+    <span class="c1">//  xhr.open(&#39;get&#39;, &#39;http://www.b.com/ajax.php&#39;, true);</span>
+    <span class="c1">//  xhr.send();</span>
+
+
+    <span class="c1">//  var oXDomainRequest = new XDomainRequest();</span>
+    <span class="c1">//  oXDomainRequest.onload = function(){</span>
+    <span class="c1">//      alert(this.responseText);</span>
+    <span class="c1">//  }</span>
+    <span class="c1">//  oXDomainRequest.open(&#39;get&#39;, &#39;http://www.b.com/ajax.php&#39;, true);</span>
+    <span class="c1">//  oXDomainRequest.send();</span>
+    <span class="c1">// }</span>
+
+
+    <span class="kd">var</span> <span class="nx">oBtn</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;btn&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">oMyFile</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myFile&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">oDiv1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;div1&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">oDiv2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;div2&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">oDiv3</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;div3&#39;</span><span class="p">);</span>
+        
+    <span class="nx">oBtn</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="c1">// alert(oMyFile.value);//获取到的是file控件的value值，这个内容是现实给你看的文字，不是我们选择的文件</span>
+        
+        <span class="c1">// oMyFile.files file控件中选择的的文件列表对象</span>
+        <span class="c1">// console.log(oMyFile.files, oMyFile.files[0]);</span>
+        
+
+        <span class="c1">// 我们是要通过ajax把oMyFile.files[0]数据发送给后端</span>
+        <span class="c1">// for(var attr in oMyFile.files[0]){</span>
+        <span class="c1">//  console.log(attr + &#39; : &#39; + oMyFile.files[0][attr])</span>
+        <span class="c1">// }</span>
+    
+        <span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+        <span class="nx">xhr</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+            <span class="c1">// alert(1);</span>
+            <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
+
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">msg</span> <span class="o">+</span> <span class="s1">&#39; : &#39;</span> <span class="o">+</span> <span class="nx">d</span><span class="p">.</span><span class="nx">url</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kd">var</span> <span class="nx">oUpload</span> <span class="o">=</span> <span class="nx">xhr</span><span class="p">.</span><span class="nx">upload</span><span class="p">;</span>
+        <span class="nx">oUpload</span><span class="p">.</span><span class="nx">onprogress</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// console.log(ev.total + &#39; : &#39; + ev.loaded);</span>
+            <span class="kd">var</span> <span class="nx">iScale</span> <span class="o">=</span> <span class="p">(</span><span class="nx">ev</span><span class="p">.</span><span class="nx">loaded</span> <span class="o">/</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">total</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+            <span class="nx">oDiv2</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="mi">300</span> <span class="o">*</span> <span class="nx">iScale</span> <span class="o">+</span> <span class="s1">&#39;px&#39;</span><span class="p">;</span>
+            <span class="nx">oDiv3</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">iScale</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">+</span> <span class="s1">&#39;%&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="s1">&#39;post_file.php&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+        <span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s1">&#39;X-Request-With&#39;</span><span class="p">,</span> <span class="s1">&#39;XMLHttpRequest&#39;</span><span class="p">);</span>
+
+        <span class="kd">var</span> <span class="nx">oFormData</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">();</span>
+        <span class="nx">oFormData</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="nx">oMyFile</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">oFormData</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>

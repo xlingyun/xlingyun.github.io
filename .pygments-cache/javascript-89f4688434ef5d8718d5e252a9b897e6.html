@@ -1,0 +1,46 @@
+<div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * 事件委托：利用冒泡的原理，把事件加到父级上，触发执行效果</span>
+<span class="cm"> * 好处：</span>
+<span class="cm"> *  1.提高性能</span>
+<span class="cm"> *  2.新添加的元素，还会有之前的事件</span>
+<span class="cm"> *  </span>
+<span class="cm"> * event对象：事件源：不管在哪个事件中，只要你操作的那个元素就是事件源</span>
+<span class="cm"> * IE: window.event.srcElement </span>
+<span class="cm"> * 标准: event.target</span>
+<span class="cm"> * nodeName:找到当前元素的标签名</span>
+<span class="cm"> */</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">doc</span> <span class="o">=</span> <span class="nb">document</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">oUl</span> <span class="o">=</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;ul1&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">aLi</span> <span class="o">=</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">oInput</span> <span class="o">=</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;input1&#39;</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">iNow</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+
+    <span class="nx">oUl</span><span class="p">.</span><span class="nx">onmouseover</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">ev</span> <span class="o">=</span> <span class="nx">ev</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">target</span> <span class="o">||</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">srcElement</span><span class="p">;</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;li&#39;</span><span class="p">){</span>
+            <span class="nx">target</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">oUl</span><span class="p">.</span><span class="nx">onmouseout</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">ev</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">ev</span> <span class="o">=</span> <span class="nx">ev</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">event</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">target</span> <span class="o">||</span> <span class="nx">ev</span><span class="p">.</span><span class="nx">srcElement</span><span class="p">;</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="nx">target</span><span class="p">.</span><span class="nx">nodeName</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;li&#39;</span><span class="p">){</span>
+            <span class="nx">target</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="nx">oInput</span><span class="p">.</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">iNow</span><span class="o">++</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">oLi</span> <span class="o">=</span> <span class="nx">doc</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+        <span class="nx">oLi</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="mi">111</span> <span class="o">*</span> <span class="nx">iNow</span><span class="p">;</span>
+        <span class="nx">oUl</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">oLi</span><span class="p">);</span>
+    <span class="p">};</span>
+
+<span class="p">}</span>
+</pre></div>

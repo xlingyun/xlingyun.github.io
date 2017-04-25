@@ -1,0 +1,23 @@
+<div class="highlight"><pre><span class="err">###</span> <span class="err">深拷贝</span>
+<span class="cm">/*</span>
+<span class="cm"> * 递归：</span>
+<span class="cm"> * 1. 函数调用自身，执行递的动作</span>
+<span class="cm"> * 2. 最后一次判断一个终止条件</span>
+<span class="cm"> */</span>
+
+<span class="kd">function</span> <span class="nx">deepCopy</span><span class="p">(</span><span class="nx">obj</span><span class="p">){</span>
+    
+    <span class="kd">var</span> <span class="nx">newObj</span> <span class="o">=</span> <span class="p">{};</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">obj</span> <span class="o">!=</span> <span class="s1">&#39;object&#39;</span><span class="p">){</span>
+        <span class="c">&lt;!--</span> <span class="nx">console</span><span class="p">.</span><span class="nx">trace</span><span class="p">();</span>  <span class="o">--&gt;</span><span class="c1">//打印执行过程</span>
+        <span class="k">return</span> <span class="nx">obj</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">attr</span> <span class="k">in</span> <span class="nx">obj</span><span class="p">){</span>
+        <span class="nx">newObj</span><span class="p">[</span><span class="nx">attr</span><span class="p">]</span> <span class="o">=</span> <span class="nx">deepCopy</span><span class="p">(</span><span class="nx">obj</span><span class="p">[</span><span class="nx">attr</span><span class="p">])</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nx">newObj</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>

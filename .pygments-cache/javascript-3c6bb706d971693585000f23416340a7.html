@@ -1,0 +1,78 @@
+<div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * 枚举算法：用for来从众多的候选答案中，找出正确的解</span>
+<span class="cm"> */</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="c1">// var aP = document.getElementsByTagName(&#39;p&#39;);</span>
+        <span class="c1">// var aSpan1 = aP[0].getElementsByTagName(&#39;span&#39;);</span>
+        <span class="c1">// var aSpan2 = aP[1].getElementsByTagName(&#39;span&#39;);</span>
+        <span class="c1">// var aSpan3 = aP[2].getElementsByTagName(&#39;span&#39;);</span>
+
+        <span class="c1">// for(var i=1;i&lt;=9;i++){</span>
+        <span class="c1">//  for(var j=0;j&lt;=9;j++){</span>
+        <span class="c1">//      for(var k=0;k&lt;=9;k++){</span>
+        <span class="c1">//          for(var m=0;m&lt;=9;m++){</span>
+        <span class="c1">//              for(var n=0;n&lt;=9;n++){</span>
+        <span class="c1">//                  var a = 10000*i + 1000*j + 100*k + 10*m + n;</span>
+        <span class="c1">//                  var b = i;</span>
+        <span class="c1">//                  var c = n*11111;</span>
+
+        <span class="c1">//                  if(a*b==c){</span>
+        <span class="c1">//                      aSpan1[0].innerHTML = i;</span>
+        <span class="c1">//                      aSpan1[1].innerHTML = j;</span>
+        <span class="c1">//                      aSpan1[2].innerHTML = k;</span>
+        <span class="c1">//                      aSpan1[3].innerHTML = m;</span>
+        <span class="c1">//                      aSpan1[4].innerHTML = n;</span>
+
+        <span class="c1">//                      aSpan2[0].innerHTML = i;</span>
+
+        <span class="c1">//                      for(var x=0;x&lt;aSpan3.length;x++){</span>
+        <span class="c1">//                          aSpan3[x].innerHTML = n;</span>
+        <span class="c1">//                      }</span>
+        <span class="c1">//                  }</span>
+        <span class="c1">//              }</span>
+        <span class="c1">//          }</span>
+        <span class="c1">//      }</span>
+        <span class="c1">//  }</span>
+        <span class="c1">// }</span>
+    
+        <span class="kd">var</span> <span class="nx">aA</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">oUl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;ul1&#39;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">aLi</span> <span class="o">=</span> <span class="nx">oUl</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+
+        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">aA</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="nx">aA</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">onclick</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">mj</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">)){</span>
+                    <span class="kd">var</span> <span class="nx">oLi</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">);</span>
+                    <span class="nx">oLi</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
+                    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">aLi</span><span class="p">[</span><span class="mi">0</span><span class="p">]){</span>
+                        <span class="nx">oUl</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">oLi</span><span class="p">);</span>
+                    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                        <span class="nx">oUl</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">oLi</span><span class="p">,</span> <span class="nx">aLi</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+                    <span class="p">}</span>
+                <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+                    <span class="nx">mj2</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">mj</span><span class="p">(</span><span class="nx">text</span><span class="p">){</span>
+            <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+            <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">aLi</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">aLi</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">innerHTML</span> <span class="o">==</span> <span class="nx">text</span><span class="p">){</span>
+                    <span class="nx">result</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kd">function</span> <span class="nx">mj2</span><span class="p">(</span><span class="nx">text</span><span class="p">){</span>
+            <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">aLi</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+                <span class="k">if</span><span class="p">(</span><span class="nx">aLi</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">innerHTML</span> <span class="o">==</span> <span class="nx">text</span><span class="p">){</span>
+                    <span class="nx">oUl</span><span class="p">.</span><span class="nx">insertBefore</span><span class="p">(</span><span class="nx">aLi</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">aLi</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>

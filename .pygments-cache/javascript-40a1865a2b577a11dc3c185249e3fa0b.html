@@ -1,0 +1,169 @@
+<div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * chrome:dom方法要比innerHTML性能要好</span>
+<span class="cm"> * DOM优化</span>
+<span class="cm"> * 减少DOM操作</span>
+<span class="cm"> * 节点克隆。-cloneNode</span>
+<span class="cm"> * 访问元素集合。-尽量用局部变量</span>
+<span class="cm"> * 元素节点。 -尽量用只获取元素的节点方法</span>
+<span class="cm"> * 选择器API。-利用querySelector、querySelectorAll</span>
+<span class="cm"> */</span>
+
+<span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="c1">// var oDiv = document.getElementById(&#39;div1&#39;);</span>
+        <span class="c1">// var str = &#39;&#39;;</span>
+
+        <span class="cm">/**</span>
+<span class="cm">        console.time(&#39;hello&#39;);</span>
+<span class="cm">        for(var i=0;i&lt;5000;i++){</span>
+<span class="cm">            oDiv.innerHTML += &#39;a&#39;;</span>
+<span class="cm">        }</span>
+<span class="cm">        console.timeEnd(&#39;hello&#39;);</span>
+<span class="cm">        // hello: 178ms</span>
+<span class="cm">        */</span>
+        
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// for(var i=0;i&lt;5000;i++){</span>
+        <span class="c1">//  str += &#39;a&#39;;</span>
+        <span class="c1">// }</span>
+        <span class="c1">// oDiv.innerHTML = str;</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);</span>
+        <span class="c1">// hello: 0.487ms 比上面的性能提高百倍不止</span>
+        <span class="c1">// </span>
+        <span class="c1">// </span>
+        
+        <span class="c1">// var oUl = document.getElementById(&#39;ul1&#39;);</span>
+
+        <span class="c1">// var str = &#39;&#39;;</span>
+
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// for(var i=0;i&lt;5000;i++){</span>
+        <span class="c1">//  var oLi = document.createElement(&#39;li&#39;);</span>
+        <span class="c1">//  oLi.innerHTML = &#39;li&#39;;</span>
+        <span class="c1">//  oUl.appendChild(oLi);</span>
+        <span class="c1">// }</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);//40ms</span>
+
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// for(var i=0;i&lt;5000;i++){</span>
+            
+        <span class="c1">//  str += &#39;&lt;li&gt;&lt;/li&gt;&#39;;</span>
+        <span class="c1">// }</span>
+        <span class="c1">// oUl.innerHTML = str;</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);//8~10ms</span>
+
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// var oLi = document.createElement(&#39;li&#39;);</span>
+        <span class="c1">// oLi.innerHTML = &#39;li&#39;;</span>
+        <span class="c1">// for(var i=0;i&lt;5000;i++){</span>
+        <span class="c1">//  var newLi = oLi.cloneNode(true);</span>
+        <span class="c1">//  oUl.appendChild(newLi);</span>
+        <span class="c1">// }</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);//8~10ms</span>
+
+        <span class="c1">// var oUl = document.getElementById(&#39;ul1&#39;);</span>
+        <span class="c1">// var aLi = document.getElementsByTagName(&#39;li&#39;);</span>
+        
+        <span class="c1">// var doc = document;</span>
+        <span class="c1">// var oUl = doc.getElementById(&#39;ul1&#39;);</span>
+        <span class="c1">// var aLi = doc.getElementsByTagName(&#39;li&#39;); </span>
+        
+        <span class="c1">// for(var i=0;i&lt;5000;i++){</span>
+        <span class="c1">//  var oLi = document.createElement(&#39;li&#39;);</span>
+        <span class="c1">//  oUl.appendChild(oLi);</span>
+        <span class="c1">// }</span>
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// for(var i=0;i&lt;aLi.length;i++){</span>
+        <span class="c1">//  aLi[i].innerHTML = &#39;li&#39;;</span>
+        <span class="c1">// }</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);//319~337</span>
+
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// var len = aLi.length;</span>
+        <span class="c1">// for(var i=0;i&lt;len;i++){</span>
+        <span class="c1">//  aLi[i].innerHTML = &#39;li&#39;;</span>
+        <span class="c1">// }</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);//376~420</span>
+        <span class="c1">// </span>
+        
+        <span class="c1">// var oUl = document.getElementById(&#39;ul1&#39;);</span>
+        <span class="c1">// var aLi = oUl.getElementsByTagName(&#39;li&#39;);</span>
+
+        <span class="c1">// var aLi = document.querySelectorAll(&#39;#ul1 li&#39;);//上面两句代码跟下面功能一样，但是下面性能比上面要好</span>
+        <span class="c1">// </span>
+        
+        <span class="c1">// DOM与浏览器</span>
+        <span class="c1">// 重排：改变页面的内容</span>
+        <span class="c1">// 重绘：浏览器显示内容</span>
+        <span class="c1">// 添加顺序</span>
+        <span class="c1">// ---尽量在appendChild前添加操作</span>
+        <span class="c1">// 合并dom操作</span>
+        <span class="c1">// ---利用cssText</span>
+        <span class="c1">// 缓存布局信息</span>
+        <span class="c1">// 文档碎片</span>
+        <span class="c1">// ---createDocumentFragment()</span>
+
+        <span class="c1">// var oUl = document.getElementById(&#39;ul1&#39;);</span>
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// for(var i=0;i&lt;5000;i++){</span>
+        <span class="c1">//  var oLi = document.createElement(&#39;li&#39;);</span>
+        <span class="c1">//  oUl.appendChild(oLi);</span>
+        <span class="c1">//  oLi.innerHTML = &#39;li&#39;;</span>
+        <span class="c1">// }</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);</span>
+
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// for(var i=0;i&lt;5000;i++){</span>
+        <span class="c1">//  var oLi = document.createElement(&#39;li&#39;);</span>
+        <span class="c1">//  oLi.innerHTML = &#39;li&#39;;</span>
+        <span class="c1">//  oUl.appendChild(oLi);</span>
+        <span class="c1">// }</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);</span>
+    
+        <span class="c1">// var oUl = document.getElementById(&#39;ul1&#39;);</span>
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// for(var i=0;i&lt;5000;i++){</span>
+        <span class="c1">//  var oLi = document.createElement(&#39;li&#39;);</span>
+        <span class="c1">//  // oLi.style.width = &#39;100px&#39;;</span>
+        <span class="c1">//  // oLi.style.height = &#39;100px&#39;;</span>
+        <span class="c1">//  // oLi.style.background = &#39;red&#39;;</span>
+        <span class="c1">//  oLi.style.cssText = &#39;width:100px;height:100px;background:red;&#39;;</span>
+        <span class="c1">//  oUl.appendChild(oLi);</span>
+        <span class="c1">// }</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);</span>
+    
+        <span class="c1">// var oDiv = document.getElementById(&#39;div1&#39;);</span>
+
+        <span class="c1">// setInterval(function(){</span>
+        <span class="c1">//  oDiv.style.left = oDiv.offsetLeft + 1 + &#39;px&#39;;</span>
+        <span class="c1">//  oDiv.style.top = oDiv.offsetTop + 1 + &#39;px&#39;;</span>
+        <span class="c1">// }, 16);</span>
+
+        <span class="c1">// var L = oDiv.offsetLeft;</span>
+        <span class="c1">// var T = oDiv.offsetTop;</span>
+        <span class="c1">// setInterval(function(){</span>
+        <span class="c1">//  L++;</span>
+        <span class="c1">//  T++;</span>
+        <span class="c1">//  oDiv.style.left = L + &#39;px&#39;;</span>
+        <span class="c1">//  oDiv.style.top = T + &#39;px&#39;;</span>
+        <span class="c1">// }, 16);</span>
+        
+
+        <span class="c1">// var oUl = document.getElementById(&#39;ul1&#39;);</span>
+        <span class="c1">// var oFrag = document.createDocumentFragment();//相当于创建了一个袋子</span>
+
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// for(var i=0;i&lt;10000;i++){</span>
+        <span class="c1">//  var oLi = document.createElement(&#39;li&#39;);</span>
+        <span class="c1">//  oUl.appendChild(oLi);</span>
+        <span class="c1">// }</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);</span>
+
+        <span class="c1">// console.time(&#39;hello&#39;);</span>
+        <span class="c1">// for(var i=0;i&lt;10000;i++){</span>
+        <span class="c1">//  var oLi = document.createElement(&#39;li&#39;);</span>
+        <span class="c1">//  oFrag.appendChild(oLi);</span>
+        <span class="c1">// }</span>
+        <span class="c1">// oUl.appendChild(oFrag);</span>
+        <span class="c1">// console.timeEnd(&#39;hello&#39;);</span>
+<span class="p">}</span>
+</pre></div>

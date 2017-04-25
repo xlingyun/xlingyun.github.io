@@ -1,0 +1,30 @@
+<div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * &lt;!-- jsonp: json + padding(内填充) --&gt;</span>
+<span class="cm"> * &lt;!-- ajax: XMLHttpRequest(); : 不能跨域的 --&gt;</span>
+<span class="cm"> * &lt;!-- 1.document.domain = &#39;a.com&#39;;</span>
+<span class="cm"> * 2.服务器代理： XMLHttpRequest代理文件</span>
+<span class="cm"> * 3.script标签：jsonp</span>
+<span class="cm"> * 4.location.hash </span>
+<span class="cm"> * 5.window.name</span>
+<span class="cm"> * 6.flash</span>
+<span class="cm"> * 7.html5 postMessage--</span>
+<span class="cm"> */</span>
+<span class="kd">function</span> <span class="nx">createJs</span><span class="p">(</span><span class="nx">sUrl</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">oScript</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">);</span>
+    <span class="nx">oScript</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="s1">&#39;text/javascript&#39;</span><span class="p">;</span>
+    <span class="nx">oScript</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">sUrl</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">&#39;head&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">oScript</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// createJs(&#39;jsonp.js&#39;);</span>
+<span class="nx">createJs</span><span class="p">(</span><span class="s1">&#39;jsonp.js?callback=fn&#39;</span><span class="p">)</span>
+
+<span class="c1">// 在本页面写一个与fn一样的函数接受数据，</span>
+<span class="kd">function</span> <span class="nx">box</span><span class="p">(</span><span class="nx">json</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span><span class="c1">//ok</span>
+<span class="p">}</span>
+
+<span class="err">##</span> <span class="nx">jsonp</span><span class="p">.</span><span class="nx">js</span><span class="err">文件</span>
+
+<span class="nx">box</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span><span class="s1">&#39;ok&#39;</span><span class="p">})</span>
+</pre></div>
