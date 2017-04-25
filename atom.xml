@@ -4,7 +4,7 @@
   <title><![CDATA[My Octopress Blog]]></title>
   <link href="http://xlingyun.github.io/atom.xml" rel="self"/>
   <link href="http://xlingyun.github.io/"/>
-  <updated>2017-04-25T20:17:00+08:00</updated>
+  <updated>2017-04-26T01:57:15+08:00</updated>
   <id>http://xlingyun.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,6 +12,580 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[MVC架构模式分析与设计]]></title>
+    <link href="http://xlingyun.github.io/blog/20170425/jia-gou-mo-shi-fen-xi-yu-she-ji/"/>
+    <updated>2017-04-25T21:53:50+08:00</updated>
+    <id>http://xlingyun.github.io/blog/20170425/jia-gou-mo-shi-fen-xi-yu-she-ji</id>
+    <content type="html"><![CDATA[<h3>MVC简介</h3>
+
+<h4>书面解释</h4>
+
+<p>MVC全名是Model View Controller，是模型(model)-视图(view)-控制器(controller)的缩写，一种软件设计典范，用一种业务逻辑和数据显示分离的方法组织代码，将业务逻辑被聚集到一个部件里面，在界面和用户围绕数据的交互能被改进和个性化定制的同时而不需要重新编写业务逻辑。</p>
+
+<p><img src="http://oot79f1a9.bkt.clouddn.com/WX20170425-220721.png" alt="mvc的优势" /></p>
+
+<h4>MVC工作流程</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="c1"># testController.class.php控制器文件</span>
+</span><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">testController</span><span class="p">{</span>
+</span><span class='line'>        <span class="c1"># 控制器的作用是调用模型，并调用视图，将模型产生的数据传递给视图，并让相关视图去显示</span>
+</span><span class='line'>        <span class="k">function</span> <span class="nf">show</span><span class="p">(){</span>
+</span><span class='line'>            <span class="nv">$testModel</span> <span class="o">=</span> <span class="nx">M</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+</span><span class='line'>            <span class="nv">$data</span> <span class="o">=</span> <span class="nv">$testModel</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">();</span>
+</span><span class='line'>            <span class="nv">$testView</span> <span class="o">=</span> <span class="nx">V</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+</span><span class='line'>            <span class="nv">$testView</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="c1"># testModel.class.php 模型文件</span>
+</span><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">testModle</span><span class="p">{</span>
+</span><span class='line'>        <span class="c1"># 模型的作用是获取数据并处理，返回数据</span>
+</span><span class='line'>        <span class="k">function</span> <span class="nf">get</span><span class="p">(){</span>
+</span><span class='line'>            <span class="k">return</span> <span class="s2">&quot;hello world&quot;</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="c1"># testView.class.php 视图文件</span>
+</span><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">testView</span><span class="p">{</span>
+</span><span class='line'>        <span class="c1"># 视图的作用是将取得的数据进行组织、美化等，并最终向用户终端输出</span>
+</span><span class='line'>        <span class="k">function</span> <span class="nf">display</span><span class="p">(</span><span class="nv">$data</span><span class="p">){</span>
+</span><span class='line'>            <span class="k">echo</span> <span class="nv">$data</span><span class="p">;</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="sd">/********************************************************</span>
+</span><span class='line'><span class="sd"> test.php</span>
+</span><span class='line'><span class="sd"> require引入有误会报错，include引入有误报警告</span>
+</span><span class='line'><span class="sd"> 推荐使用require_once</span>
+</span><span class='line'><span class="sd">   - 第一步 浏览者 --&gt; 调用控制器，对他发出指令</span>
+</span><span class='line'><span class="sd">   - 第二步 控制器 --&gt; 按指令选取一个合适的模型</span>
+</span><span class='line'><span class="sd">   - 第三步 模型 --&gt; 按控制器指令取相应数据</span>
+</span><span class='line'><span class="sd">   - 第四步 控制器 --&gt; 按指令选取相应视图</span>
+</span><span class='line'><span class="sd">   - 第五步 视图 --&gt; 把第三步取到的数据按用户想要的样式显示出来</span>
+</span><span class='line'><span class="sd">*********************************************************/</span>
+</span><span class='line'><span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;testController.class.php&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;testModel.class.php&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;testView.class.php&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$testController</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">testController</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$testController</span><span class="o">-&gt;</span><span class="na">show</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>目录规范</h4>
+
+<p><img src="http://oot79f1a9.bkt.clouddn.com/WX20170425-224500.png" alt="目录规范" /></p>
+
+<h4>建立一个控制器调用函数C</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="c1">#####################################################################</span>
+</span><span class='line'><span class="c1"># eval()函数调用简单但是不安全</span>
+</span><span class='line'><span class="c1"># eval(&#39;$obj = new &#39;.$name.&#39;Controller();$obj-&gt;&#39;.$method.&#39;();&#39;);</span>
+</span><span class='line'><span class="c1"># 可用下面代码代替</span>
+</span><span class='line'><span class="c1"># $controller = $name.&#39;controller&#39;;</span>
+</span><span class='line'><span class="c1"># $obj = new $controller();</span>
+</span><span class='line'><span class="c1"># $obj -&gt; $method();</span>
+</span><span class='line'><span class="c1">#####################################################################</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> <span class="nf">C</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="nv">$method</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;libs/Controller/&#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;Controller.class.php&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="c1"># eval 内置函数 把字符串转换为可执行的PHP语句</span>
+</span><span class='line'>    <span class="k">eval</span><span class="p">(</span><span class="s1">&#39;$obj = new &#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;Controller();$obj-&gt;&#39;</span><span class="o">.</span><span class="nv">$method</span><span class="o">.</span><span class="s1">&#39;();&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'><span class="c1"># 调用</span>
+</span><span class='line'><span class="nx">C</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;show&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#### 建立一个模型调用函数M</span>
+</span><span class='line'><span class="k">function</span> <span class="nf">M</span><span class="p">(</span><span class="nv">$name</span><span class="p">){</span>
+</span><span class='line'>    <span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;libs/Model/&#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;Model.class.php&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">eval</span><span class="p">(</span><span class="s1">&#39;$obj = new &#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;Model();&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$obj</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#### 建立一个视图调用函数V</span>
+</span><span class='line'><span class="k">function</span> <span class="nf">V</span><span class="p">(</span><span class="nv">$name</span><span class="p">){</span>
+</span><span class='line'>    <span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;libs/View/&#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;View.class.php&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">eval</span><span class="p">(</span><span class="s1">&#39;$obj = new &#39;</span><span class="o">.</span><span class="nv">$name</span><span class="o">.</span><span class="s1">&#39;View();&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$obj</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># 默认地，PHP 对所有的 GET、POST 和 COOKIE 数据自动运行 addslashes()。所以您不应对已转义过的字符串使用 addslashes()，因为这样会导致双层转义。遇到这种情况时可以使用函数 get_magic_quotes_gpc() 进行检测</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">function</span> <span class="nf">daddslashes</span><span class="p">(</span><span class="nv">$str</span><span class="p">){</span>
+</span><span class='line'>    <span class="k">return</span> <span class="p">(</span><span class="o">!</span><span class="nb">get_magic_quotes_gpc</span><span class="p">())</span> <span class="o">?</span> <span class="nb">addslashes</span><span class="p">(</span><span class="nv">$str</span><span class="p">)</span> <span class="o">:</span> <span class="nv">$str</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>入口文件的改造与功能总结</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="c1"># index.php 入口文件</span>
+</span><span class='line'><span class="k">require_once</span><span class="p">(</span><span class="s1">&#39;function.php&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$controllerAllow</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$methodAllow</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$controller</span> <span class="o">=</span> <span class="nb">in_array</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="p">],</span> <span class="nv">$controllerAllow</span><span class="p">)</span> <span class="o">?</span> <span class="nx">daddslashes</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;controller&#39;</span><span class="p">])</span> <span class="o">:</span> <span class="s1">&#39;index&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$method</span> <span class="o">=</span> <span class="nb">in_array</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;method&#39;</span><span class="p">],</span> <span class="nv">$methodAllow</span><span class="p">)</span> <span class="o">?</span> <span class="nx">daddslashes</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;method&#39;</span><span class="p">])</span> <span class="o">:</span> <span class="s1">&#39;index&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">C</span><span class="p">(</span><span class="nv">$controller</span><span class="p">,</span> <span class="nv">$method</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>什么是好的视图引擎</h4>
+
+<ul>
+<li>基于该引擎开发出的模版要更贴近标准的html等</li>
+<li>语法简单易懂</li>
+<li>良好的缓存机制</li>
+<li>扩展性良好</li>
+<li>网络资源多</li>
+</ul>
+
+
+<h4>Smarty</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">require</span><span class="p">(</span><span class="s1">&#39;../Smarty.class.php&#39;</span><span class="p">);</span> <span class="c1">//引入smarty</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$smarty</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Smarty</span><span class="p">();</span>
+</span><span class='line'><span class="c1">//Smarty的 五个配置两个方法</span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">left_delimiter</span> <span class="o">=</span> <span class="s2">&quot;{&quot;</span><span class="p">;</span><span class="c1">//左定界符</span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">right</span><span class="o">-</span><span class="nx">delimiter</span> <span class="o">=</span> <span class="s2">&quot;}&quot;</span><span class="p">;</span><span class="c1">//右定界符</span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">template_dir</span> <span class="o">=</span> <span class="s2">&quot;tpl&quot;</span><span class="p">;</span><span class="c1">//html模版的地址</span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">compile_dir</span> <span class="o">=</span> <span class="s2">&quot;template_c&quot;</span><span class="p">;</span><span class="c1">//模版编译生成的文件</span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">cache_dir</span> <span class="o">=</span> <span class="s2">&quot;cache&quot;</span><span class="c1">//缓存</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">//以下是开启缓存的另外两个配置。因为通常不用smarty的缓存机制，所以此项为了了解  </span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">caching</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span> <span class="c1">//开启缓存</span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">cache_lifetime</span> <span class="o">=</span> <span class="mi">120</span><span class="p">;</span> <span class="c1">//缓存时间</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">assign</span><span class="p">(</span><span class="s1">&#39;articletitle&#39;</span><span class="p">,</span> <span class="s1">&#39;文章标题&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$smarty</span><span class="o">-&gt;</span><span class="na">display</span><span class="p">(</span><span class="s1">&#39;test.tpl&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>smarty的注释与变量输出</h4>
+
+<ol>
+<li><code>{* 这里是注释语句 *}</code></li>
+<li>如何在smarty里面输出赋值进来的变量</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="c1"># index.php</span>
+</span><span class='line'><span class="c1">#$smarty-&gt;arrign(&#39;articletitle&#39;, &#39;文章标题&#39;);</span>
+</span><span class='line'><span class="nv">$arr1</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;smarty的学习&#39;</span><span class="p">,</span><span class="s1">&#39;author&#39;</span><span class="o">=&gt;</span><span class="s1">&#39;小明&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="c1">#$arr2 = array(&#39;articlecontent&#39;=&gt;array(&#39;title&#39;=&gt;&#39;smarty的学习&#39;,&#39;author&#39;=&gt;&#39;小明&#39;));</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$smarty</span> <span class="o">=</span> <span class="nx">assign</span><span class="p">(</span><span class="s1">&#39;arr&#39;</span><span class="p">,</span> <span class="nv">$arr1</span><span class="p">);</span>
+</span><span class='line'><span class="c1"># test.tpl</span>
+</span><span class='line'><span class="p">{</span><span class="o">*</span> <span class="p">{</span><span class="nx">articletitle</span><span class="p">}</span> <span class="o">*</span><span class="p">}</span>
+</span><span class='line'><span class="p">{</span><span class="nv">$arr1</span><span class="o">.</span><span class="nx">title</span><span class="p">}</span><span class="o">---</span><span class="p">{</span><span class="nv">$arr1</span><span class="o">.</span><span class="nx">author</span><span class="p">}</span>
+</span><span class='line'><span class="p">{</span><span class="o">*</span> <span class="p">{</span><span class="nv">$arr2</span><span class="p">[</span><span class="s1">&#39;articlecontent&#39;</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]}</span> <span class="o">--</span> <span class="p">{</span><span class="nv">$arr2</span><span class="p">[</span><span class="s1">&#39;articlecontent&#39;</span><span class="p">][</span><span class="s1">&#39;author&#39;</span><span class="p">]}</span> <span class="o">*</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>变量调节器</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="mi">1</span> <span class="nx">首字母大写capitalize</span>
+</span><span class='line'><span class="c1">## 示例：{$articleTitle | capitalize}  </span>
+</span><span class='line'><span class="mi">2</span> <span class="nx">字符串连接</span> <span class="nx">cat</span>
+</span><span class='line'><span class="c1">## 示例：{$articleTitle | cat:&quot; yesterday.&quot;}  </span>
+</span><span class='line'><span class="mi">3</span> <span class="nx">日期格式化</span> <span class="nb">date_format</span>
+</span><span class='line'><span class="c1">## 示例：{$yesterday | date_format}  </span>
+</span><span class='line'>     <span class="p">{</span><span class="nv">$yesterday</span> <span class="o">|</span> <span class="nb">date_format</span><span class="o">:</span><span class="s2">&quot;:&quot;</span><span class="o">%</span><span class="nx">A</span><span class="p">,</span><span class="o">%</span><span class="nx">B</span> <span class="o">%</span><span class="nx">e</span><span class="p">,</span><span class="o">%</span><span class="nx">Y</span> <span class="o">%</span><span class="nx">H</span><span class="o">:%</span><span class="nx">M</span><span class="o">:%</span><span class="nx">S</span><span class="p">}</span>
+</span><span class='line'><span class="mi">4</span> <span class="nx">为未赋值或为空的变量指定默认值default</span>
+</span><span class='line'><span class="c1">## 示例：{$articleTitle|default:&quot;no title&quot;}  </span>
+</span><span class='line'><span class="mi">5</span> <span class="nx">转码</span> <span class="nx">escape</span>
+</span><span class='line'><span class="c1">## 用于html转码，URL转码，在没有转码的变量上转换单引号，十六进制转码，十六进制美化，或者javascript转码，默认是html转码。  </span>
+</span><span class='line'><span class="mi">6</span> <span class="nx">小写</span> <span class="nx">lower</span> <span class="nx">大写</span> <span class="nx">upper</span>
+</span><span class='line'><span class="c1">## 示例：{$articleTitle|lower}  {$article|upper}  </span>
+</span><span class='line'><span class="mi">7</span> <span class="nx">所有的换行符将被替换成</span> <span class="sb">`&lt;br /&gt;`</span> <span class="nx">nl2br功能同PHP中的nl2br</span><span class="p">()</span><span class="nx">函数一样</span>
+</span><span class='line'><span class="c1">## 示例：{$articleTitle|nl2br}  </span>
+</span><span class='line'><span class="mi">8</span> <span class="nx">其他的函数</span>
+</span><span class='line'><span class="c1">## 可以参见手册，原则上应该通过PHP直接处理完再赋值到smarty变量里，少用smarty函数   </span>
+</span><span class='line'><span class="c1">## 例如：Wordwrap 行宽 -&gt; 使用css样式来解决俄 truncate  </span>
+</span><span class='line'><span class="c1">## 截取 -&gt; 使用PHP来截取，或使用css样式来解决  </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Smarty中的条件判断</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="x"># 1 基本句式</span>
+</span><span class='line'><span class="cp">{</span><span class="nf">if</span> <span class="nv">$name</span> <span class="na">eq</span> <span class="s2">&quot;Fred&quot;</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x"> Welcome Sir.</span>
+</span><span class='line'><span class="cp">{</span><span class="nf">elseif</span> <span class="nv">$name</span> <span class="na">eq</span> <span class="s2">&quot;Wilma&quot;</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x"> Welcome Ma&#39;am</span>
+</span><span class='line'><span class="cp">{</span><span class="nf">else</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x"> Welcome, whatever you are.</span>
+</span><span class='line'><span class="cp">{</span><span class="nf">/if</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'>
+</span><span class='line'><span class="x"># 2 条件修饰符有很多，简单的几个eq(==) neq(!=) gt(&gt;) lt(&lt;)</span>
+</span><span class='line'><span class="x"># 3 修饰词时必须和变量或常量用空格隔开</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Smarty的循环 section</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="x">1 section sectionelse</span>
+</span><span class='line'><span class="x">### 功能多，参数多。但是个人觉得并不实用，是smarty用来做循环操作的函数之一</span>
+</span><span class='line'><span class="x">2 了解基本属性name和loop</span>
+</span><span class='line'><span class="x">3 除了name和loop属性外，还有以下属性</span>
+</span><span class='line'><span class="x">    start 循环执行的初始位置。如果该值为负数，开始位置从数组的尾部算起。</span>
+</span><span class='line'><span class="x">          例如：如果数组中有7个元素，指定start-2，那么指定当前数组的索引为5.</span>
+</span><span class='line'><span class="x">          非法值（超过了循环数组的下限）将被自动调整为最接近的合法值。</span>
+</span><span class='line'><span class="x">    step  该值决定循环的步长，例如指定step=2将只遍历下标为0 2 4等的元素。</span>
+</span><span class='line'><span class="x">          如果step为负值，那么遍历数组的时候从后向前遍历。</span>
+</span><span class='line'><span class="x">    max   设定循环最大执行次数</span>
+</span><span class='line'><span class="x">    show  决定是否显示该循环</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Smarty的循环 foreach</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="x">1 foreach用于处理简单数组（数组中的元素的类型一致），它的格式比section简单许多，</span>
+</span><span class='line'><span class="x">  缺点是智能处理简单数组，但是推荐用这个，因为和PHP的语法更接近，容易掌握。错误率低</span>
+</span><span class='line'><span class="x">2 foreach在smarty 3里，它可以像PHP一样使用了。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Smarty的文件引用</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="x">1 include用法和PHP里的include差不多</span>
+</span><span class='line'><span class="x">2 smarty的include还具备自定义属性的功能</span>
+</span><span class='line'><span class="x">  例如</span><span class="cp">{</span><span class="nf">include</span> <span class="na">file</span><span class="o">=</span><span class="s2">&quot;header.tpl&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s2">&quot;网站标题&quot;</span> <span class="na">table_bgcolor</span><span class="o">=</span><span class="s2">&quot;#c0c0c0&quot;</span><span class="cp">}</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Smarty类与对象的赋值与使用</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="x">类的调用方法：</span>
+</span><span class='line'><span class="x">第一种是用smarty的register_object方法，在Smarty3里已经废除。</span>
+</span><span class='line'><span class="x">第二种方法就是使用assign把一个类的对象以变量的形式赋值到smarty模版里使用。</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Smarty函数的使用</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="x">1 可以使用PHP内置函数</span>
+</span><span class='line'><span class="x">  </span><span class="cp">{</span><span class="c">* ‘|’前是函数的第一个参数‘：’后是第二个参数 *</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">  </span><span class="cp">{</span><span class="s2">&quot;Y-m-d&quot;</span><span class="o">|</span><span class="na">date</span><span class="o">:</span><span class="nv">$time</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">2 可以自定义函数，并用registerPlugin注册到smarty模版里使用。  </span>
+</span><span class='line'><span class="x">  registerPlugin的第一个参数除了function，还有modifier block等</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">  </span><span class="cp">{</span><span class="c">* 传入的参数1值为abc，传入的参数2值为edf *</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">  </span><span class="cp">{</span><span class="nf">f_test</span> <span class="na">p1</span><span class="o">=</span><span class="s2">&quot;abc&quot;</span> <span class="na">p2</span><span class="o">=</span><span class="s2">&quot;edf&quot;</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'>
+</span><span class='line'><span class="x">  function test($params)</span><span class="cp">{</span>
+</span><span class='line'>    <span class="o">{*</span> <span class="na">print_r</span><span class="o">(</span><span class="nv">$params</span><span class="o">)</span>  <span class="o">//</span><span class="na">Array</span><span class="o">([</span><span class="na">p1</span><span class="o">]=&gt;</span><span class="na">abc</span> <span class="o">[</span><span class="na">p2</span><span class="o">]=&gt;</span><span class="na">edf</span><span class="o">)</span> <span class="o">*</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">    $p1 = $params[&#39;p1&#39;];</span>
+</span><span class='line'><span class="x">    $p2 = $params[&#39;p2&#39;];</span>
+</span><span class='line'><span class="x">    return &#39;传入的参数1值为&#39;.$p1.&#39;,传入的参数2值为&#39;.$p2;</span>
+</span><span class='line'><span class="x">  }</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">  $smarty-&gt;registerPlugin(&#39;function&#39;,&#39;f_test&#39;, &#39;test&#39;);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Smarty插件</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='smarty'><span class='line'><span class="x">1 什么是Smarty的插件：</span>
+</span><span class='line'><span class="x">  Smarty的插件本质上是function函数</span>
+</span><span class='line'>
+</span><span class='line'><span class="x">2 Smarty插件常用类型：</span>
+</span><span class='line'><span class="x">  functions 函数插件</span>
+</span><span class='line'><span class="x">  文件名格式：function.函数名称.php</span>
+</span><span class='line'><span class="x">  文件格式：smarty_function_插件名</span>
+</span><span class='line'><span class="x">  function smarty_function_test($params)</span><span class="cp">{</span>
+</span><span class='line'>    <span class="nv">$width</span> <span class="o">=</span> <span class="nv">$params</span><span class="o">[</span><span class="s1">&#39;width&#39;</span><span class="o">];</span>
+</span><span class='line'>    <span class="nv">$height</span> <span class="o">=</span> <span class="nv">$params</span><span class="o">[</span><span class="s1">&#39;height&#39;</span><span class="o">];</span>
+</span><span class='line'>    <span class="nv">$area</span> <span class="o">=</span> <span class="nv">$width</span> <span class="o">*</span> <span class="nv">$height</span><span class="o">;</span>
+</span><span class='line'>    <span class="na">return</span> <span class="nv">$area</span><span class="o">;</span>
+</span><span class='line'>  <span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">  </span><span class="cp">{</span><span class="c">* {test width=150 height=200} *</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">  modifiers 修饰插件</span>
+</span><span class='line'><span class="x">  文件名格式：modifiers.函数名称.php</span>
+</span><span class='line'><span class="x">  文件格式：smarty_modifier_插件名</span>
+</span><span class='line'><span class="x">  function smarty_modifier_test($uteim, $format)</span><span class="cp">{</span>
+</span><span class='line'>    <span class="na">return</span> <span class="na">date</span><span class="o">(</span><span class="nv">$format</span><span class="o">,</span> <span class="nv">$utime</span><span class="o">);</span>
+</span><span class='line'>  <span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">  </span><span class="cp">{</span><span class="c">* {$time | test:&#39;Y-m-d H:i:s&#39;} *</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">  block functions 区块函数插件</span>
+</span><span class='line'><span class="x">  文件名格式：block.函数名称.php</span>
+</span><span class='line'><span class="x">  文件格式：smarty_block_插件名</span>
+</span><span class='line'><span class="x">  function smarty_block_test2($params, $content)</span><span class="cp">{</span>
+</span><span class='line'>    <span class="nv">$replace</span> <span class="o">=</span> <span class="nv">$parames</span><span class="o">[</span><span class="s1">&#39;replace&#39;</span><span class="o">];</span>
+</span><span class='line'>    <span class="nv">$maxnum</span> <span class="o">=</span> <span class="nv">$params</span><span class="o">[</span><span class="s1">&#39;maxnum&#39;</span><span class="o">];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="na">if</span><span class="o">(</span><span class="nv">$replace</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="o">){</span>
+</span><span class='line'>        <span class="nv">$content</span> <span class="o">=</span> <span class="na">str_replace</span><span class="o">(</span><span class="s1">&#39;，&#39;</span><span class="o">,</span><span class="s1">&#39;,&#39;</span><span class="o">,</span><span class="nv">$content</span><span class="o">);</span>
+</span><span class='line'>        <span class="nv">$content</span> <span class="o">=</span> <span class="na">str_replace</span><span class="o">(</span><span class="s1">&#39;。&#39;</span><span class="o">,</span><span class="s1">&#39;.&#39;</span><span class="o">,</span><span class="nv">$content</span><span class="o">);</span>
+</span><span class='line'>    <span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">    $content = substr($content, 0, $maxnum);</span>
+</span><span class='line'><span class="x">    return $content;</span>
+</span><span class='line'><span class="x">  }</span>
+</span><span class='line'><span class="x">  </span><span class="cp">{</span><span class="c">* </span>
+</span><span class='line'><span class="c">    {test2 replace=&quot;true&quot; maxnum=29} </span>
+</span><span class='line'><span class="c">    {$str}</span>
+</span><span class='line'><span class="c">    {/test2}</span>
+</span><span class='line'><span class="c">  *</span><span class="cp">}</span><span class="x"></span>
+</span><span class='line'><span class="x">tips: 插件命名不能重复</span>
+</span><span class='line'><span class="x">3 如何来制作 使用插件：</span>
+</span><span class='line'><span class="x">  （1）使用registerPlugin方法注册写好的自定义函数</span>
+</span><span class='line'><span class="x">  （2）将写好的插件放入Smarty解压目录中的lib目录下的plugins目录里</span>
+</span><span class='line'><span class="x">  （3）php的内置函数，可以自动以修饰插件(变量调节器)的形式在模版里使用</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Html5判断微信、ios、android端口]]></title>
