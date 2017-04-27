@@ -1,0 +1,52 @@
+<div class="highlight"><pre><span class="c1">// 简单的节流函数 </span>
+ 
+<span class="kd">function</span> <span class="nx">throttle</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">wait</span><span class="p">,</span> <span class="nx">mustRun</span><span class="p">)</span> <span class="p">{</span> 
+ 
+    <span class="kd">var</span> <span class="nx">timeout</span><span class="p">,</span> 
+ 
+        <span class="nx">startTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span> 
+ 
+ 
+    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+ 
+        <span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> 
+ 
+            <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">,</span> 
+ 
+            <span class="nx">curTime</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span> 
+ 
+ 
+        <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">);</span> 
+ 
+        <span class="c1">// 如果达到了规定的触发时间间隔，触发 handler </span>
+ 
+        <span class="k">if</span><span class="p">(</span><span class="nx">curTime</span> <span class="o">-</span> <span class="nx">startTime</span> <span class="o">&gt;=</span> <span class="nx">mustRun</span><span class="p">){</span> 
+ 
+            <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span><span class="nx">args</span><span class="p">);</span> 
+ 
+            <span class="nx">startTime</span> <span class="o">=</span> <span class="nx">curTime</span><span class="p">;</span> 
+ 
+        <span class="c1">// 没达到触发间隔，重新设定定时器 </span>
+ 
+        <span class="p">}</span><span class="k">else</span><span class="p">{</span> 
+ 
+            <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">wait</span><span class="p">);</span> 
+ 
+        <span class="p">}</span> 
+ 
+    <span class="p">};</span> 
+ 
+<span class="p">};</span> 
+ 
+<span class="c1">// 实际想绑定在 scroll 事件上的 handler </span>
+ 
+<span class="kd">function</span> <span class="nx">realFunc</span><span class="p">(){</span> 
+ 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Success&quot;</span><span class="p">);</span> 
+ 
+<span class="p">}</span> 
+ 
+<span class="c1">// 采用了节流函数 </span>
+ 
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;scroll&#39;</span><span class="p">,</span><span class="nx">throttle</span><span class="p">(</span><span class="nx">realFunc</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">1000</span><span class="p">));</span>
+</pre></div>

@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Homebrew总结 - My Octopress Blog</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="HomeBrew就是MacOS下最著名的包管理器，我使用它的目的就是让MacOS下的命令行和Linux下一样顺手。 安装
+基本操作 安装一个包
+卸载与跟新 扩展
+更换源
+Homebrew中一些路径的解释
+MacOS下gnu命令行 安装 1
+/usr/bin/ruby -e &quot;$(curl &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://xlingyun.github.io/blog/20170426/homebrewzong-jie/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!-- <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"> -->
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">My Octopress Blog</a></h1>
+  
+    <h2>A blogging framework</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="xlingyun.github.io">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Homebrew总结</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-04-26T22:17:29+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:17 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="https://brew.sh/index_zh-cn.html">HomeBrew</a>就是MacOS下最著名的包管理器，我使用它的目的就是让MacOS下的命令行和Linux下一样顺手。</p>
+
+<ul>
+<li>安装</li>
+<li>基本操作
+
+<ul>
+<li>安装一个包</li>
+<li>卸载与跟新</li>
+</ul>
+</li>
+<li>扩展</li>
+<li>更换源</li>
+<li>Homebrew中一些路径的解释</li>
+<li>MacOS下gnu命令行</li>
+</ul>
+
+
+<h4>安装</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="sr">/usr/</span><span class="n">bin</span><span class="o">/</span><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s2">&quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>上面这句话的意思是使用curl命令行下载安装脚步install，然后用ruby解析执行这个安装脚步。</p>
+
+<p>安装好之后</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">echo</span> <span class="s1">&#39;export PATH=&quot;/usr/local/bin:$PATH&quot;&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.bash_profile</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>后面的<code>.bash_profile</code>请根据你使用shell的情况来修改。</p>
+
+<p>现在homebrew的最新版本是1.0.0。</p>
+
+<p>使用以下命令查看版本。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="o">-</span><span class="n">v</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>基本操作</h4>
+
+<h6>安装一个包</h6>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="o">&lt;</span><span class="n">formula</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>但是麻烦的是你往往不记得包名或者记不全，这里有两个方法，第一个是使用<code>brew search</code>进行搜索，比如你想找vim这个包，但你只记得了前面两个字母，最后一个 <strong>m</strong> 给忘记了，这时候你可以尝试下面但命令：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">search</span> <span class="n">vi</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>结果出来了，但是结果太多了，包括了很多不是 <strong>vi</strong> 开头的包，这个时候你就得用正则表达式来搜索，这对小白来说也是非常痛苦的，因为要学会正则表达式也得看一本书，但是一旦你熟悉它之后，你会发现你会在每个搜索的场景下都希望它支持正则表达式的搜索，正如你熟悉了编辑器vim之后，希望处处都是vim模式一样。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">search</span> <span class="sr">/正则表达式/</span> <span class="c1"># 标准格式</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">search</span> <span class="sr">/^vi/</span>   <span class="c1">#规定了只能是vi开头</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">search</span> <span class="sr">/^vi\\w$/</span>   <span class="c1">#规定只能是vi开头并且只有三个字母</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第二种方法更适合小白用户，前提是你安装了oh-my-zsh，使用过<a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a>的用户都知道其补全功能非常牛逼，它可以补全命令，命令的选项和参数，还可以补全包管理器的包名，是不是很厉害，但是默认oh-my-zsh是不支持HomeBrew的，所以我们需要这样做：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">zsh</span><span class="o">-</span><span class="n">completions</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>使用homebrew安装原本需要图形安装的软件比如chrome。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">cask</span> <span class="n">install</span> <span class="o">&lt;</span><span class="n">formula</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>一般来说不带任何选项的话，homebrew会优先下载二进制，二进制下载不到就会尝试从源码编译，这也是homebrew强大的地方之处。</p>
+
+<p>比如，我们希望更新最新的vim，这就得从源码编译了，从源码编译过vim的人都知道，有很多选项要用户决定，然后homebrew是如何做到的呢，我们该如何指定选项呢？</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">info</span> <span class="o">&lt;</span><span class="n">formula</span><span class="o">&gt;</span>  <span class="c1">#查看这个包的信息，从中我们可以得知有哪些选项可选。</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">#示例</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">vim</span> <span class="o">--</span><span class="no">HEAD</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">override</span><span class="o">-</span><span class="nb">system</span><span class="o">-</span><span class="n">vi</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">lua</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>然后，homebrew就会帮我们解决编译过程中的任何依赖了，是不是很爽？</p>
+
+<p>细心的人可能也注意到了，并没有找到所有在vim源码makefile中的提供的选项，这是因为支持什么选项取决于该包对应的 <strong>formula</strong> 文件，通常位于<code>/usr/local/Homebrew/Library/Taps/homebrew/homebrew-core/Formula</code>文件夹中，你可以使用下面的命令来编辑它，该文件遵循ruby语法：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">edit</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>卸载与跟新</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># 卸载对应包名字</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">uninstall</span> <span class="o">&lt;</span><span class="n">package_name</span><span class="o">&gt;</span>
+</span><span class='line'><span class="c1"># 列出过时的包</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">outdated</span>
+</span><span class='line'><span class="c1"># 更新过时的包，不带包名就更新所有包</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">upgrade</span> <span class="o">[</span> <span class="n">package_name</span> <span class="o">]</span>
+</span><span class='line'><span class="c1"># 更新HomeBrew自身</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">update</span>
+</span><span class='line'><span class="c1"># 清除缓存</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">cleanup</span> <span class="o">[</span><span class="err">包名</span><span class="o">]</span>
+</span><span class='line'><span class="c1"># 列出已经安装的包</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">list</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>如果该包有多个版本，那么先使用<code>brew switch &lt;包名&gt; &lt;版本号&gt;</code>来切换到该版本然后再使用<code>uninstall</code>来卸载，如果卸载全部版本那么使用<code>--force</code>选项。</p>
+
+<h4>扩展</h4>
+
+<p>就像ubuntu的ppa一样，很多时候有些软件包并不在官方提供列表里面而是由第三方提供的这个时候，我们就需要使用下面的命令：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="o">[</span><span class="n">un</span><span class="o">]</span><span class="n">tap</span> <span class="o">&lt;</span><span class="n">github_userid</span><span class="o">/</span><span class="n">repo_name</span><span class="o">&gt;</span> <span class="c1">#添加或者删除仓库</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>注意<code>repo_name</code>只是实际仓库名的一部分，而实际仓库名的前缀必须是<code>homebrew-</code>。比如</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">tap</span> <span class="n">neovim</span><span class="o">/</span><span class="n">neovim</span>
+</span><span class='line'><span class="c1"># 这样实际仓库名就是homebrew-neovim</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="https://github.com/Homebrew/brew/blob/master/docs/brew-tap.md">官方文档</a>中提出brew tap作用用于添加更多仓库，默认情况下tap假设这些仓库来源于<a href="https://github.com">github</a>，但又不局限于它。</p>
+
+<p>不带参数的话，将会列出当前已经<code>tapped</code>的仓库，比如：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">tap</span>
+</span><span class='line'><span class="o">==&gt;</span> <span class="no">Auto</span><span class="o">-</span><span class="n">updated</span> <span class="no">Homebrew</span><span class="o">!</span>
+</span><span class='line'><span class="no">Updated</span> <span class="mi">1</span> <span class="n">tap</span> <span class="p">(</span><span class="n">homebrew</span><span class="o">/</span><span class="n">core</span><span class="p">)</span><span class="o">.</span>
+</span><span class='line'><span class="no">No</span> <span class="n">changes</span> <span class="n">to</span> <span class="n">formulae</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">caskroom</span><span class="o">/</span><span class="n">cask</span>
+</span><span class='line'><span class="n">homebrew</span><span class="o">/</span><span class="n">core</span>
+</span><span class='line'><span class="n">homebrew</span><span class="o">/</span><span class="n">dupes</span>
+</span><span class='line'><span class="n">neovim</span><span class="o">/</span><span class="n">neovim</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>总共列出了四个仓库，其中前面三个是默认自带的。</p>
+
+<p>如果你要增加的仓库已经存在于<code>homebrew/core</code>中了(名字一样)，你必须显性的安装：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">vim</span>                     <span class="c1"># installs from homebrew/core</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">username</span><span class="o">/</span><span class="n">repo</span><span class="o">/</span><span class="n">vim</span>       <span class="c1"># installs from your custom repo</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>更换源</h4>
+
+<p>由于各种原因，用homebrew跟新下载软件有时非常慢，这个时候你可以尝试更换源，这个概念和其它包管理器的概念是一致的，也就是换个软件服务器。</p>
+
+<p>有两个源，第一个是homebrew自身程序公式的服务器地址，homebrew是托管于github，如果你访问这个网站没有问题，那就不需要换了，要换也非常简单，相当于给你的git仓库换一个远程地址，而homebrew的仓库位置默认位于/usr/local/Homebrew下（这个位置是homebrew 1.0之后才变的）。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">cd</span> <span class="sr">/usr/</span><span class="n">local</span><span class="o">/</span><span class="no">Homebrew</span>
+</span><span class='line'><span class="n">git</span> <span class="n">remote</span> <span class="n">set</span><span class="o">-</span><span class="n">url</span> <span class="n">origin</span> <span class="ss">http</span><span class="p">:</span><span class="sr">//mi</span><span class="n">rrors</span><span class="o">.</span><span class="n">ustc</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">homebrew</span><span class="o">.</span><span class="n">git</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cd</span> <span class="o">~</span>
+</span><span class='line'><span class="n">mkdir</span> <span class="n">tmp</span>
+</span><span class='line'><span class="n">cd</span> <span class="n">tmp</span>
+</span><span class='line'><span class="n">git</span> <span class="nb">clone</span> <span class="ss">http</span><span class="p">:</span><span class="sr">//mi</span><span class="n">rrors</span><span class="o">.</span><span class="n">ustc</span><span class="o">.</span><span class="n">edu</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">homebrew</span><span class="o">.</span><span class="n">git</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">cp</span> <span class="o">-</span><span class="n">R</span> <span class="n">homebrew</span><span class="o">/.</span><span class="n">git</span> <span class="sr">/usr/</span><span class="n">local</span><span class="o">/</span><span class="no">Homebrew</span>
+</span><span class='line'><span class="n">cp</span> <span class="o">-</span><span class="n">R</span> <span class="n">homebrew</span><span class="o">/</span><span class="no">Library</span> <span class="sr">/usr/</span><span class="n">local</span><span class="o">/</span><span class="no">Homebrew</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>第二个源就是二进制的服务器地址，做法很简单就是</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">echo</span> <span class="s1">&#39;export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles&#39;</span> <span class="o">&gt;&gt;</span> <span class="o">~</span><span class="sr">/.zshrc</span>
+</span><span class='line'><span class="sr">source ~/</span><span class="o">.</span><span class="n">zshrc</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>Homebrew中一些路径的解释</h4>
+
+<p>Homebrew 1.0的基础上，</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Caskroom</span>  <span class="no">Frameworks</span>  <span class="n">bin</span>  <span class="kp">include</span>  <span class="n">opt</span>   <span class="n">share</span>
+</span><span class='line'><span class="no">Cellar</span>    <span class="no">Homebrew</span>    <span class="n">etc</span>  <span class="n">lib</span>      <span class="n">sbin</span>  <span class="n">var</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p><code>Cellar</code>:文件夹存放的是所有包安装所在路径，包括二进制，文档和配置文件，按照这样Cellar/包名/版本号/的形式来安放。</p></li>
+<li><p><code>opt</code>:由于版本号随着跟新而改变的，所以需要一个固定不变的路径作为我们访问二进制和文档的路径，这就是opt的作用。</p></li>
+<li><p><code>Homebrew</code>:brew程序所在路径.</p></li>
+<li><p><code>bin</code>:所有包安装之后二进制都会链接到这个路径下</p></li>
+<li><p><code>share</code>:所有包安装之后的文档都会链接到这个路径下</p></li>
+<li><p><code>etc</code>:同上，所有包的配置文件</p></li>
+<li><p><code>lib</code>:同上，所有包相关库文件</p></li>
+<li><p><code>Caskroom</code>:app文件</p></li>
+</ul>
+
+
+<h4>MacOS下gnu命令行</h4>
+
+<p>MacOS下的命令行是bsd的，而且好久没跟新，各种不顺手，所以这一小节的目的是介绍通过homebrew安装gnu的命令行工具代替系统自带的命令行。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># GNU File, Shell, and Text utilities</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">info</span> <span class="n">coreutils</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">coreutils</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>从第一条命令得知，安装之后，所有命令都是带有g前缀的，这会让我们非常不爽，所以如果你希望使用它们原来的名字的话，就将这个路径加到PATH变量的最前头。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/opt/coreutils/libexec/gnubin:$PATH&quot;</span> <span class="c1">#这句话放到你shell配置文件中</span>
+</span><span class='line'><span class="no">MANPATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/opt/coreutils/libexec/gnuman:$MANPATH&quot;</span> <span class="c1">#默认使用他们的manpage</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>可以看出还是比较麻烦的，而且有些包像binutils并没有提供这样的链接，但是却有g前缀。</p>
+
+<p>下面这些软件也是我们常用的，</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">binutils</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">ed</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">names</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">findutils</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">names</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gawk</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">curl</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">libidn</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">libssh2</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">nghttp2</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">rtmpdump</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gnu</span><span class="o">-</span><span class="n">indent</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">names</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gnu</span><span class="o">-</span><span class="n">sed</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">names</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gnu</span><span class="o">-</span><span class="n">tar</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">names</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gnu</span><span class="o">-</span><span class="n">which</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">names</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gnutls</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">grep</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">names</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gzip</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">screen</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">watch</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">wdiff</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">gettext</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">wget</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">bash</span> <span class="n">zsh</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gdb</span>  <span class="c1"># gdb requires further actions to make it work. See `brew info gdb`.</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">gpatch</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">m4</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">make</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">nano</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">rsync</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">svn</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">unzip</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">aria2</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">git</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">ffmpeg</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">ctags</span> <span class="n">cscope</span> <span class="n">the_silver_searcher</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">vim</span> <span class="o">--</span><span class="no">HEAD</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">override</span><span class="o">-</span><span class="nb">system</span><span class="o">-</span><span class="n">vi</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">lua</span>
+</span><span class='line'><span class="n">brew</span> <span class="n">install</span> <span class="n">neovim</span> <span class="o">--</span><span class="no">HEAD</span> <span class="o">--</span><span class="n">with</span><span class="o">-</span><span class="n">release</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2017-04-26T22:17:29+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>10:17 pm</span></time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://xlingyun.github.io/blog/20170426/homebrewzong-jie/" data-via="" data-counturl="http://xlingyun.github.io/blog/20170426/homebrewzong-jie/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/20170426/yii2-dot-0da-zao-wan-zheng-dian-shang-ping-tai/" title="Previous Post: Yii2.0打造完整电商平台">&laquo; Yii2.0打造完整电商平台</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/20170426/javascriptyi-bu-bian-cheng/" title="Next Post: javascript异步编程">javascript异步编程 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>最新文章</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/20170427/gao-xing-neng-gun-dong-scrollji-ye-mian-xuan-ran-you-hua/">高性能滚动scroll及页面渲染优化</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/20170426/javascriptyi-bu-bian-cheng/">Javascript异步编程</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/20170426/homebrewzong-jie/">Homebrew总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/20170426/yii2-dot-0da-zao-wan-zheng-dian-shang-ping-tai/">Yii2.0打造完整电商平台</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/20170425/jia-gou-mo-shi-fen-xi-yu-she-ji/">MVC架构模式分析与设计</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2017 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

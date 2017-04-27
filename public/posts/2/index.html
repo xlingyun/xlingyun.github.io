@@ -5,14 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Css3的结构与布局 - My Octopress Blog</title>
+  <title>My Octopress Blog</title>
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="1.自适应内部元素 在css中，不给元素一个height值时，元素会自适应其内部的元素高度，有时我们想让元素的宽度也达到此效果，应用场景如下。 如下当前的这种布局，想要改成最外层的div的宽度由当前的图片撑开的效果，这时就要用到min-content这个属性值。 css代码如下： 1
-2
-3
-4 &hellip;">
+  <meta name="description" content="安装Octopress步骤 Ruby等依赖安装 由于Jekyll和octopress都是ruby写的，会有诸多ruby依赖，建议切换ruby源唯国内源。对于git版本没有太大要求。
+查看ruby版本ruby -v
+安装bundler bundler可以自动解决依赖，安装方法：gem install &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://xlingyun.github.io/blog/20170409/cssde-jie-gou-yu-bu-ju/">
+  <link rel="canonical" href="http://xlingyun.github.io/posts/2/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
@@ -66,12 +65,125 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div>
-<article class="hentry" role="article">
+      <div class="blog-index">
   
+  
+  
+    <article>
+      
   <header>
     
-      <h1 class="entry-title">Css3的结构与布局</h1>
+      <h1 class="entry-title"><a href="/blog/20170421/post-tabqie-huan/">安装Octopress步骤</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2017-04-21T19:23:53+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2017</span></span> <span class='time'>7:23 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>安装Octopress步骤</h4>
+
+<h5>Ruby等依赖安装</h5>
+
+<blockquote><p>由于Jekyll和octopress都是ruby写的，会有诸多ruby依赖，建议切换ruby源唯国内源。对于git版本没有太大要求。
+查看ruby版本<code>ruby -v</code>
+安装bundler bundler可以自动解决依赖，安装方法：<code>gem install bundler</code>,建议国内用户切换gem源为国内源，方法如下：</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>gem source -r https://rubygems.org/ # 删除官方源
+</span><span class='line'>gem source -a https://ruby.taobao.org/ #添加淘宝源</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p> 查看当前源：<code>gem source -l</code></p></blockquote>
+
+<h5>clone网站repo</h5>
+
+<blockquote><p>设置git</p></blockquote>
+
+<pre><code class="`"> git config --global user.name "name"
+ git config --global user.email "emailaddress"
+</code></pre>
+
+<blockquote><p>生成ssh key：</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-keygen -t rsa -C "emailaddress"</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>按3个回车，密码为空，复制~/.ssh/id_rsa.pub的内容，添加到GitHub账户中，然后clone网站repo</p></blockquote>
+
+<h5>octopress安装</h5>
+
+<blockquote><p>octopress的安装也比较简单，下载源码后会有Gemfile文件来指示所有依赖，使用<code>bundle</code>即可，下载源码:</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/imathis/octopress.git octopress</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><p>进入octopress文件夹，使用bundle自动安装octopress，<code>bundle install</code>会自动安装所有octopress及其所有依赖。</p>
+
+<p>执行如下命令安装默认主题</p></blockquote>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake install </span></code></pre></td></tr></table></div></figure>
+
+
+<p>
+所谓rake就是ruby make的缩写。
+- 执行</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>rake preview</span></code></pre></td></tr></table></div></figure>
+
+
+<p>在浏览器内输入<code>http://localhost:4000</code>，即可看到我们搭建完成的博客</p>
+
+<h5>部署到GitHub</h5>
+
+<p>tab切换</p>
+
+<h2>标题一</h2>
+
+<h2>标题二</h2>
+
+<h6>标题六</h6>
+
+<ul>
+<li>列表项1</li>
+<li>列表项2</li>
+<li>列表项3</li>
+<li>列表项4</li>
+<li><p>无序列表5</p></li>
+<li><p>无序列表</p></li>
+<li><p>无序列表</p></li>
+<li><p>有序列表</p></li>
+<li>有序列表</li>
+</ul>
+
+
+<blockquote><p>引用的一段名言</p></blockquote>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/20170409/cssde-jie-gou-yu-bu-ju/">Css3的结构与布局</a></h1>
     
     
       <p class="meta">
@@ -87,7 +199,7 @@
   </header>
 
 
-<div class="entry-content"><h4>1.自适应内部元素</h4>
+  <div class="entry-content"><h4>1.自适应内部元素</h4>
 
 <p>在css中，不给元素一个height值时，元素会自适应其内部的元素高度，有时我们想让元素的宽度也达到此效果，应用场景如下。</p>
 
@@ -549,46 +661,20 @@ vw 是与视口宽度相关的。1vw 实际上表示视口宽度的1%，而不�
 
 
 </div>
-
-
-  <footer>
-    <p class="meta">
-      
+  
   
 
-<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
 
-      
-
-
-
-
-<time class='entry-date' datetime='2017-04-09T15:40:39+08:00'><span class='date'><span class='date-month'>Apr</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2017</span></span> <span class='time'>3:40 pm</span></time>
-      
-
-
-    </p>
+    </article>
+  
+  <div class="pagination">
     
-      <div class="sharing">
-  
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://xlingyun.github.io/blog/20170409/cssde-jie-gou-yu-bu-ju/" data-via="" data-counturl="http://xlingyun.github.io/blog/20170409/cssde-jie-gou-yu-bu-ju/" >Tweet</a>
-  
-  
-  
-</div>
-
+    <a href="/blog/archives">Blog Archives</a>
     
-    <p class="meta">
-      
-      
-        <a class="basic-alignment right" href="/blog/20170421/post-tabqie-huan/" title="Next Post: 安装Octopress步骤">安装Octopress步骤 &raquo;</a>
-      
-    </p>
-  </footer>
-</article>
-
+    <a class="next" href="/index.html">Newer &rarr;</a>
+    
+  </div>
 </div>
-
 <aside class="sidebar">
   
     <section>
@@ -624,7 +710,6 @@ vw 是与视口宽度相关的。1vw 实际上表示视口宽度的1%，而不�
 
   
 </aside>
-
 
     </div>
   </div>

@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://xlingyun.github.io/blog/20170427/gao-xing-neng-gun-dong-scrollji-ye-mian-xuan-ran-you-hua/</loc>
+<lastmod>2017-04-27T01:35:25+08:00</lastmod>
+</url>
+<url>
+<loc>http://xlingyun.github.io/blog/20170426/javascriptyi-bu-bian-cheng/</loc>
+<lastmod>2017-04-26T23:33:17+08:00</lastmod>
+</url>
+<url>
+<loc>http://xlingyun.github.io/blog/20170426/homebrewzong-jie/</loc>
+<lastmod>2017-04-26T22:17:29+08:00</lastmod>
+</url>
+<url>
+<loc>http://xlingyun.github.io/blog/20170426/yii2-dot-0da-zao-wan-zheng-dian-shang-ping-tai/</loc>
+<lastmod>2017-04-26T21:30:59+08:00</lastmod>
+</url>
+<url>
 <loc>http://xlingyun.github.io/blog/20170425/jia-gou-mo-shi-fen-xi-yu-she-ji/</loc>
 <lastmod>2017-04-25T21:53:50+08:00</lastmod>
 </url>
@@ -37,5 +53,8 @@
 </url>
 <url>
 <loc>http://xlingyun.github.io/</loc>
+</url>
+<url>
+<loc>http://xlingyun.github.io/posts/2/</loc>
 </url>
 </urlset>

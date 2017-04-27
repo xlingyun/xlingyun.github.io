@@ -1,0 +1,44 @@
+<div class="highlight"><pre><span class="c1">// 防抖动函数 </span>
+ 
+<span class="kd">function</span> <span class="nx">debounce</span><span class="p">(</span><span class="nx">func</span><span class="p">,</span> <span class="nx">wait</span><span class="p">,</span> <span class="nx">immediate</span><span class="p">)</span> <span class="p">{</span> 
+ 
+    <span class="kd">var</span> <span class="nx">timeout</span><span class="p">;</span> 
+ 
+    <span class="k">return</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+ 
+        <span class="kd">var</span> <span class="nx">context</span> <span class="o">=</span> <span class="k">this</span><span class="p">,</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">;</span> 
+ 
+        <span class="kd">var</span> <span class="nx">later</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+ 
+            <span class="nx">timeout</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span> 
+ 
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">immediate</span><span class="p">)</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span> 
+ 
+        <span class="p">};</span> 
+ 
+        <span class="kd">var</span> <span class="nx">callNow</span> <span class="o">=</span> <span class="nx">immediate</span> <span class="o">&amp;</span> <span class="o">!</span><span class="nx">timeout</span><span class="p">;</span> 
+ 
+        <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeout</span><span class="p">);</span> 
+ 
+        <span class="nx">timeout</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">later</span><span class="p">,</span> <span class="nx">wait</span><span class="p">);</span> 
+ 
+        <span class="k">if</span> <span class="p">(</span><span class="nx">callNow</span><span class="p">)</span> <span class="nx">func</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span> 
+ 
+    <span class="p">};</span> 
+ 
+<span class="p">};</span> 
+ 
+  
+ 
+<span class="kd">var</span> <span class="nx">myEfficientFn</span> <span class="o">=</span> <span class="nx">debounce</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> 
+ 
+    <span class="c1">// 滚动中的真正的操作 </span>
+ 
+<span class="p">},</span> <span class="mi">250</span><span class="p">);</span> 
+ 
+  
+ 
+<span class="c1">// 绑定监听 </span>
+ 
+<span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;resize&#39;</span><span class="p">,</span> <span class="nx">myEfficientFn</span><span class="p">);</span> 
+</pre></div>

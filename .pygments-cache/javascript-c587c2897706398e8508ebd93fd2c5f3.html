@@ -1,0 +1,24 @@
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#kahao&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+     <span class="c1">//只对输入数字时进行处理</span>
+       <span class="k">if</span><span class="p">((</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">&gt;=</span> <span class="mi">48</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">&lt;=</span> <span class="mi">57</span><span class="p">)</span> <span class="o">||</span>
+               <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">&gt;=</span> <span class="mi">96</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">&lt;=</span> <span class="mi">105</span> <span class="p">)){</span>
+            <span class="c1">//获取当前光标的位置</span>
+            <span class="kd">var</span> <span class="nx">caret</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">selectionStart</span>
+            <span class="c1">//获取当前的value</span>
+            <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span>
+            <span class="c1">//从左边沿到坐标之间的空格数</span>
+            <span class="kd">var</span> <span class="nx">sp</span> <span class="o">=</span>  <span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">caret</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\s/g</span><span class="p">)</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">length</span>
+            <span class="c1">//去掉所有空格</span>
+           <span class="kd">var</span> <span class="nx">nospace</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\s/g</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+           <span class="c1">//重新插入空格</span>
+           <span class="kd">var</span> <span class="nx">curVal</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">nospace</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/(\d{4})/g</span><span class="p">,</span> <span class="s2">&quot;$1 &quot;</span><span class="p">).</span><span class="nx">trim</span><span class="p">()</span>
+           <span class="c1">//从左边沿到原坐标之间的空格数</span>
+           <span class="kd">var</span> <span class="nx">curSp</span> <span class="o">=</span> <span class="p">(</span><span class="nx">curVal</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">caret</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\s/g</span><span class="p">)</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">length</span>
+          <span class="c1">//修正光标位置</span>
+         <span class="k">this</span><span class="p">.</span><span class="nx">selectionEnd</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">selectionStart</span> <span class="o">=</span> <span class="nx">caret</span> <span class="o">+</span> <span class="nx">curSp</span> <span class="o">-</span> <span class="nx">sp</span>
+       
+        <span class="p">}</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</pre></div>

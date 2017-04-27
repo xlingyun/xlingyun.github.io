@@ -1,0 +1,19 @@
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">class2type</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="s2">&quot;Boolean Number String Function Array Date RegExp Object Error&quot;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="nx">i</span><span class="p">){</span>
+    <span class="nx">class2type</span><span class="p">[</span><span class="s2">&quot;[object &quot;</span> <span class="o">+</span> <span class="nx">e</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+    <span class="p">{</span>
+        <span class="p">[</span><span class="nx">object</span> <span class="nb">Object</span><span class="p">]</span><span class="o">:</span> <span class="nx">object</span><span class="p">,</span>
+        <span class="p">[</span><span class="nx">object</span> <span class="nb">String</span><span class="p">]</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span>
+        <span class="p">[</span><span class="nx">object</span> <span class="nb">Number</span><span class="p">]</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span>
+        <span class="p">[</span><span class="nx">object</span> <span class="nb">Boolean</span><span class="p">]</span><span class="o">:</span> <span class="kr">boolean</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// 当然为了兼容IE低版本，forEach需要一个polyfill</span>
+<span class="kd">function</span> <span class="nx">_typeof</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">obj</span> <span class="o">==</span> <span class="kc">null</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="k">typeof</span> <span class="nx">obj</span> <span class="o">===</span> <span class="s2">&quot;object&quot;</span> <span class="o">||</span> <span class="k">typeof</span> <span class="nx">obj</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span> <span class="o">?</span> <span class="nx">class2type</span><span class="p">[</span> <span class="nx">class2type</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">obj</span><span class="p">)]</span> <span class="o">||</span> <span class="s2">&quot;object&quot;</span> <span class="o">:</span> <span class="k">typeof</span> <span class="nx">obj</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
