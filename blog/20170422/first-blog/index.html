@@ -9,8 +9,30 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="银行卡号4位空格 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+$(function() { $(&#39;#kahao&#39;).on(&#39;keyup&#39;, function(e) { // &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,7 +107,97 @@
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><h3>银行卡号4位空格</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#kahao&#39;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;keyup&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>     <span class="c1">//只对输入数字时进行处理</span>
+</span><span class='line'>       <span class="k">if</span><span class="p">((</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">&gt;=</span> <span class="mi">48</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">&lt;=</span> <span class="mi">57</span><span class="p">)</span> <span class="o">||</span>
+</span><span class='line'>               <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">&gt;=</span> <span class="mi">96</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">which</span> <span class="o">&lt;=</span> <span class="mi">105</span> <span class="p">)){</span>
+</span><span class='line'>            <span class="c1">//获取当前光标的位置</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">caret</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">selectionStart</span>
+</span><span class='line'>            <span class="c1">//获取当前的value</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span>
+</span><span class='line'>            <span class="c1">//从左边沿到坐标之间的空格数</span>
+</span><span class='line'>            <span class="kd">var</span> <span class="nx">sp</span> <span class="o">=</span>  <span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">caret</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\s/g</span><span class="p">)</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">length</span>
+</span><span class='line'>            <span class="c1">//去掉所有空格</span>
+</span><span class='line'>           <span class="kd">var</span> <span class="nx">nospace</span> <span class="o">=</span> <span class="nx">value</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\s/g</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>           <span class="c1">//重新插入空格</span>
+</span><span class='line'>           <span class="kd">var</span> <span class="nx">curVal</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">nospace</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/(\d{4})/g</span><span class="p">,</span> <span class="s2">&quot;$1 &quot;</span><span class="p">).</span><span class="nx">trim</span><span class="p">()</span>
+</span><span class='line'>           <span class="c1">//从左边沿到原坐标之间的空格数</span>
+</span><span class='line'>           <span class="kd">var</span> <span class="nx">curSp</span> <span class="o">=</span> <span class="p">(</span><span class="nx">curVal</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">caret</span><span class="p">).</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\s/g</span><span class="p">)</span> <span class="o">||</span> <span class="p">[]).</span><span class="nx">length</span>
+</span><span class='line'>          <span class="c1">//修正光标位置</span>
+</span><span class='line'>         <span class="k">this</span><span class="p">.</span><span class="nx">selectionEnd</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">selectionStart</span> <span class="o">=</span> <span class="nx">caret</span> <span class="o">+</span> <span class="nx">curSp</span> <span class="o">-</span> <span class="nx">sp</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="p">})</span>
+</span><span class='line'><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>如何正确判断js数据类型</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">class2type</span> <span class="o">=</span> <span class="p">{};</span>
+</span><span class='line'><span class="s2">&quot;Boolean Number String Function Array Date RegExp Object Error&quot;</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="nx">i</span><span class="p">){</span>
+</span><span class='line'>    <span class="nx">class2type</span><span class="p">[</span><span class="s2">&quot;[object &quot;</span> <span class="o">+</span> <span class="nx">e</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">();</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="p">[</span><span class="nx">object</span> <span class="nb">Object</span><span class="p">]</span><span class="o">:</span> <span class="nx">object</span><span class="p">,</span>
+</span><span class='line'>        <span class="p">[</span><span class="nx">object</span> <span class="nb">String</span><span class="p">]</span><span class="o">:</span> <span class="nx">string</span><span class="p">,</span>
+</span><span class='line'>        <span class="p">[</span><span class="nx">object</span> <span class="nb">Number</span><span class="p">]</span><span class="o">:</span> <span class="nx">number</span><span class="p">,</span>
+</span><span class='line'>        <span class="p">[</span><span class="nx">object</span> <span class="nb">Boolean</span><span class="p">]</span><span class="o">:</span> <span class="kr">boolean</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">});</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// 当然为了兼容IE低版本，forEach需要一个polyfill</span>
+</span><span class='line'><span class="kd">function</span> <span class="nx">_typeof</span><span class="p">(</span><span class="nx">obj</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="nx">obj</span> <span class="o">==</span> <span class="kc">null</span><span class="p">){</span>
+</span><span class='line'>        <span class="k">return</span> <span class="nb">String</span><span class="p">(</span><span class="nx">obj</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="k">typeof</span> <span class="nx">obj</span> <span class="o">===</span> <span class="s2">&quot;object&quot;</span> <span class="o">||</span> <span class="k">typeof</span> <span class="nx">obj</span> <span class="o">===</span> <span class="s2">&quot;function&quot;</span> <span class="o">?</span> <span class="nx">class2type</span><span class="p">[</span> <span class="nx">class2type</span><span class="p">.</span><span class="nx">toString</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">obj</span><span class="p">)]</span> <span class="o">||</span> <span class="s2">&quot;object&quot;</span> <span class="o">:</span> <span class="k">typeof</span> <span class="nx">obj</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -136,23 +248,23 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/20170427/gao-xing-neng-gun-dong-scrollji-ye-mian-xuan-ran-you-hua/">高性能滚动scroll及页面渲染优化</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/20170426/javascriptyi-bu-bian-cheng/">Javascript异步编程</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/20170426/homebrewzong-jie/">Homebrew总结</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/20170426/yii2-dot-0da-zao-wan-zheng-dian-shang-ping-tai/">Yii2.0打造完整电商平台</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/20170425/jia-gou-mo-shi-fen-xi-yu-she-ji/">MVC架构模式分析与设计</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/20170425/html5pan-duan-wei-xin-,-ios,-androidduan-kou/">Html5判断微信、ios、android端口</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/20170424/javascriptshi-jian-wei-tuo/">Javascript事件委托</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/20170424/cssxuan-ze-qi/">Css选择器</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/20170422/javascript/">Javascript</a>
       </li>
     
   </ul>
