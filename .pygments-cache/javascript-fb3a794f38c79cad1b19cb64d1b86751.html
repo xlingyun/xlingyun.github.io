@@ -1,0 +1,13 @@
+<div class="highlight"><pre><span class="kd">function</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">||</span> <span class="s2">&quot;Oliver Queen&quot;</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span> <span class="o">||</span> <span class="mi">27</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">user1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user1</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">//Oliver Queen</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user1</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span> <span class="c1">//27</span>
+
+<span class="kd">var</span> <span class="nx">user2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="s1">&#39;Barry Allen&#39;</span><span class="p">,</span> <span class="mi">25</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user2</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">//Barry Allen</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">user2</span><span class="p">.</span><span class="nx">age</span><span class="p">);</span> <span class="c1">//25</span>
+</pre></div>

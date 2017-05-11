@@ -1,0 +1,10 @@
+<div class="highlight"><pre><span class="err">#</span> <span class="err">首先要用到第三方的</span><span class="nx">underscore</span><span class="err">库，其次需要调用</span><span class="nx">template</span><span class="p">()</span><span class="err">和</span><span class="nx">compiled</span><span class="p">()</span><span class="err">两个函数</span>
+<span class="kd">var</span> <span class="nx">compiled</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">template</span><span class="p">(</span><span class="s2">&quot;hello: &lt;%= name %&gt;&quot;</span><span class="p">);</span>
+<span class="nx">compiled</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;moe&#39;</span><span class="p">})</span>
+
+<span class="err">对比</span><span class="nx">ES6</span><span class="o">:</span>
+
+<span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;moe&quot;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">txt</span> <span class="o">=</span> <span class="err">`</span><span class="nx">hello</span> <span class="nx">$</span><span class="p">{</span><span class="nx">name</span><span class="p">}</span><span class="err">`</span><span class="p">;</span>
+</pre></div>

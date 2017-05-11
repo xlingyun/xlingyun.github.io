@@ -1,0 +1,25 @@
+<div class="highlight"><pre><span class="c1">// 如果利用get方法获得多个元素的话，就会得到多个数组</span>
+<span class="c1">// 为了简化开发，可以考虑将其合并到一个数组中</span>
+<span class="c1">// 调用多次get方法，如果想要多个数组就可以使用多个数组</span>
+<span class="c1">// 想要一个数组，就得到一个数组</span>
+
+<span class="kd">var</span> <span class="nx">getTag</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">tag</span><span class="p">,</span> <span class="nx">retsults</span><span class="p">){</span>
+    <span class="nx">results</span> <span class="o">=</span> <span class="nx">results</span> <span class="o">||</span> <span class="p">[];</span>
+    <span class="nx">results</span><span class="p">.</span><span class="nx">push</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">results</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="nx">tag</span><span class="p">));</span>
+    <span class="k">return</span> <span class="nx">results</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">each</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">fn</span><span class="p">){</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">fn</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="o">===</span> <span class="kc">false</span><span class="p">){</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="nx">getTag</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="nx">getTag</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">));</span>
+
+<span class="nx">each</span><span class="p">(</span> <span class="nx">list</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">backgroundColor</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">;</span>
+<span class="p">});</span>
+</pre></div>

@@ -1,0 +1,4 @@
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">elements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">arrayElements</span> <span class="o">=</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">elements</span><span class="p">);</span><span class="c1">//现在已经转换成数组了</span>
+<span class="kd">var</span> <span class="nx">arrayElements</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">elements</span><span class="p">);</span><span class="c1">//把NodeList转化成数组的另外一个方法</span>
+</pre></div>

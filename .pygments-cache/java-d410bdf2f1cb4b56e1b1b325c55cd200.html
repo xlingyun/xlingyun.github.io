@@ -1,0 +1,47 @@
+<div class="highlight"><pre><span class="kd">class</span> <span class="nc">XHR</span> <span class="o">{</span>
+    <span class="n">get</span><span class="o">(</span><span class="n">url</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Promise</span><span class="o">((</span><span class="n">resolve</span><span class="o">,</span> <span class="n">reject</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="o">{</span>
+            <span class="kd">const</span> <span class="n">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">XMLHttpRequest</span><span class="o">();</span>
+            <span class="n">xhr</span><span class="o">.</span><span class="na">onreadystatechange</span> <span class="o">=</span> <span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">xhr</span><span class="o">.</span><span class="na">readyState</span> <span class="o">===</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="n">xhr</span><span class="o">.</span><span class="na">status</span> <span class="o">==</span> <span class="mi">200</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">xhr</span><span class="o">.</span><span class="na">responseText</span><span class="o">){</span>
+                        <span class="n">resolve</span><span class="o">(</span><span class="n">JSON</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">xhr</span><span class="o">.</span><span class="na">responseText</span><span class="o">));</span>
+                    <span class="o">}</span> 
+                <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">reject</span><span class="o">(</span><span class="err">`</span><span class="n">XHR</span> <span class="nl">unsuccessful:</span><span class="err">`</span> <span class="n">$</span><span class="o">{</span><span class="n">xhr</span><span class="o">.</span><span class="na">status</span><span class="o">});</span>
+                <span class="o">}</span>
+            <span class="o">};</span>
+            <span class="n">xhr</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="err">&#39;</span><span class="n">get</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+            <span class="n">xhr</span><span class="o">.</span><span class="na">setRequestHeader</span><span class="o">(</span><span class="err">&#39;</span><span class="n">content</span><span class="o">-</span><span class="n">type</span><span class="err">&#39;</span><span class="o">,</span> <span class="err">&#39;</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="err">&#39;</span><span class="o">);</span>
+            <span class="n">xhr</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="kc">null</span><span class="o">);</span>
+        <span class="o">})</span>
+    <span class="o">}</span>
+
+    <span class="n">post</span><span class="o">(</span><span class="n">url</span><span class="o">,</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Promise</span><span class="o">((</span><span class="n">resolve</span><span class="o">,</span> <span class="n">reject</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="o">{</span>
+            <span class="kd">const</span> <span class="n">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">XMLHttpRequest</span><span class="o">();</span>
+            <span class="n">xhr</span><span class="o">.</span><span class="na">onreadystatechange</span> <span class="o">=</span> <span class="o">()</span> <span class="o">=&gt;</span> <span class="o">{</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">xhr</span><span class="o">.</span><span class="na">readyState</span> <span class="o">===</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="n">xhr</span><span class="o">.</span><span class="na">status</span> <span class="o">===</span> <span class="mi">200</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">if</span><span class="o">(</span><span class="n">xhr</span><span class="o">.</span><span class="na">responseText</span><span class="o">){</span>
+                        <span class="n">resolve</span><span class="o">(</span><span class="n">JSON</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="n">xhr</span><span class="o">.</span><span class="na">responseText</span><span class="o">));</span>
+      
+                    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                       <span class="n">reject</span><span class="o">(</span><span class="err">`</span><span class="n">XHR</span> <span class="nl">unsuccessful:</span><span class="err">`</span> <span class="n">$</span><span class="o">{</span><span class="n">xhr</span><span class="o">.</span><span class="na">status</span><span class="o">});</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="n">xhr</span><span class="o">.</span><span class="na">open</span><span class="o">(</span><span class="err">&#39;</span><span class="n">post</span><span class="err">&#39;</span><span class="o">,</span> <span class="n">url</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+            <span class="n">xhr</span><span class="o">.</span><span class="na">setRequestHeader</span><span class="o">(</span><span class="err">&#39;</span><span class="n">content</span><span class="o">-</span><span class="n">type</span><span class="err">&#39;</span><span class="o">,</span> <span class="err">&#39;</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="err">&#39;</span><span class="o">);</span>
+            <span class="n">xhr</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">JSON</span><span class="o">.</span><span class="na">stringify</span><span class="o">(</span><span class="n">data</span><span class="o">));</span>
+        <span class="o">})</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+<span class="n">XHR</span><span class="o">.</span><span class="na">install</span> <span class="o">=</span> <span class="o">(</span><span class="n">Vue</span><span class="o">)</span> <span class="o">=&gt;</span> <span class="o">{</span>
+    <span class="n">Vue</span><span class="o">.</span><span class="na">prototype</span><span class="o">.</span><span class="na">$get</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">XHR</span><span class="o">().</span><span class="na">get</span><span class="o">;</span>
+    <span class="n">Vue</span><span class="o">.</span><span class="na">prototype</span><span class="o">.</span><span class="na">$post</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">XHR</span><span class="o">().</span><span class="na">post</span><span class="o">;</span>
+<span class="o">}</span>
+
+<span class="n">export</span> <span class="k">default</span> <span class="n">XHR</span><span class="o">;</span>
+
+<span class="c1">//这种方法一般能缩小文件几十KB，比如vue-resource有35KB，自己写的这个XHR.js只有1.9K</span>
+</pre></div>

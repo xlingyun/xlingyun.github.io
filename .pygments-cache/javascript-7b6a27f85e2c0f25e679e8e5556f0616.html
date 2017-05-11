@@ -1,0 +1,30 @@
+<div class="highlight"><pre><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">&#39;scripts&#39;</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span><span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">([</span><span class="s1">&#39;app/js/index.js&#39;</span><span class="p">])</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">plumber</span><span class="p">({</span>
+            <span class="nx">errorHandle</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+
+            <span class="p">}</span>
+        <span class="p">}))</span> <span class="c1">//用plumber处理错误</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">named</span><span class="p">())</span><span class="c1">// 文件重新命名</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulpWebpack</span><span class="p">({</span>
+            <span class="nx">module</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">loaders</span><span class="o">:</span> <span class="p">[{</span>
+                    <span class="nx">test</span><span class="o">:</span> <span class="sr">/\.js$/</span><span class="p">,</span>
+                    <span class="nx">loader</span><span class="o">:</span> <span class="s1">&#39;babel&#39;</span>
+                <span class="p">}]</span>
+            <span class="p">}</span>
+        <span class="p">}),</span><span class="kc">null</span><span class="p">,(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">stats</span><span class="p">)</span><span class="o">=&gt;</span><span class="p">{</span>
+            <span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">Finished</span> <span class="s1">&#39;${colors.cyan(&#39;</span><span class="nx">scripts</span><span class="s1">&#39;)}&#39;</span><span class="err">`</span><span class="p">,</span><span class="nx">stats</span><span class="p">.</span><span class="nx">toString</span><span class="p">({</span>
+                <span class="nx">chunks</span><span class="o">:</span> <span class="kc">false</span>
+            <span class="p">}))</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;server/public/js&#39;</span><span class="p">))</span><span class="c1">// 指定路径 tips：为什么要放到server 目录下？因为server要拿到最新的js才能在整个服务中跑起来</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">rename</span><span class="p">({</span>
+            <span class="nx">basename</span><span class="o">:</span> <span class="s1">&#39;cp&#39;</span><span class="p">,</span>
+            <span class="nx">extname</span><span class="o">:</span><span class="s1">&#39;.min.js&#39;</span>
+        <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">uglify</span><span class="p">({</span><span class="nx">compress</span><span class="o">:</span><span class="p">{</span><span class="nx">properties</span><span class="o">:</span><span class="kc">false</span><span class="p">},</span><span class="nx">output</span><span class="o">:</span><span class="p">{</span><span class="s1">&#39;quote_keys&#39;</span><span class="o">:</span><span class="kc">true</span><span class="p">}}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s1">&#39;server/public/js&#39;</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulpif</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">watch</span><span class="p">,</span><span class="nx">livereload</span><span class="p">()))</span>
+<span class="p">})</span>
+</pre></div>

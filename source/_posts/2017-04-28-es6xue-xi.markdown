@@ -1,0 +1,210 @@
+---
+layout: post
+title: "ES6学习"
+date: 2017-04-28 20:13:22 +0800
+comments: true
+categories: 
+---
+
+默认参数：
+
+```javascript
+
+# 为了增强代码的安全性，通过或(||)运算符来保证参数正常
+function hello(txt) {
+    txt = txt || 'hello world'
+}
+
+与ES6相比:
+
+function hello(txt='hello world'){}
+```
+
+字符串模版：
+
+```javascript
+# 首先要用到第三方的underscore库，其次需要调用template()和compiled()两个函数
+var compiled = _.template("hello: <%= name %>");
+compiled({name: 'moe'})
+
+对比ES6:
+
+var name = "moe";
+
+var txt = `hello ${name}`;
+
+```
+
+更多特性
+
+### 解构赋值
+### 箭头函数
+### Set和Map
+### 异步操作
+### 类与对象
+### 模块化
+
+ES6浏览器本身是不支持的，
+
+### ES6项目构建
+#### 基础框架
+![基础架构][基础架构]
+
+#### 任务自动化
+#### 编译工具
+#### 代码实现
+
+#### 任务自动化gulp
+
+为什么不用grunt：项目复杂后操作慢，gulp因为是级联操作，不是文件流操作
+什么是任务自动化
+什么是gulp
+gulp的作用
+了解如何使用gulp完成任务自动化
+gulp学习建议：gulp中文网了解基本的api，了解使用哪些插件
+
+
+
+编译工具（babel、webpack）
+什么是babel、webpack
+babel是javascript的编译工具
+webpack解决模块化
+babel的核心用法
+了解webpack及webpack-stream的作用
+
+
+
+### 代码实现
+创建一个ES6前端工程
+
+完成目录结构、自动构建、服务器搭建
+
+疑问：模版文件文件为什么不是.html呢？
+很简单，我们的服务端是通过express这个nodejs框架做的，而express使用的模版引擎就是ejs
+
+使用`express -e .`
+
+```
+第一步：
+express 脚手架的一个启动命令
+-e 表示使用ejs模版
+.表示在当前页面执行
+
+第二步：
+npm install
+
+以上，服务器代码安装完成
+```
+
+
+构建目录
+功能：文件合并 脚本编译 模版的自动更新等等
+util目录： 放置一些常用的脚本
+
+`npm init`, 创建package.json
+`touch .babelrc`，这个必须这样写，babel编译的时候会自动找这个文件，如果找不到就没法读到配置
+`touch gulpfile.babel.js` 官方说要创建gulpfile.js。但是， 因为接下来使用的构建脚本都是es6语法的缘故，如果不加babel.js的话会报错
+
+
+引入一个包`yargs`，处理命令行参数，区分开发环境和线上环境
+
+```javascript
+import yargs from 'yargs'
+
+
+
+
+```
+
+`gulp -production` 命令中的-production 就是`.option('')`部分，用来提取参数的
+
+所有的构建脚本一定是放在tasks目录下
+```javascript
+import gulp from 'gulp'; #因为整个的构建都是基于gulp
+import gulp from 'gulp-if'; #gulp的语句中做判断的
+import concat from 'gulp-concat'; #处理文件拼接的
+import webpack from 'webpack'; #打包工具，整个的打包过程
+import gulpWebpack from 'webpack-stream'; #gulp处理的都是文件流，是基于stream的，所以与webpack的处理是结合webpack-stream来处理的
+import named from 'vinyl-named' #文件重命名
+import livereload from 'gulp-livereload'; # 文件热更新
+import plumber from 'gulp-plumber'; # 处理文件信息流
+import rename from 'gulp-rename'; # 对文件重命名
+import uglify from 'gulp-uglify'; # 处理js和css压缩的
+import {log, colors} from 'gulp-util'; # 命令行工具输出
+import args from './util/args'; # 对命令行参数解析
+```
+
+```javascript
+
+gulp.task('scripts', ()=>{
+    return gulp.src(['app/js/index.js'])
+        .pipe(plumber({
+            errorHandle: function(){
+
+            }
+        })) //用plumber处理错误
+        .pipe(named())// 文件重新命名
+        .pipe(gulpWebpack({
+            module: {
+                loaders: [{
+                    test: /\.js$/,
+                    loader: 'babel'
+                }]
+            }
+        }),null,(err, stats)=>{
+            log(`Finished '${colors.cyan('scripts')}'`,stats.toString({
+                chunks: false
+            }))
+        })
+        .pipe(gulp.dest('server/public/js'))// 指定路径 tips：为什么要放到server 目录下？因为server要拿到最新的js才能在整个服务中跑起来
+        .pipe(rename({
+            basename: 'cp',
+            extname:'.min.js'
+        }))
+        .pipe(uglify({compress:{properties:false},output:{'quote_keys':true}}))
+        .pipe(gulp.dest('server/public/js'))
+        .pipe(gulpif(args.watch,livereload()))
+})
+
+```
+
+### ES6语法
+
+let和const
+
+```
+ let a = 1;
+ let a = 2;
+```
+
+如上定义变量会报错`Module build failed: Duplicate declaration "a"`
+
+```
+const PI = 3.1415926;
+PI = 8;
+console.log(PI);
+```
+如上，想要修改const定义的常量，会报`SyntaxError: "PI" is read-only`
+
+```
+const k = {
+    a : 1
+}
+k.b = 3;
+console.log(k); // Object{a:1, b:2}
+```
+
+#### 解构赋值
+如果解构赋值没有在结构上成功配对，那么声明的那个变量就为`undefined`
+
+```
+let a, b, rest;
+[a, b, c] = [1, 2];// c: undefined
+console.log(a,b,c)
+
+[a, b, c=3] = [1,2];//
+console.log(a,b,c);// a:1 b:2 c:3
+```
+
+[基础架构]: http://oot79f1a9.bkt.clouddn.com/WX20170428-204740.png
+[let_error]: 
